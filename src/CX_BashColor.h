@@ -1,0 +1,127 @@
+#ifndef SL_LIB_CX_BASHCOLOR_H
+#define SL_LIB_CX_BASHCOLOR_H
+
+
+#define CX_BASH_COLOR_FOREGROUND_DEFAULT_IDX 39
+#define CX_BASH_COLOR_FOREGROUND_BLACK_IDX 30
+#define CX_BASH_COLOR_FOREGROUND_RED_IDX 31
+#define CX_BASH_COLOR_FOREGROUND_GREEN_IDX 32
+#define CX_BASH_COLOR_FOREGROUND_YELLOW_IDX 33
+#define CX_BASH_COLOR_FOREGROUND_BLUE_IDX 34
+#define CX_BASH_COLOR_FOREGROUND_MAGENTA_IDX 35
+#define CX_BASH_COLOR_FOREGROUND_CYAN_IDX 36
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_GREY_IDX 37
+#define CX_BASH_COLOR_FOREGROUND_DARK_GREY_IDX 90
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_RED_IDX 91
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_GREEN_IDX 92
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_YELLOW_IDX 93
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_BLUE_IDX 94
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_MAGENTA_IDX 95
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_CYAN_IDX 96
+#define CX_BASH_COLOR_FOREGROUND_WHITE_IDX 97
+
+#define CX_BASH_COLOR_FOREGROUND_DEFAULT_STR "\033[39m"
+#define CX_BASH_COLOR_FOREGROUND_BLACK_STR "\033[30m"
+#define CX_BASH_COLOR_FOREGROUND_RED_STR "\033[31m"
+#define CX_BASH_COLOR_FOREGROUND_GREEN_STR "\033[32m"
+#define CX_BASH_COLOR_FOREGROUND_YELLOW_STR "\033[33m"
+#define CX_BASH_COLOR_FOREGROUND_BLUE_STR "\033[34m"
+#define CX_BASH_COLOR_FOREGROUND_MAGENTA_STR "\033[35m"
+#define CX_BASH_COLOR_FOREGROUND_CYAN_STR "\033[36m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_GREY_STR "\033[37m"
+#define CX_BASH_COLOR_FOREGROUND_DARK_GREY_STR "\033[90m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_RED_STR "\033[91m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_GREEN_STR "\033[92m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_YELLOW_STR "\033[93m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_BLUE_STR "\033[94m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_MAGENTA_STR "\033[95m"
+#define CX_BASH_COLOR_FOREGROUND_LIGHT_CYAN_STR "\033[96m"
+#define CX_BASH_COLOR_FOREGROUND_WHITE_STR "\033[97m"
+
+#define CX_BASH_COLOR_BACKGROUND_DEFAULT_IDX 49
+#define CX_BASH_COLOR_BACKGROUND_BLACK_IDX 40
+#define CX_BASH_COLOR_BACKGROUND_RED_IDX 41
+#define CX_BASH_COLOR_BACKGROUND_GREEN_IDX 42
+#define CX_BASH_COLOR_BACKGROUND_YELLOW_IDX 43
+#define CX_BASH_COLOR_BACKGROUND_BLUE_IDX 44
+#define CX_BASH_COLOR_BACKGROUND_MAGENTA_IDX 45
+#define CX_BASH_COLOR_BACKGROUND_CYAN_IDX 46
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_GREY_IDX 47
+#define CX_BASH_COLOR_BACKGROUND_DARK_GREY_IDX 100
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_RED_IDX 101
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_GREEN_IDX 102
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_YELLOW_IDX 103
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_BLUE_IDX 104
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_MAGENTA_IDX 105
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_CYAN_IDX 106
+#define CX_BASH_COLOR_BACKGROUND_WHITE_IDX 107
+
+#define CX_BASH_COLOR_BACKGROUND_DEFAULT_STR "\033[49m"
+#define CX_BASH_COLOR_BACKGROUND_BLACK_STR "\033[40m"
+#define CX_BASH_COLOR_BACKGROUND_RED_STR "\033[41m"
+#define CX_BASH_COLOR_BACKGROUND_GREEN_STR "\033[42m"
+#define CX_BASH_COLOR_BACKGROUND_YELLOW_STR "\033[43m"
+#define CX_BASH_COLOR_BACKGROUND_BLUE_STR "\033[44m"
+#define CX_BASH_COLOR_BACKGROUND_MAGENTA_STR "\033[45m"
+#define CX_BASH_COLOR_BACKGROUND_CYAN_STR "\033[46m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_GREY_STR "\033[47m"
+#define CX_BASH_COLOR_BACKGROUND_DARK_GREY_STR "\033[100m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_RED_STR "\033[101m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_GREEN_STR "\033[102m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_YELLOW_STR "\033[103m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_BLUE_STR "\033[104m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_MAGENTA_STR "\033[105m"
+#define CX_BASH_COLOR_BACKGROUND_LIGHT_CYAN_STR "\033[106m"
+#define CX_BASH_COLOR_BACKGROUND_WHITE_STR "\033[107m"
+
+#define CX_BASH_COLOR_RESET "\033[0m"
+
+void CX_BashColorForegroundDefault();
+void CX_BashColorForegroundBlack();
+void CX_BashColorForegroundRed();
+void CX_BashColorForegroundGreen();
+void CX_BashColorForegroundYellow();
+void CX_BashColorForegroundBlue();
+void CX_BashColorForegroundMagenta();
+void CX_BashColorForegroundCyan();
+void CX_BashColorForegroundLightGrey();
+void CX_BashColorForegroundDarkGrey();
+void CX_BashColorForegroundLightRed();
+void CX_BashColorForegroundLightGreen();
+void CX_BashColorForegroundLightYellow();
+void CX_BashColorForegroundLightBlue();
+void CX_BashColorForegroundLightMagenta();
+void CX_BashColorForegroundLightCyan();
+void CX_BashColorForegroundWhite();
+
+void CX_BashColorBackgroundDefault();
+void CX_BashColorBackgroundBlack();
+void CX_BashColorBackgroundRed();
+void CX_BashColorBackgroundGreen();
+void CX_BashColorBackgroundYellow();
+void CX_BashColorBackgroundBlue();
+void CX_BashColorBackgroundMagenta();
+void CX_BashColorBackgroundCyan();
+void CX_BashColorBackgroundLightGrey();
+void CX_BashColorBackgroundDarkGrey();
+void CX_BashColorBackgroundLightRed();
+void CX_BashColorBackgroundLightGreen();
+void CX_BashColorBackgroundLightYellow();
+void CX_BashColorBackgroundLightBlue();
+void CX_BashColorBackgroundLightMagenta();
+void CX_BashColorBackgroundLightCyan();
+void CX_BashColorBackgroundWhite();
+
+void CX_BashColorReset();
+
+const char *CX_BashColorFB(int inForeground, int inBackground);
+
+void CX_BashColorPrintf(
+        int inBackground,
+        int inForeground,
+        char *before,
+        char *after,
+        const char *inFmt,
+        ...);
+
+#endif //SL_LIB_CX_BASHCOLOR_H

@@ -1,0 +1,6 @@
+.clion*
+.idea
+cmake*
+CMakeCache.txt
+CMakeFiles
+Makefile

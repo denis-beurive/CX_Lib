@@ -1,0 +1,229 @@
+cmake_minimum_required(VERSION 3.10)
+project(SL_Lib
+        LANGUAGES C)
+
+# ----------------------------------------------------------------------------------------
+# Set properties for all targets.
+# ----------------------------------------------------------------------------------------
+
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_VERBOSE_MAKEFILE off)
+set(CMAKE_LINK_SEARCH_START_STATIC on)
+
+# ----------------------------------------------------------------------------------------
+# Define configuration variables.
+# ----------------------------------------------------------------------------------------
+
+set(LOCAL_LIB_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+set(LOCAL_SRC_DIRECTORY "${CMAKE_BINARY_DIR}/src")
+set(LOCAL_TESTS_BIN_DIRECTORY "${CMAKE_BINARY_DIR}/tests/bin")
+
+# ----------------------------------------------------------------------------------------
+# Configure paths to header files.
+#
+# CUNIT_HEADERS_PATH: path to the CUnit header files. It depends on the OS.
+#   CentOS -> /usr/local/include
+#   Ubuntu -> /usr/include
+# SYSTEM_HEADERS_PATHS: list of "non-default" paths to external headers.
+#   These paths are added to the list of paths used by the compiler to find libraries.
+# ----------------------------------------------------------------------------------------
+
+set(TARGET_OS "ubuntu")
+
+if (${TARGET_OS} MATCHES "centos")
+    set(SYSTEM_LOCAL_HEADERS_PATH "/usr/local/include")
+    set(SYSTEM_HEADERS_PATHS "/usr/include")
+else()
+    set(SYSTEM_LOCAL_HEADERS_PATH "/usr/local/include")
+    set(SYSTEM_HEADERS_PATHS "/usr/include")
+endif()
+
+# ====                               ====
+# ==== Very important note for CLion ====
+# ====                               ====
+#
+# This line below is necessary for CLion to work properly. CLion uses it to find and download header files on the guest
+# host for code analysis.
+
+set(INCLUDE_DIRECTORIES ${SYSTEM_LOCAL_HEADERS_PATH} ${SYSTEM_HEADERS_PATHS})
+
+# ----------------------------------------------------------------------------------------
+# Path to system non-default paths for libraries.
+#
+# EXTERNAL_LIBS_PATHS: list of "non-default" paths to external libraries.
+#   These paths are added to the list of paths used by the linker to find libraries.
+# ----------------------------------------------------------------------------------------
+
+set(EXTERNAL_LIBS_PATHS "/usr/local/lib")
+link_directories(${EXTERNAL_LIBS_PATHS})
+
+# ----------------------------------------------------------------------------------------
+# Set sources paths.
+# ----------------------------------------------------------------------------------------
+
+message("lib          ${LOCAL_LIB_DIRECTORY}")
+message("src          ${LOCAL_SRC_DIRECTORY}")
+message("test bin     ${LOCAL_TESTS_BIN_DIRECTORY}")
+
+# ====                               ====
+# ==== Very important note for CLion ====
+# ====                               ====
+#
+# All paths to "local source files" must be specified using relative paths (relatively to the project root directory,
+# which is the directory that contains **THIS** file). By using the term "local source files", we mean source files that
+# belongs to the project.
+
+# ----------------------------------------------------------
+# Create the library.
+# ----------------------------------------------------------
+
+add_library(CX_Lib
+        src/CX_Status.c
+        src/CX_Status.h
+        src/CX_BasicDictionary.c
+        src/CX_BasicDictionary.h
+        src/CX_Template.c
+        src/CX_Template.h
+        src/CX_FileText.c
+        src/CX_FileText.h
+        src/CX_ArrayString.h
+        src/CX_ArrayString.c
+        src/CX_String.c
+        src/CX_String.h
+        src/CX_Logger.h
+        src/CX_Logger.c
+        src/CX_Array.c
+        src/CX_Array.h
+        src/CX_BashColor.c
+        src/CX_BashColor.h
+        )
+set_target_properties(
+        CX_Lib
+        PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${LOCAL_LIB_DIRECTORY})
+
+# ----------------------------------------------------------------------------------------
+# Build the tests suite.
+# ----------------------------------------------------------------------------------------
+
+#### init.c
+
+add_library(test_init tests/src/init.c tests/src/init.h)
+set_target_properties(
+        test_init
+        PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${LOCAL_LIB_DIRECTORY})
+
+#### test_CX_Status.c
+
+add_executable(test_CX_Status
+        tests/src/test_CX_Status.c)
+add_dependencies(test_CX_Status CX_Lib)
+target_link_libraries(test_CX_Status libcunit.a CX_Lib test_init)
+
+#### test_CX_BasicDictionary.c
+
+add_executable(test_CX_Basic_Dictionary
+        tests/src/test_CX_BasicDictionary.c)
+add_dependencies(test_CX_Basic_Dictionary CX_Lib)
+target_link_libraries(test_CX_Basic_Dictionary libcunit.a CX_Lib test_init)
+
+#### test_CX_BasicTemplate.c
+
+add_executable(test_CX_Basic_Template
+        tests/src/test_CX_Template.c)
+add_dependencies(test_CX_Basic_Template CX_Lib)
+target_link_libraries(test_CX_Basic_Template libcunit.a CX_Lib test_init)
+
+#### test_CX_FileText.c
+
+add_executable(test_CX_File_Text
+        tests/src/test_CX_FileText.c)
+add_dependencies(test_CX_File_Text CX_Lib)
+target_link_libraries(test_CX_File_Text libcunit.a CX_Lib test_init)
+
+#### test_CX_StringArray.c
+
+add_executable(test_CX_String_Array
+        tests/src/test_CX_ArrayString.c)
+add_dependencies(test_CX_String_Array CX_Lib)
+target_link_libraries(test_CX_String_Array libcunit.a CX_Lib test_init)
+
+#### test_CX_String.c
+
+add_executable(test_CX_String
+        tests/src/test_CX_String.c)
+add_dependencies(test_CX_String CX_Lib)
+target_link_libraries(test_CX_String libcunit.a CX_Lib test_init)
+
+#### test_CX_Logger.c
+
+add_executable(test_CX_Logger
+        tests/src/test_CX_Logger.c)
+add_dependencies(test_CX_Logger CX_Lib)
+target_link_libraries(test_CX_Logger libcunit.a CX_Lib test_init)
+
+#### test_CX_Array.c
+
+add_executable(test_CX_Array
+        tests/src/test_CX_Array.c)
+add_dependencies(test_CX_Array CX_Lib)
+target_link_libraries(test_CX_Array libcunit.a CX_Lib test_init)
+
+# ----------------------------------------------------------------------------------------
+# Set properties for all executable targets.
+# Properties:
+#   LINK_DIRECTORIES: list of paths to "non-default" directories that contains libraries
+#     needed to build the target(s).
+#   INCLUDE_DIRECTORIES: list of paths to "non-default" directories that contains header
+#     files used within the target sources.
+#   RUNTIME_OUTPUT_DIRECTORY: path to the directory used to store the target output.
+#   EXCLUDE_FROM_ALL: specify whether the target should be part of the default target
+#     (all) or not.
+# ----------------------------------------------------------------------------------------
+
+set_target_properties(
+        test_CX_Status
+        test_CX_Basic_Dictionary
+        test_CX_Basic_Template
+        test_CX_File_Text
+        test_CX_String_Array
+        test_CX_String
+        test_CX_Logger
+        test_CX_Array
+        PROPERTIES
+        LINK_DIRECTORIES "${LOCAL_LIB_DIRECTORY}"
+        RUNTIME_OUTPUT_DIRECTORY ${LOCAL_TESTS_BIN_DIRECTORY}
+        EXCLUDE_FROM_ALL on
+        DEPENDS test_init)
+
+# ----------------------------------------------------------------------------------------
+# Special rules.
+#   build-test: build the test suite.
+#   run-test: execute all unit tests.
+# ----------------------------------------------------------------------------------------
+
+add_custom_target(build-test
+        DEPENDS
+        test_CX_Status
+        test_CX_Basic_Dictionary
+        test_CX_Basic_Template
+        test_CX_File_Text
+        test_CX_String_Array
+        test_CX_String
+        test_CX_Logger
+        test_CX_Array)
+
+add_custom_target(run-test
+        COMMAND bash -c "rm -f tests/src/report/*"
+        COMMAND tests/bin/test_CX_Status
+        COMMAND tests/bin/test_CX_Basic_Dictionary
+        COMMAND tests/bin/test_CX_Basic_Template
+        COMMAND tests/bin/test_CX_File_Text
+        COMMAND tests/bin/test_CX_String_Array
+        COMMAND tests/bin/test_CX_String
+        COMMAND tests/bin/test_CX_Logger
+        COMMAND tests/bin/test_CX_Array
+        COMMAND bash -c "./memcheck.sh"
+        DEPENDS
+        build-test)
