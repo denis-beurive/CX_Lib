@@ -1,5 +1,5 @@
-#ifndef SL_LIB_CX_STRING_H
-#define SL_LIB_CX_STRING_H
+#ifndef CX_LIB_CX_STRING_H
+#define CX_LIB_CX_STRING_H
 
 #include <stdbool.h>
 #include "CX_Types.h"
@@ -25,4 +25,4 @@ CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, cha
 CX_String CX_StringLinearize(CX_String inString, bool *outLinearized, CX_Status outStatus);
 CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status outStatus);
 
-#endif //SL_LIB_CX_STRING_H
+#endif //CX_LIB_CX_STRING_H

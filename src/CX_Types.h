@@ -1,5 +1,5 @@
-#ifndef SL_LIB_CX_TYPES_H
-#define SL_LIB_CX_TYPES_H
+#ifndef CX_LIB_CX_TYPES_H
+#define CX_LIB_CX_TYPES_H
 
 #include <stdbool.h>
 
@@ -72,4 +72,4 @@ struct CX_TemplateType {
 
 typedef struct CX_TemplateType *CX_Template;
 
-#endif //SL_LIB_CX_TYPES_H
+#endif //CX_LIB_CX_TYPES_H

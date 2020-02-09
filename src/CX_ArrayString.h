@@ -1,5 +1,5 @@
-#ifndef SL_LIB_CX_ARRAYSTRING_H
-#define SL_LIB_CX_ARRAYSTRING_H
+#ifndef CX_LIB_CX_ARRAYSTRING_H
+#define CX_LIB_CX_ARRAYSTRING_H
 
 #include <stdbool.h>
 #include "CX_Types.h"
@@ -18,4 +18,4 @@ CX_String CX_ArrayStringJoinChar(CX_ArrayString inArray, char *inGlue);
 bool CX_ArrayStringPrependChar(CX_ArrayString inArray, char *inPrefix);
 bool CX_ArrayStringAppendChar(CX_ArrayString inArray, char *inPrefix);
 
-#endif //SL_LIB_CX_ARRAYSTRING_H
+#endif //CX_LIB_CX_ARRAYSTRING_H

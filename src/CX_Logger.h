@@ -1,5 +1,5 @@
-#ifndef SL_LIB_CX_LOGGER_H
-#define SL_LIB_CX_LOGGER_H
+#ifndef CX_LIB_CX_LOGGER_H
+#define CX_LIB_CX_LOGGER_H
 
 #include <stdbool.h>
 #include "CX_Types.h"
@@ -14,4 +14,4 @@ bool CX_LoggerLogWaring(CX_Logger inLogger, char *inMessage, CX_Status outStatus
 bool CX_LoggerLogInfo(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
 bool CX_LoggerLogDebug(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
 
-#endif //SL_LIB_CX_LOGGER_H
+#endif //CX_LIB_CX_LOGGER_H

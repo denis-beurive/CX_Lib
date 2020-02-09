@@ -1,5 +1,5 @@
-#ifndef SL_LIB_CX_BASICDICTIONARY_H
-#define SL_LIB_CX_BASICDICTIONARY_H
+#ifndef CX_LIB_CX_BASICDICTIONARY_H
+#define CX_LIB_CX_BASICDICTIONARY_H
 
 #include <stdbool.h>
 #include "CX_Types.h"
@@ -10,4 +10,4 @@ bool CX_BasicDictionaryAdd(CX_BasicDictionary dictionary, char *key, char *value
 bool CX_BasicDictionaryExists(CX_BasicDictionary dictionary, char *key);
 char *CX_BasicDictionaryGetValue(CX_BasicDictionary dictionary, char *key);
 
-#endif //SL_LIB_CX_BASICDICTIONARY_H
+#endif //CX_LIB_CX_BASICDICTIONARY_H

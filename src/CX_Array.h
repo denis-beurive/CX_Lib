@@ -1,5 +1,5 @@
-#ifndef SL_LIB_CX_ARRAY_H
-#define SL_LIB_CX_ARRAY_H
+#ifndef CX_LIB_CX_ARRAY_H
+#define CX_LIB_CX_ARRAY_H
 
 #include <stdbool.h>
 #include "CX_Types.h"
@@ -17,4 +17,4 @@ void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, 
 bool CX_ArrayReplaceAt(CX_Array inArray, void *inElement, unsigned int inIndex, CX_Status outStatus);
 CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outStatus);
 
-#endif //SL_LIB_CX_ARRAY_H
+#endif //CX_LIB_CX_ARRAY_H
