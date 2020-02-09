@@ -19,10 +19,10 @@ bool CX_StringPrepend(CX_String inString, CX_String inToPrepend);
 bool CX_StringPrependChar(CX_String inString, char *inToPrepend);
 CX_ArrayString CX_StringSplit(CX_String inString, CX_String inDelimiter);
 CX_ArrayString CX_StringSplitChar(CX_String inString, char* inDelimiter);
-CX_ArrayString CX_StringSplitRegex(CX_String inString, char* inRegex, SL_Status outStatus);
-CX_String CX_StringReplaceRegex(CX_String inString, char* inSearchRegex, CX_String inReplacement, SL_Status outStatus);
-CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, char *inReplacement, SL_Status outStatus);
-CX_String CX_StringLinearize(CX_String inString, bool *outLinearized, SL_Status outStatus);
-CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, SL_Status outStatus);
+CX_ArrayString CX_StringSplitRegex(CX_String inString, char* inRegex, CX_Status outStatus);
+CX_String CX_StringReplaceRegex(CX_String inString, char* inSearchRegex, CX_String inReplacement, CX_Status outStatus);
+CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, char *inReplacement, CX_Status outStatus);
+CX_String CX_StringLinearize(CX_String inString, bool *outLinearized, CX_Status outStatus);
+CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status outStatus);
 
 #endif //SL_LIB_CX_STRING_H

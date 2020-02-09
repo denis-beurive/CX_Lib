@@ -30,7 +30,7 @@ void test_CX_LoggerLog() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
 
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
@@ -65,7 +65,7 @@ void test_CX_LoggerLog() {
 void test_CX_LoggerLogFatal() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-fatal.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
@@ -81,7 +81,7 @@ void test_CX_LoggerLogFatal() {
 void test_CX_LoggerLogError() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-error.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
@@ -97,7 +97,7 @@ void test_CX_LoggerLogError() {
 void test_CX_LoggerLogWarning() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-warning.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
@@ -113,7 +113,7 @@ void test_CX_LoggerLogWarning() {
 void test_CX_LoggerLogInfo() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-info.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
@@ -129,7 +129,7 @@ void test_CX_LoggerLogInfo() {
 void test_CX_LoggerLogDebug() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-debug.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);

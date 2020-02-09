@@ -6,17 +6,17 @@
 #include <stdbool.h>
 #include "CX_Types.h"
 
-SL_Status CX_StatusCreate();
-bool CX_StatusSetMessageSize(SL_Status inStatus, long inSize);
-void CX_StatusDispose(SL_Status inStatus);
-void CX_StatusReset(SL_Status inStatus);
+CX_Status CX_StatusCreate();
+bool CX_StatusSetMessageSize(CX_Status inStatus, long inSize);
+void CX_StatusDispose(CX_Status inStatus);
+void CX_StatusReset(CX_Status inStatus);
 void CX_StatusSetError(
-        SL_Status inStatus,
+        CX_Status inStatus,
         int inErrorCode,
         const char *inFmt,
         ...);
-bool CX_StatusIsSuccess(SL_Status inStatus);
-bool CX_StatusIsFailure(SL_Status inStatus);
-char *CX_StatusGetMessage(SL_Status inStatus);
+bool CX_StatusIsSuccess(CX_Status inStatus);
+bool CX_StatusIsFailure(CX_Status inStatus);
+char *CX_StatusGetMessage(CX_Status inStatus);
 
 #endif // SL_STATUS_H

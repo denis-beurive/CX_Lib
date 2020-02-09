@@ -27,7 +27,7 @@ void test_CX_FileTextSlurp() {
     char dataFile[SL_TESTS_MAX_PATH_LENGTH];
     snprintf(dataFile, SL_TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp.txt", local_data_path);
     dataFile[SL_TESTS_MAX_PATH_LENGTH - 1] = 0;
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     unsigned long length;
     CX_FileText testFile = CX_FileTextCreate(dataFile);
     char *content = CX_FileTextSlurp(testFile, &length, status);
@@ -48,7 +48,7 @@ void test_CX_FileTextSlurpAsLines() {
     char dataFile[SL_TESTS_MAX_PATH_LENGTH];
     snprintf(dataFile, SL_TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp-as-lines.txt", local_data_path);
     dataFile[SL_TESTS_MAX_PATH_LENGTH - 1] = 0;
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     unsigned long length;
     CX_FileText testFile = CX_FileTextCreate(dataFile);
     CU_ASSERT_PTR_NOT_NULL_FATAL(testFile);

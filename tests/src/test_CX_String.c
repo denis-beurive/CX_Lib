@@ -450,7 +450,7 @@ void test_CX_StringSplitRegex() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
 
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
 
     // Test 1
     char *text = "ABC\r\nDEF\nGHI";
@@ -515,7 +515,7 @@ void test_CX_StringReplaceRegexChar() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
 
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
 
     // Test 1
     char *text = "ABC\r\nDEF\nGHI";
@@ -577,7 +577,7 @@ void test_CX_StringReplaceRegex() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
 
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
 
     // Test 1
     char* text = "ABC\r\nDEF\nGHI";
@@ -644,7 +644,7 @@ void test_CX_StringLinearize() {
 
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     bool linearized;
 
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);

@@ -23,7 +23,7 @@ void elementDisposer(void *inElement) {
     free(inElement);
 }
 
-void *elementCloner(void *inElement, SL_Status outStatus) {
+void *elementCloner(void *inElement, CX_Status outStatus) {
     int *element = (int*)malloc(sizeof(int));
     if (NULL == element) {
         CX_StatusSetError(outStatus, errno, "Cannot allocated memory!");
@@ -137,7 +137,7 @@ void test_CX_ArrayRemove() {
 
     for(int i=0; i<5; i++) {
         void *element;
-        SL_Status status = CX_StatusCreate();
+        CX_Status status = CX_StatusCreate();
 
         // --------------------------------------------------------
         // Test 1: no allocation of elements.
@@ -314,7 +314,7 @@ void test_CX_ArraySearch() {
     mtrace();
     for(int i=0; i<5; i++) {
         bigBuffer();
-        SL_Status status = CX_StatusCreate();
+        CX_Status status = CX_StatusCreate();
         CX_Array result;
         int *element;
 
@@ -361,7 +361,7 @@ void test_CX_ArrayInsertAt() {
 
     for(int i=0; i<5; i++) {
         bigBuffer();
-        SL_Status status = CX_StatusCreate();
+        CX_Status status = CX_StatusCreate();
         int *element;
         void *rv;
 
@@ -433,7 +433,7 @@ void test_CX_ArrayDup() {
 
     for(int i=0; i<5; i++) {
         bigBuffer();
-        SL_Status status = CX_StatusCreate();
+        CX_Status status = CX_StatusCreate();
 
         // Create an array.
         int *element;
@@ -470,7 +470,7 @@ void test_CX_ArrayReplaceAt() {
     mtrace();
 
     for(int i=0; i<5; i++) {
-        SL_Status status = CX_StatusCreate();
+        CX_Status status = CX_StatusCreate();
 
         // Create an array.
         int *element;

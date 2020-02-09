@@ -39,7 +39,7 @@ void CX_FileTextDispose(CX_FileText inFileText) {
  * you should free the allocated memory!
  * @note
  */
-char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, SL_Status outStatus) {
+char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, CX_Status outStatus) {
     FILE *fileHd;
     char *content;
     long fileLength;
@@ -101,7 +101,7 @@ char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, SL_
     return content;
 }
 
-CX_ArrayString CX_FileTextSlurpAsLines(CX_FileText inFileText, unsigned long *outFileLength, SL_Status outStatus) {
+CX_ArrayString CX_FileTextSlurpAsLines(CX_FileText inFileText, unsigned long *outFileLength, CX_Status outStatus) {
     CX_StatusReset(outStatus);
 
     // Load the file.

@@ -9,7 +9,7 @@ static void _stringDisposer(void *inString) {
     CX_StringDispose((CX_String) inString);
 }
 
-static void* _stringCloner(void *inString, SL_Status outStatus) {
+static void* _stringCloner(void *inString, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     CX_String newString = CX_StringDup((CX_String) inString);
     if (NULL == newString) {
@@ -57,7 +57,7 @@ CX_String *CX_ArrayStringGetStrings(CX_ArrayString inArray) {
  * @return Upon successful completion, the function returns a copy of the given list of strings.
  * Otherwise, the function returns the value NULL (which means that the system could not allocate memory).
  */
-CX_ArrayString CX_ArrayStringDup(CX_ArrayString inArray, SL_Status outStatus) {
+CX_ArrayString CX_ArrayStringDup(CX_ArrayString inArray, CX_Status outStatus) {
     return (CX_ArrayString) CX_ArrayDup((CX_Array) inArray, outStatus);
 }
 
@@ -76,7 +76,7 @@ bool CX_ArrayStringAddCloneChar(CX_ArrayString inArray, char* inString) {
     return CX_ArrayAdd((CX_Array) inArray, (void *) newString);
 }
 
-bool CX_ArrayStringReplaceAtCloneChar(CX_ArrayString inArray, unsigned int inIndex, char* inString, SL_Status outStatus) {
+bool CX_ArrayStringReplaceAtCloneChar(CX_ArrayString inArray, unsigned int inIndex, char* inString, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     CX_String newString = CX_StringCreate(inString);
     if (NULL == newString) {
@@ -120,7 +120,7 @@ CX_String CX_ArrayStringJoinChar(CX_ArrayString inArray, char *inGlue) {
 }
 
 bool CX_ArrayStringPrependChar(CX_ArrayString inArray, char *inPrefix) {
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     for (int i=0; i < CX_ArrayStringGetCount(inArray); i++) {
         CX_String string = CX_ArrayStringGetStringAt(inArray, i);
         if (!CX_StringPrependChar(string, inPrefix)) {
@@ -132,7 +132,7 @@ bool CX_ArrayStringPrependChar(CX_ArrayString inArray, char *inPrefix) {
 }
 
 bool CX_ArrayStringAppendChar(CX_ArrayString inArray, char *inPrefix) {
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     for (int i=0; i < CX_ArrayStringGetCount(inArray); i++) {
         CX_String string = CX_ArrayStringGetStringAt(inArray, i);
         if (!CX_StringAppendChar(string, inPrefix)) {

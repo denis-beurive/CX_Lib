@@ -117,7 +117,7 @@ CX_ArrayString CX_StringSplit(CX_String inString, CX_String inDelimiter) {
     return CX_StringSplitChar(inString, SL_StringGetString(inDelimiter));
 }
 
-CX_ArrayString CX_StringSplitRegex(CX_String inString, char* inRegex, SL_Status outStatus) {
+CX_ArrayString CX_StringSplitRegex(CX_String inString, char* inRegex, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     regex_t re;
     if (0 != regcomp(&re, inRegex, REG_EXTENDED)) {
@@ -156,7 +156,7 @@ CX_ArrayString CX_StringSplitRegex(CX_String inString, char* inRegex, SL_Status 
     return array;
 }
 
-CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, char *inReplacement, SL_Status outStatus) {
+CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, char *inReplacement, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     CX_ArrayString array = CX_StringSplitRegex(inString, inSearchRegex, outStatus);
     if (NULL == array) {
@@ -171,7 +171,7 @@ CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, cha
     return result;
 }
 
-CX_String CX_StringReplaceRegex(CX_String inString, char* inSearchRegex, CX_String inReplacement, SL_Status outStatus) {
+CX_String CX_StringReplaceRegex(CX_String inString, char* inSearchRegex, CX_String inReplacement, CX_Status outStatus) {
     return CX_StringReplaceRegexChar(inString, inSearchRegex, SL_StringGetString(inReplacement), outStatus);
 }
 
@@ -179,7 +179,7 @@ static void _positionDisposer(void *inElement) {
     free(inElement);
 }
 
-static void *_positionCloner(void *inElement, SL_Status outStatus) {
+static void *_positionCloner(void *inElement, CX_Status outStatus) {
     int *element = (int*)malloc(sizeof(int));
     if (NULL == element) {
         CX_StatusSetError(outStatus, errno, "Cannot allocated memory!");
@@ -189,7 +189,7 @@ static void *_positionCloner(void *inElement, SL_Status outStatus) {
     return (void*)element;
 }
 
-CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, SL_Status outStatus) {
+CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     *outLinearized = false;
 
@@ -304,6 +304,6 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, SL_Status 
 
 }
 
-CX_String CX_StringLinearize(CX_String inString, bool *outLinearized, SL_Status outStatus) {
+CX_String CX_StringLinearize(CX_String inString, bool *outLinearized, CX_Status outStatus) {
     return CX_StringLinearizeChar(SL_StringGetString(inString), outLinearized, outStatus);
 }

@@ -7,7 +7,7 @@
 
 CX_FileText CX_FileTextCreate(char *inPath);
 void CX_FileTextDispose(CX_FileText inFileText);
-char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, SL_Status outStatus);
-CX_ArrayString CX_FileTextSlurpAsLines(CX_FileText inFileText, unsigned long *outFileLength, SL_Status outStatus);
+char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, CX_Status outStatus);
+CX_ArrayString CX_FileTextSlurpAsLines(CX_FileText inFileText, unsigned long *outFileLength, CX_Status outStatus);
 
 #endif //SL_LIB_CX_FILETEXT_H

@@ -137,7 +137,7 @@ void test_CX_StringArrayDup() {
         CX_ArrayStringAddCloneChar(array, input[i]);
     }
 
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CX_ArrayString duplicatedArray = CX_ArrayStringDup(array, status);
     CU_ASSERT_PTR_NOT_NULL(duplicatedArray);
     CU_ASSERT_TRUE_FATAL(CX_StatusIsSuccess(status));

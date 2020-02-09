@@ -78,7 +78,7 @@ void CX_LoggerDispose(CX_Logger inLogger) {
     free(inLogger);
 }
 
-bool CX_LoggerLog(CX_Logger inLogger, enum CX_LoggerLevel inLevel, char *inMessage, SL_Status outStatus) {
+bool CX_LoggerLog(CX_Logger inLogger, enum CX_LoggerLevel inLevel, char *inMessage, CX_Status outStatus) {
     CX_StatusReset(outStatus);
 
     /**
@@ -195,22 +195,22 @@ bool CX_LoggerLog(CX_Logger inLogger, enum CX_LoggerLevel inLevel, char *inMessa
     return true;
 }
 
-bool CX_LoggerLogFatal(CX_Logger inLogger, char *inMessage, SL_Status outStatus) {
+bool CX_LoggerLogFatal(CX_Logger inLogger, char *inMessage, CX_Status outStatus) {
     return CX_LoggerLog(inLogger, CX_LoggerLevel_FATAL, inMessage, outStatus);
 }
 
-bool CX_LoggerLogError(CX_Logger inLogger, char *inMessage, SL_Status outStatus) {
+bool CX_LoggerLogError(CX_Logger inLogger, char *inMessage, CX_Status outStatus) {
     return CX_LoggerLog(inLogger, CX_LoggerLevel_ERROR, inMessage, outStatus);
 }
 
-bool CX_LoggerLogWaring(CX_Logger inLogger, char *inMessage, SL_Status outStatus) {
+bool CX_LoggerLogWaring(CX_Logger inLogger, char *inMessage, CX_Status outStatus) {
     return CX_LoggerLog(inLogger, CX_LoggerLevel_WARNING, inMessage, outStatus);
 }
 
-bool CX_LoggerLogInfo(CX_Logger inLogger, char *inMessage, SL_Status outStatus) {
+bool CX_LoggerLogInfo(CX_Logger inLogger, char *inMessage, CX_Status outStatus) {
     return CX_LoggerLog(inLogger, CX_LoggerLevel_INFO, inMessage, outStatus);
 }
 
-bool CX_LoggerLogDebug(CX_Logger inLogger, char *inMessage, SL_Status outStatus) {
+bool CX_LoggerLogDebug(CX_Logger inLogger, char *inMessage, CX_Status outStatus) {
     return CX_LoggerLog(inLogger, CX_LoggerLevel_DEBUG, inMessage, outStatus);
 }

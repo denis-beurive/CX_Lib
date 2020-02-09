@@ -11,7 +11,7 @@
  *    - "element" is a pointer to the element to free.
  * If the elements don't need to be freed (or should not), then you should pass the value NULL for this parameter.
  * @return elementCloner  Pointer to a function used to en element of the array.
- * The signature of this function is:  void* elementCloner (void *element, SL_Status status)
+ * The signature of this function is:  void* elementCloner (void *element, CX_Status status)
  *    Where:
  *    - "element" is a pointer to the element to free.
  *    - "status" is a status container.
@@ -22,7 +22,7 @@
  * @warning You must call the function CX_ArrayDispose() in order to free all resources allocated for the new dynamic
  * array when you need the array anymore.
  */
-CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(void*, SL_Status)) {
+CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(void*, CX_Status)) {
     CX_Array array = (CX_Array)malloc(sizeof(struct CX_ArrayType));
     if (NULL == array) {
         return NULL;
@@ -70,7 +70,7 @@ void **CX_ArrayGetElements(CX_Array inArray) {
  * @return Upon successful completion the function returns a clone of the given array.
  * Otherwise the function returns the value NULL (which means that the process runs out of memory).
  */
-CX_Array CX_ArrayDup(CX_Array inArray, SL_Status outStatus) {
+CX_Array CX_ArrayDup(CX_Array inArray, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     CX_Array clone = CX_ArrayCreate(inArray->elementDisposer, inArray->elementCloner);
     if (NULL == clone) {
@@ -137,7 +137,7 @@ void *CX_ArrayAdd(CX_Array inArray, void *inElement) {
  * @return In order to test the status of the operation, you must examine the status outStatus.
  * @note Please note that the first element of the array is located at the index 0.
  */
-void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, SL_Status outStatus) {
+void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     if (inIndex >= inArray->count) {
         CX_StatusSetError(outStatus, 0, "The given index (%u) exceeds the number of elements in the array (%u).",
@@ -193,7 +193,7 @@ void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, SL_Sta
  * outStatus.
  * @warning Please remember to free the resources allocated for the returned dynamic array.
  */
-CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), SL_Status outStatus) {
+CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outStatus) {
     CX_StatusReset(outStatus);
     CX_Array found = CX_ArrayCreate(NULL, inArray->elementCloner);
 
@@ -226,7 +226,7 @@ CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), SL_Status outSta
  * index is out of range.
  * @note Please note that the first element of the array is located at the index 0.
  */
-void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, SL_Status outStatus) {
+void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     if (inIndex >= inArray->count) {
         CX_StatusSetError(outStatus, 0, "Invalid index %u. The array only contains %u elements!", inIndex,
@@ -248,7 +248,7 @@ void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, 
     return inElement;
 }
 
-bool CX_ArrayReplaceAt(CX_Array inArray, void *inElement, unsigned int inIndex, SL_Status outStatus) {
+bool CX_ArrayReplaceAt(CX_Array inArray, void *inElement, unsigned int inIndex, CX_Status outStatus) {
     CX_StatusReset(outStatus);
     if (inIndex >= inArray->count) {
         CX_StatusSetError(outStatus, 0, "Invalid index %u. The array only contains %u elements!", inIndex,

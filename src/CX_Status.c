@@ -25,8 +25,8 @@
  * @warning The returned status has been allocated using malloc().
  * You should call CX_StatusDispose() when you are done with the status.
  */
-SL_Status CX_StatusCreate() {
-    SL_Status status = (SL_Status)malloc(sizeof(struct CX_StatusType));
+CX_Status CX_StatusCreate() {
+    CX_Status status = (CX_Status)malloc(sizeof(struct CX_StatusType));
     if (NULL == status) {
         return NULL;
     }
@@ -49,7 +49,7 @@ SL_Status CX_StatusCreate() {
  * @return Upon successful completion, the function returns the value true.
  * Otherwise, it returns the value false, which means that the system could not allocate memory.
  */
-bool CX_StatusSetMessageSize(SL_Status inStatus, long inSize) {
+bool CX_StatusSetMessageSize(CX_Status inStatus, long inSize) {
     free(inStatus->message);
     inStatus->message = (char*)malloc(inSize);
     if (NULL == inStatus->message) {
@@ -65,7 +65,7 @@ bool CX_StatusSetMessageSize(SL_Status inStatus, long inSize) {
  * @warning A status has been allocated using malloc().
  * You should call CX_StatusDispose() when you are done with a status.
  */
-void CX_StatusDispose(SL_Status inStatus) {
+void CX_StatusDispose(CX_Status inStatus) {
     free(inStatus->message);
     free(inStatus);
 }
@@ -77,7 +77,7 @@ void CX_StatusDispose(SL_Status inStatus) {
  * - it clears the error message.
  * @param inStatus The status to reset.
  */
-void CX_StatusReset(SL_Status inStatus) {
+void CX_StatusReset(CX_Status inStatus) {
     inStatus->status = true;
     inStatus->code = 0;
     memset((void*)inStatus->message, 0, inStatus->message_length);
@@ -90,7 +90,7 @@ void CX_StatusReset(SL_Status inStatus) {
  * @param inFmt A string format, as defined by the function printf().
  * @param ... Variable list of arguments (see the function printf()).
  */
-void CX_StatusSetError(SL_Status inStatus, int inErrorCode, const char *inFmt, ...) {
+void CX_StatusSetError(CX_Status inStatus, int inErrorCode, const char *inFmt, ...) {
     inStatus->code = inErrorCode;
     va_list args;
     va_start(args, inFmt);
@@ -109,7 +109,7 @@ void CX_StatusSetError(SL_Status inStatus, int inErrorCode, const char *inFmt, .
  * @return If the status is SUCCESS, the the function returns the value true.
  * Otherwise, it returns the value false.
  */
-bool CX_StatusIsSuccess(SL_Status inStatus) {
+bool CX_StatusIsSuccess(CX_Status inStatus) {
     return true == inStatus->status;
 }
 
@@ -119,7 +119,7 @@ bool CX_StatusIsSuccess(SL_Status inStatus) {
  * @return If the status is ERROR, the the function returns the value true.
  * Otherwise, it returns the value false.
  */
-bool CX_StatusIsFailure(SL_Status inStatus) {
+bool CX_StatusIsFailure(CX_Status inStatus) {
     return false == inStatus->status;
 }
 
@@ -128,7 +128,7 @@ bool CX_StatusIsFailure(SL_Status inStatus) {
  * @param inStatus The status.
  * @return The function returns the error message associated with the status.
  */
-char *CX_StatusGetMessage(SL_Status inStatus) {
+char *CX_StatusGetMessage(CX_Status inStatus) {
     return inStatus->message;
 }
 

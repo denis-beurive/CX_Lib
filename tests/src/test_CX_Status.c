@@ -18,7 +18,7 @@ int clean_suite(void) {
 void test_CX_StatusCreate() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_TRUE(status->status);
     CU_ASSERT_TRUE(SL_STATUS_DEFAULT_MESSAGE_SIZE == status->message_length);
     CU_ASSERT_TRUE(0 == status->message[0]);
@@ -30,7 +30,7 @@ void test_CX_StatusCreate() {
 void test_CX_StatusDispose() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CX_StatusDispose(status);
     muntrace();
 }
@@ -39,7 +39,7 @@ void test_CX_StatusSetMessageSize() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
     const int new_size = 2048;
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CX_StatusSetMessageSize(status, new_size);
     CU_ASSERT_TRUE(status->status);
     CU_ASSERT_TRUE(new_size == status->message_length);
@@ -53,7 +53,7 @@ void test_CX_StatusSetError() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
     const int error_code = 10;
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CX_StatusSetError(status, error_code, "Error is %d", error_code);
     CU_ASSERT_FALSE(status->status);
     CU_ASSERT_TRUE(error_code == status->code);
@@ -66,7 +66,7 @@ void test_CX_StatusReset() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
     const int error_code = 10;
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CX_StatusSetError(status, error_code, "Error is %d", error_code);
     CX_StatusReset(status);
     CU_ASSERT_TRUE(status->status);
@@ -79,7 +79,7 @@ void test_CX_StatusReset() {
 void test_CX_StatusIsSuccess() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
     CX_StatusSetError(status, 10, "Error is %d", 10);
     CU_ASSERT_FALSE(CX_StatusIsSuccess(status));
@@ -90,7 +90,7 @@ void test_CX_StatusIsSuccess() {
 void test_CX_StatusIsFailure() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CX_StatusSetError(status, 10, "Error is %d", 10);
     CU_ASSERT_TRUE(CX_StatusIsFailure(status));
     CX_StatusReset(status);
@@ -103,7 +103,7 @@ void test_CX_StatusMessage() {
     putenv(getMallocTraceReportPath((char*)__FUNCTION__));
     mtrace();
     const int error_code = 10;
-    SL_Status status = CX_StatusCreate();
+    CX_Status status = CX_StatusCreate();
     CU_ASSERT_STRING_EQUAL(status->message, "");
     CX_StatusSetError(status, error_code, "Error is %d", error_code);
     CU_ASSERT_STRING_EQUAL(status->message, "Error is 10");

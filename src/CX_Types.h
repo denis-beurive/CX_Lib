@@ -15,13 +15,13 @@ struct CX_StatusType {
     long message_length;
 };
 
-typedef struct CX_StatusType *SL_Status;
+typedef struct CX_StatusType *CX_Status;
 
 struct CX_ArrayType {
     void **elements;
     unsigned int count;
     void(*elementDisposer)(void*);
-    void*(*elementCloner)(void*, SL_Status);
+    void*(*elementCloner)(void*, CX_Status);
 };
 typedef struct CX_ArrayType *CX_Array;
 
