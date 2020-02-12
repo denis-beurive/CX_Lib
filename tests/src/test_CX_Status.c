@@ -16,7 +16,7 @@ int clean_suite(void) {
 }
 
 void test_CX_StatusCreate() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_TRUE(status->status);
@@ -28,7 +28,7 @@ void test_CX_StatusCreate() {
 }
 
 void test_CX_StatusDispose() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CX_StatusDispose(status);
@@ -36,7 +36,7 @@ void test_CX_StatusDispose() {
 }
 
 void test_CX_StatusSetMessageSize() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     const int new_size = 2048;
     CX_Status status = CX_StatusCreate();
@@ -50,7 +50,7 @@ void test_CX_StatusSetMessageSize() {
 }
 
 void test_CX_StatusSetError() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     const int error_code = 10;
     CX_Status status = CX_StatusCreate();
@@ -63,7 +63,7 @@ void test_CX_StatusSetError() {
 }
 
 void test_CX_StatusReset() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     const int error_code = 10;
     CX_Status status = CX_StatusCreate();
@@ -77,7 +77,7 @@ void test_CX_StatusReset() {
 }
 
 void test_CX_StatusIsSuccess() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
@@ -88,7 +88,7 @@ void test_CX_StatusIsSuccess() {
 }
 
 void test_CX_StatusIsFailure() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CX_StatusSetError(status, 10, "Error is %d", 10);
@@ -100,7 +100,7 @@ void test_CX_StatusIsFailure() {
 }
 
 void test_CX_StatusMessage() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     const int error_code = 10;
     CX_Status status = CX_StatusCreate();
@@ -152,5 +152,5 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }

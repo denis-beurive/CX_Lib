@@ -19,43 +19,22 @@ set(LOCAL_SRC_DIRECTORY "${CMAKE_BINARY_DIR}/src")
 set(LOCAL_TESTS_BIN_DIRECTORY "${CMAKE_BINARY_DIR}/tests/bin")
 
 # ----------------------------------------------------------------------------------------
-# Configure paths to header files.
-#
-# CUNIT_HEADERS_PATH: path to the CUnit header files. It depends on the OS.
-#   CentOS -> /usr/local/include
-#   Ubuntu -> /usr/include
-# SYSTEM_HEADERS_PATHS: list of "non-default" paths to external headers.
-#   These paths are added to the list of paths used by the compiler to find libraries.
+# Configure paths to header files and libraries.
 # ----------------------------------------------------------------------------------------
-
-set(TARGET_OS "ubuntu")
-
-if (${TARGET_OS} MATCHES "centos")
-    set(SYSTEM_LOCAL_HEADERS_PATH "/usr/local/include")
-    set(SYSTEM_HEADERS_PATHS "/usr/include")
-else()
-    set(SYSTEM_LOCAL_HEADERS_PATH "/usr/local/include")
-    set(SYSTEM_HEADERS_PATHS "/usr/include")
-endif()
 
 # ====                               ====
 # ==== Very important note for CLion ====
 # ====                               ====
 #
-# This line below is necessary for CLion to work properly. CLion uses it to find and download header files on the guest
-# host for code analysis.
+# This lines below are necessary for CLion to work properly. CLion uses it to find and download header files on the
+# guest host for code analysis.
 
-set(INCLUDE_DIRECTORIES ${SYSTEM_LOCAL_HEADERS_PATH} ${SYSTEM_HEADERS_PATHS})
+set(SYSTEM_LOCAL_HEADERS_PATHS /usr/local/include)
+set(SYSTEM_HEADERS_PATHS /usr/include)
+include_directories(${SYSTEM_LOCAL_HEADERS_PATHS} ${SYSTEM_HEADERS_PATHS})
 
-# ----------------------------------------------------------------------------------------
-# Path to system non-default paths for libraries.
-#
-# EXTERNAL_LIBS_PATHS: list of "non-default" paths to external libraries.
-#   These paths are added to the list of paths used by the linker to find libraries.
-# ----------------------------------------------------------------------------------------
-
-set(EXTERNAL_LIBS_PATHS "/usr/local/lib")
-link_directories(${EXTERNAL_LIBS_PATHS})
+set(EXTERNAL_LIBS_PATHS /usr/local/lib)
+link_directories(${EXTERNAL_LIBS_PATHS} ${LOCAL_LIB_DIRECTORY})
 
 # ----------------------------------------------------------------------------------------
 # Set sources paths.
@@ -175,11 +154,12 @@ target_link_libraries(test_CX_Array libcunit.a CX_Lib test_init)
 # Properties:
 #   LINK_DIRECTORIES: list of paths to "non-default" directories that contains libraries
 #     needed to build the target(s).
-#   INCLUDE_DIRECTORIES: list of paths to "non-default" directories that contains header
-#     files used within the target sources.
 #   RUNTIME_OUTPUT_DIRECTORY: path to the directory used to store the target output.
 #   EXCLUDE_FROM_ALL: specify whether the target should be part of the default target
 #     (all) or not.
+#
+# WARNING: do not set LINK_DIRECTORIES here, otherwise it will overwrite the previous
+#          setting.
 # ----------------------------------------------------------------------------------------
 
 set_target_properties(
@@ -192,7 +172,6 @@ set_target_properties(
         test_CX_Logger
         test_CX_Array
         PROPERTIES
-        LINK_DIRECTORIES "${LOCAL_LIB_DIRECTORY}"
         RUNTIME_OUTPUT_DIRECTORY ${LOCAL_TESTS_BIN_DIRECTORY}
         EXCLUDE_FROM_ALL on
         DEPENDS test_init)

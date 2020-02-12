@@ -7,7 +7,7 @@
 #include "../../src/CX_Status.h"
 #include "../../src/CX_ArrayString.h"
 
-#define DEBUG false
+#define DEBUG true
 
 // Define mandatory callbacks.
 int init_suite(void) {
@@ -21,10 +21,9 @@ int clean_suite(void) {
 
 void test_CX_StringCreate() {
 
-    if (DEBUG) printf("test_CX_StringCreate\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     CX_String string = CX_StringCreate(NULL);
     CU_ASSERT_PTR_NOT_NULL(string);
     CU_ASSERT_PTR_NULL(SL_StringGetString(string));
@@ -48,9 +47,7 @@ void test_CX_StringCreate() {
 
 void test_CX_StringDup() {
 
-    if (DEBUG) printf("test_CX_StringDup\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_String string;
@@ -93,10 +90,9 @@ void test_CX_StringDup() {
 }
 
 void test_CX_StringLength() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
-    mtrace();
 
-    if (DEBUG) printf("test_CX_StringLength\n"); fflush(stdout);
+    INIT_TEST;
+    mtrace();
 
     CX_String string;
 
@@ -127,10 +123,9 @@ void test_CX_StringLength() {
 
 void test_CX_StringAppend() {
 
-    if (DEBUG) printf("test_CX_StringAppend\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *strings[] = {
             "abc",
             "def",
@@ -180,10 +175,9 @@ void test_CX_StringAppend() {
 
 void test_CX_StringAppendChar() {
 
-    if (DEBUG) printf("test_CX_StringAppendChar\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *strings[] = {
             "abc",
             "def",
@@ -225,10 +219,9 @@ void test_CX_StringAppendChar() {
 
 void test_CX_StringPrepend() {
 
-    if (DEBUG) printf("test_CX_StringPrepend\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *strings[] = {
             "abc",
             "def",
@@ -278,10 +271,9 @@ void test_CX_StringPrepend() {
 
 void test_CX_StringPrependChar() {
 
-    if (DEBUG) printf("test_CX_StringPrependChar\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *strings[] = {
             "abc",
             "def",
@@ -323,10 +315,9 @@ void test_CX_StringPrependChar() {
 
 void test_CX_StringSplitChar() {
 
-    if (DEBUG) printf("test_CX_StringSplitChar\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     // Test 1
     char *text = "ABC\r\nDEF\r\nGHI";
     CX_String string = CX_StringCreate(text);
@@ -384,9 +375,7 @@ void test_CX_StringSplitChar() {
 
 void test_CX_StringSplit() {
 
-    if (DEBUG) printf("test_CX_StringSplit\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_String delimiter = CX_StringCreate("\r\n");
@@ -445,9 +434,7 @@ void test_CX_StringSplit() {
 
 void test_CX_StringSplitRegex() {
 
-    if (DEBUG) printf("test_CX_StringSplitRegex\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -510,9 +497,7 @@ void test_CX_StringSplitRegex() {
 
 void test_CX_StringReplaceRegexChar() {
 
-    if (DEBUG) printf("test_CX_StringReplaceRegexChar\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -572,9 +557,7 @@ void test_CX_StringReplaceRegexChar() {
 
 void test_CX_StringReplaceRegex() {
 
-    if (DEBUG) printf("test_CX_StringReplaceRegex\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -640,10 +623,9 @@ void test_CX_StringReplaceRegex() {
 }
 void test_CX_StringLinearize() {
 
-    if (DEBUG) printf("test_CX_StringLinearize\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     CX_Status status = CX_StatusCreate();
     bool linearized;
 
@@ -699,7 +681,130 @@ void test_CX_StringLinearize() {
     muntrace();
 }
 
+void test_CX_StringAppendFmt() {
 
+    INIT_TEST;
+    mtrace();
+
+    char *lines[] = {
+            "line 1",
+            "line 2",
+            "line 3",
+            "------",
+            NULL,
+    };
+
+    CX_String inputText;
+    char *expected;
+    int position;
+
+    // Test 1
+    inputText = CX_StringCreate("ABC");
+    position = 0;
+    while (true) {
+        char *line = lines[position];
+        if (NULL == line) break;
+        size_t cr = CX_StringAppendFmt(inputText, "%s\n", line);
+        CU_ASSERT_NOT_EQUAL_FATAL(cr, -1);
+        position++;
+    }
+    expected = "ABCline 1\nline 2\nline 3\n------\n";
+    CU_ASSERT_STRING_EQUAL(SL_StringGetString(inputText), expected);
+    CX_StringDispose(inputText);
+
+    // Test 2
+    inputText = CX_StringCreate("");
+    position = 0;
+    while (true) {
+        char *line = lines[position];
+        if (NULL == line) break;
+        size_t cr = CX_StringAppendFmt(inputText, "%s\n", line);
+        CU_ASSERT_NOT_EQUAL_FATAL(cr, -1);
+        position++;
+    }
+    expected = "line 1\nline 2\nline 3\n------\n";
+    CU_ASSERT_STRING_EQUAL(SL_StringGetString(inputText), expected);
+    CX_StringDispose(inputText);
+
+    // Test 3
+    inputText = CX_StringCreate(NULL);
+    position = 0;
+    while (true) {
+        char *line = lines[position];
+        if (NULL == line) break;
+        size_t cr = CX_StringAppendFmt(inputText, "%s\n", line);
+        CU_ASSERT_NOT_EQUAL_FATAL(cr, -1);
+        position++;
+    }
+    expected = "line 1\nline 2\nline 3\n------\n";
+    CU_ASSERT_STRING_EQUAL(SL_StringGetString(inputText), expected);
+    CX_StringDispose(inputText);
+
+    muntrace();
+}
+
+
+void test_CX_StringPrependFmt() {
+
+    INIT_TEST;
+    mtrace();
+
+    char *lines[] = {
+            "line 1",
+            "line 2",
+            "line 3",
+            "------",
+            NULL,
+    };
+
+    CX_String inputText;
+    char *expected;
+    int position;
+
+    // Test 1
+    inputText = CX_StringCreate("ABC");
+    position = 0;
+    while (true) {
+        char *line = lines[position];
+        if (NULL == line) break;
+        size_t cr = CX_StringPrependFmt(inputText, "%s\n", line);
+        CU_ASSERT_NOT_EQUAL_FATAL(cr, -1);
+        position++;
+    }
+    expected = "------\nline 3\nline 2\nline 1\nABC";
+    CU_ASSERT_STRING_EQUAL(SL_StringGetString(inputText), expected);
+    CX_StringDispose(inputText);
+
+    // Test 2
+    inputText = CX_StringCreate("");
+    position = 0;
+    while (true) {
+        char *line = lines[position];
+        if (NULL == line) break;
+        size_t cr = CX_StringPrependFmt(inputText, "%s\n", line);
+        CU_ASSERT_NOT_EQUAL_FATAL(cr, -1);
+        position++;
+    }
+    expected = "------\nline 3\nline 2\nline 1\n";
+    CU_ASSERT_STRING_EQUAL(SL_StringGetString(inputText), expected);
+    CX_StringDispose(inputText);
+
+    // Test 3
+    inputText = CX_StringCreate(NULL);
+    position = 0;
+    while (true) {
+        char *line = lines[position];
+        if (NULL == line) break;
+        size_t cr = CX_StringPrependFmt(inputText, "%s\n", line);
+        CU_ASSERT_NOT_EQUAL_FATAL(cr, -1);
+        position++;
+    }
+    expected = "------\nline 3\nline 2\nline 1\n";
+    CU_ASSERT_STRING_EQUAL(SL_StringGetString(inputText), expected);
+    CX_StringDispose(inputText);
+
+    muntrace();
+}
 
 
 int main (int argc, char *argv[])
@@ -719,7 +824,9 @@ int main (int argc, char *argv[])
         &test_CX_StringReplaceRegex,
         &test_CX_StringPrependChar,
         &test_CX_StringPrepend,
-        &test_CX_StringLinearize
+        &test_CX_StringLinearize,
+        &test_CX_StringAppendFmt,
+        &test_CX_StringPrependFmt
     };
 
     CU_pSuite pSuite1 = NULL;
@@ -749,5 +856,5 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }

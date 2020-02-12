@@ -57,4 +57,6 @@ void CX_BashColorPrintf(
         const char *inFmt,
         ...);
 
+void CX_BashColorReset();
+
 #endif //CX_LIB_CX_BASHCOLOR_H

@@ -26,7 +26,7 @@ int clean_suite(void) {
 }
 
 void test_CX_TemplateProcess_ok1() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char *templateSpec = "{A} et {A} {B} and {C} {D} and {E} the end";
     char *expectedResult = "vA et vA vB and vC vD and vE the end";
@@ -38,7 +38,7 @@ void test_CX_TemplateProcess_ok1() {
 }
 
 void test_CX_TemplateProcess_ok2() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char *templateSpec = "{A} et {A}\n{B} and {C}\n{D} and {E}";
     char *expectedResult = "vA et vA\nvB and vC\nvD and vE";
@@ -50,7 +50,7 @@ void test_CX_TemplateProcess_ok2() {
 }
 
 void test_CX_TemplateProcess_ok3() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char *templateSpec = "";
     char *expectedResult = "";
@@ -62,7 +62,7 @@ void test_CX_TemplateProcess_ok3() {
 }
 
 void test_CX_TemplateProcess_ok4() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char *templateSpec = "{A}{B}{C}";
     char *expectedResult = "vAvBvC";
@@ -74,7 +74,7 @@ void test_CX_TemplateProcess_ok4() {
 }
 
 void test_CX_TemplateProcess_ko1() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char *templateSpec = "{AB}";
     CX_Template template = CX_TemplateCreate(templateSpec);
@@ -85,7 +85,7 @@ void test_CX_TemplateProcess_ko1() {
 }
 
 void test_CX_TemplateProcess_ko2() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char *templateSpec = "{A} {AB}";
     CX_Template template = CX_TemplateCreate(templateSpec);
@@ -135,5 +135,5 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }

@@ -19,7 +19,6 @@ int clean_suite(void) {
 }
 
 void elementDisposer(void *inElement) {
-    if (DEBUG) printf("Free an element\n");
     free(inElement);
 }
 
@@ -51,8 +50,9 @@ void bigBuffer() {
 
 void test_CX_ArrayCreate() {
 
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     for(int i=0; i<5; i++) {
         bigBuffer();
         CX_Array array = CX_ArrayCreate(NULL, &elementCloner);
@@ -66,7 +66,8 @@ void test_CX_ArrayCreate() {
 }
 
 void test_CX_ArrayAdd() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -106,7 +107,8 @@ void test_CX_ArrayAdd() {
 }
 
 void test_CX_ArrayGetElementAt() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -132,7 +134,8 @@ void test_CX_ArrayGetElementAt() {
 }
 
 void test_CX_ArrayRemove() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -310,7 +313,8 @@ void test_CX_ArrayRemove() {
 }
 
 void test_CX_ArraySearch() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
     for(int i=0; i<5; i++) {
         bigBuffer();
@@ -356,7 +360,7 @@ void test_CX_ArraySearch() {
 
 void test_CX_ArrayInsertAt() {
 
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -428,7 +432,8 @@ void test_CX_ArrayInsertAt() {
 }
 
 void test_CX_ArrayDup() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -466,7 +471,8 @@ void test_CX_ArrayDup() {
 }
 
 void test_CX_ArrayReplaceAt() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -545,6 +551,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }
 

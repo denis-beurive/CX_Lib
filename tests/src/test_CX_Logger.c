@@ -27,7 +27,7 @@ void test_CX_LoggerCreate() {
 
 void test_CX_LoggerLog() {
     bool rc;
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -63,7 +63,7 @@ void test_CX_LoggerLog() {
 }
 
 void test_CX_LoggerLogFatal() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -79,7 +79,7 @@ void test_CX_LoggerLogFatal() {
 }
 
 void test_CX_LoggerLogError() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -95,7 +95,7 @@ void test_CX_LoggerLogError() {
 }
 
 void test_CX_LoggerLogWarning() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -111,7 +111,7 @@ void test_CX_LoggerLogWarning() {
 }
 
 void test_CX_LoggerLogInfo() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -127,8 +127,9 @@ void test_CX_LoggerLogInfo() {
 }
 
 void test_CX_LoggerLogDebug() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-debug.log", "123");
@@ -184,5 +185,5 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }

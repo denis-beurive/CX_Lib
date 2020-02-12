@@ -20,7 +20,8 @@ int clean_suite(void) {
 }
 
 void test_CX_StringArrayCreate() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
 
     if (DEBUG) printf("test_CX_StringArrayCreate\n"); fflush(stdout);
@@ -43,9 +44,7 @@ void test_CX_StringArrayCreate() {
 
 void test_CX_ArrayStringGetStrings() {
 
-    if (DEBUG) printf("test_CX_ArrayStringGetStrings\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     char *input[] = {
@@ -71,9 +70,7 @@ void test_CX_ArrayStringGetStrings() {
 
 void test_CX_StringArrayAdd() {
 
-    if (DEBUG) printf("test_CX_StringArrayAdd\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_String s;
@@ -122,10 +119,9 @@ void test_CX_StringArrayAdd() {
 
 void test_CX_StringArrayDup() {
 
-    if (DEBUG) printf("test_CX_StringArrayDup\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *input[] = {
             "String 0",
             "String 1",
@@ -156,10 +152,9 @@ void test_CX_StringArrayDup() {
 
 void test_CX_StringArrayGetAt() {
 
-    if (DEBUG) printf("test_CX_StringArrayGetAt\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *input[] = {
             "String 0",
             "String 1",
@@ -180,9 +175,7 @@ void test_CX_StringArrayGetAt() {
 
 void test_CX_StringArrayJoin() {
 
-    if (DEBUG) printf("test_CX_StringArrayJoin\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     CX_String joined;
@@ -256,10 +249,10 @@ void test_CX_StringArrayJoin() {
 }
 
 void test_CX_ArrayStringPrependChar() {
-    if (DEBUG) printf("test_CX_ArrayStringPrependChar\n"); fflush(stdout);
 
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *input0[] = {
             "String 0",
             "String 1",
@@ -291,10 +284,9 @@ void test_CX_ArrayStringPrependChar() {
 
 void test_CX_ArrayStringAppendChar() {
 
-    if (DEBUG) printf("test_CX_ArrayStringAppendChar\n"); fflush(stdout);
-
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
+
     char *input0[] = {
             "String 0",
             "String 1",
@@ -365,5 +357,5 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }

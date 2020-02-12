@@ -22,7 +22,7 @@ int clean_suite(void) {
 }
 
 void test_CX_FileTextSlurp() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     char dataFile[SL_TESTS_MAX_PATH_LENGTH];
     snprintf(dataFile, SL_TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp.txt", local_data_path);
@@ -42,7 +42,7 @@ void test_CX_FileTextSlurp() {
 }
 
 void test_CX_FileTextSlurpAsLines() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
 
     char dataFile[SL_TESTS_MAX_PATH_LENGTH];
@@ -105,6 +105,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }
 

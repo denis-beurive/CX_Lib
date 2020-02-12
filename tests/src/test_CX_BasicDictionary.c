@@ -18,7 +18,8 @@ int clean_suite(void) {
 }
 
 void test_CX_BasicDictionaryCreate() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+
+    INIT_TEST;
     mtrace();
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
     CU_ASSERT_PTR_NULL(dictionary->entries);
@@ -28,7 +29,7 @@ void test_CX_BasicDictionaryCreate() {
 }
 
 void test_CX_BasicDictionaryDispose() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
     CX_BasicDictionaryDispose(dictionary);
@@ -36,7 +37,7 @@ void test_CX_BasicDictionaryDispose() {
 }
 
 void test_CX_BasicDictionarySearch() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
     CX_BasicDictionaryEntry entry = __SL_BasicDictionarySearch(dictionary, "key");
@@ -46,7 +47,7 @@ void test_CX_BasicDictionarySearch() {
 }
 
 void test_CX_BasicDictionaryAdd() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     bool status;
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
@@ -72,7 +73,7 @@ void test_CX_BasicDictionaryAdd() {
 }
 
 void test_CX_BasicDictionaryExists() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     bool status;
     struct CX_BasicDictionaryEntryType entries[] = {
@@ -96,7 +97,7 @@ void test_CX_BasicDictionaryExists() {
 }
 
 void test_CX_BasicDictionaryGet() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    INIT_TEST;
     mtrace();
     bool status;
     char *value;
@@ -161,5 +162,5 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    return CU_get_error();
+    END_TEST_SUITE;
 }
