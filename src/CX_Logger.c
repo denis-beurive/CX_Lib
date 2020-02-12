@@ -119,7 +119,7 @@ bool CX_LoggerLog(CX_Logger inLogger, enum CX_LoggerLevel inLevel, char *inMessa
 
     // Add the message body.
     bool linearized;
-    CX_String linearizedMessage = CX_StringLinearizeChar(inMessage, &linearized, outStatus);
+    CX_String linearizedMessage = CX_StringLinearizeChar(inMessage, &linearized);
     if (NULL == linearizedMessage) {
         CX_StringDispose(message);
         CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");

@@ -45,6 +45,20 @@ void test_CX_StringCreate() {
     muntrace();
 }
 
+void test_CX_StringCreateFmt() {
+
+    INIT_TEST;
+    mtrace();
+
+    CX_String string = CX_StringCreateFmt("> a = %d", 10);
+    CU_ASSERT_PTR_NOT_NULL_FATAL(string);
+    CU_ASSERT_STRING_EQUAL_FATAL(SL_StringGetString(string), "> a = 10");
+    CX_StringDispose(string);
+
+    muntrace();
+}
+
+
 void test_CX_StringDup() {
 
     INIT_TEST;
@@ -626,58 +640,48 @@ void test_CX_StringLinearize() {
     INIT_TEST;
     mtrace();
 
-    CX_Status status = CX_StatusCreate();
     bool linearized;
 
-    CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     CX_String inputText = CX_StringCreate("\nABC\nDEF\r\nIJK\r");
     CU_ASSERT_PTR_NOT_NULL_FATAL(inputText);
     char *expected = "0,5,10,12,17:\\nABC\\nDEF\\r\\nIJK\\r";
-    CX_String result = CX_StringLinearize(inputText, &linearized, status);
+    CX_String result = CX_StringLinearize(inputText, &linearized);
     CU_ASSERT_PTR_NOT_NULL_FATAL(result);
     CU_ASSERT_TRUE(linearized);
-    CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
     CU_ASSERT_STRING_EQUAL(SL_StringGetString(result), expected);
     CX_StringDispose(inputText);
     CX_StringDispose(result);
 
-    CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     inputText = CX_StringCreate("\n");
     CU_ASSERT_PTR_NOT_NULL_FATAL(inputText);
     expected = "0:\\n";
-    result = CX_StringLinearize(inputText, &linearized, status);
+    result = CX_StringLinearize(inputText, &linearized);
     CU_ASSERT_PTR_NOT_NULL_FATAL(result);
     CU_ASSERT_TRUE(linearized);
-    CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
     CU_ASSERT_STRING_EQUAL(SL_StringGetString(result), expected);
     CX_StringDispose(inputText);
     CX_StringDispose(result);
 
-    CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     inputText = CX_StringCreate("");
     CU_ASSERT_PTR_NOT_NULL_FATAL(inputText);
     expected = "";
-    result = CX_StringLinearize(inputText, &linearized, status);
+    result = CX_StringLinearize(inputText, &linearized);
     CU_ASSERT_PTR_NOT_NULL_FATAL(result);
     CU_ASSERT_FALSE(linearized);
-    CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
     CU_ASSERT_STRING_EQUAL(SL_StringGetString(result), expected);
     CX_StringDispose(inputText);
     CX_StringDispose(result);
 
-    CU_ASSERT_PTR_NOT_NULL_FATAL(status);
     inputText = CX_StringCreate("ABC");
     CU_ASSERT_PTR_NOT_NULL_FATAL(inputText);
     expected = "ABC";
-    result = CX_StringLinearize(inputText, &linearized, status);
+    result = CX_StringLinearize(inputText, &linearized);
     CU_ASSERT_PTR_NOT_NULL_FATAL(result);
     CU_ASSERT_FALSE(linearized);
-    CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
     CU_ASSERT_STRING_EQUAL(SL_StringGetString(result), expected);
     CX_StringDispose(inputText);
     CX_StringDispose(result);
 
-    CX_StatusDispose(status);
     muntrace();
 }
 
@@ -813,6 +817,7 @@ int main (int argc, char *argv[])
 
     void (*functions[])(void) = {
         &test_CX_StringCreate,
+        &test_CX_StringCreateFmt,
         &test_CX_StringAppendChar,
         &test_CX_StringDup,
         &test_CX_StringLength,

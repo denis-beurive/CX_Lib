@@ -1,3 +1,7 @@
+/**
+ * @file This file implement the String API.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,24 +11,25 @@
 #include "CX_String.h"
 #include "CX_Array.h"
 
-
-/** \brief Maximum number of characters for an unsigned long.
- */
-
-#define MAX_ULONG_SIZE 128
+char *_getStringFmt(const char *inFmt, va_list args);
 
 /**
- * Create a String.
+ * Create a String object.
  * @param inString Pointer to a zero terminated string of characters used to initialize the new String.
  * If you want to create an empty String, then you can set the value of this parameter to NULL.
  * Once initialized, the String does not need the memory location pointed by "inString" (which has been duplicated).
- * @return Upon successful completion the function returns a pointer to a dynamically allocated String.
+ * @return Upon successful completion the function returns a pointer to a dynamically allocated String object.
  * Otherwise, the function returns the value NULL (which means that the process runs out of memory).
  * @warning Please keep in mind that the returned object has been dynamically allocated.
  * Therefore, once you don't need it anymore, you should free it.
  * To do that, you must call the function "CX_StringDispose()".
  * @note Once initialized, the String does not need the memory location pointed by "inString"
  * (which has been duplicated).
+ * @example Create an empty String object:
+ * CX_String s1 = CX_StringCreate(NULL);
+ * CX_String s2 = CX_StringCreate("");
+ * @example Create a non empty String object:
+ * CX_String s = CX_StringCreate("ABC");
  */
 
 CX_String CX_StringCreate(char *inString) {
@@ -44,8 +49,34 @@ CX_String CX_StringCreate(char *inString) {
 }
 
 /**
- * Free a previously created String.
- * @param inString The String to free.
+ * Create a new string object defined by a format descriptor and a list of arguments.
+ * @param inFmt The format descriptor.
+ * @param ... The list of arguments.
+ * @return Upon successful completion the function returns a pointer to a dynamically allocated String object.
+ * Otherwise, the function returns the value NULL (which means that the process runs out of memory).
+ * @warning Please keep in mind that the returned object has been dynamically allocated.
+ * Therefore, once you don't need it anymore, you should free it.
+ * To do that, you must call the function "CX_StringDispose()".
+ * @note Once initialized, the String does not need the memory location pointed by "inString"
+ * (which has been duplicated).
+ */
+
+CX_String CX_StringCreateFmt(const char *inFmt, ...) {
+    va_list arg_ptr;
+    va_start(arg_ptr, inFmt);
+    char *buff = _getStringFmt(inFmt, arg_ptr);
+    va_end(arg_ptr);
+    if (NULL == buff) {
+        return NULL;
+    }
+    CX_String result = CX_StringCreate(buff);
+    free(buff);
+    return result;
+}
+
+/**
+ * Free a previously created String object.
+ * @param inString The String object to free.
  */
 
 CX_String CX_StringDispose(CX_String inString) {
@@ -56,9 +87,9 @@ CX_String CX_StringDispose(CX_String inString) {
 }
 
 /**
- * Duplicate a String.
- * @param inString The String to duplicate.
- * @return Upon successful completion the function returns a pointer to a dynamically allocated String.
+ * Duplicate a String object.
+ * @param inString The String object to duplicate.
+ * @return Upon successful completion the function returns a pointer to a dynamically allocated String object.
  * Otherwise, the function returns the value NULL (which means that the process runs out of memory).
  * @warning Please keep in mind that the returned object has been dynamically allocated.
  * Therefore, once you don't need it anymore, you should free it.
@@ -70,9 +101,9 @@ CX_String CX_StringDup(CX_String inString) {
 }
 
 /**
- * Returns the number of characters in a given String.
- * @param inString The String.
- * @return The function returns the number of characters in the given String.
+ * Returns the number of characters in a given String object.
+ * @param inString The String object.
+ * @return The function returns the number of characters in the given String object.
  */
 
 size_t CX_StringLength(CX_String inString) {
@@ -83,8 +114,8 @@ size_t CX_StringLength(CX_String inString) {
 }
 
 /**
- * Append a zero terminated string of characters to a String.
- * @param inString The String.
+ * Append a zero terminated string of characters to a String object.
+ * @param inString The String object.
  * @param inToAppend the zero terminated string of characters to append.
  * @return Upon successful completion the function returns the value true.
  * Otherwise, it returns the value false (which means that the process ran out of memory).
@@ -103,8 +134,8 @@ bool CX_StringAppendChar(CX_String inString, char *inToAppend) {
 }
 
 /**
- * Prepend a zero terminated string of characters to a String.
- * @param inString The String.
+ * Prepend a zero terminated string of characters to a String object.
+ * @param inString The String object.
  * @param inToPrepend the zero terminated string of characters to prepend.
  * @return Upon successful completion the function returns the value true.
  * Otherwise, it returns the value false (which means that the process ran out of memory).
@@ -129,8 +160,8 @@ bool CX_StringPrependChar(CX_String inString, char *inToPrepend) {
 }
 
 /**
- * Prepend a String to another String.
- * @param inString The String which is prepended.
+ * Prepend a String to another String object.
+ * @param inString The String object which is prepended.
  * @param inToPrepend the String to prepend.
  * @return Upon successful completion the function returns the value true.
  * Otherwise, it returns the value false (which means that the process ran out of memory).
@@ -141,9 +172,9 @@ bool CX_StringPrepend(CX_String inString, CX_String inToPrepend) {
 }
 
 /**
- * Append a String to another String.
- * @param inString The String which is appended.
- * @param inToAppend the String to append.
+ * Append a String to another String object.
+ * @param inString The String object which is appended.
+ * @param inToAppend the String object to append.
  * @return Upon successful completion the function returns the value true.
  * Otherwise, it returns the value false (which means that the process ran out of memory).
  */
@@ -153,12 +184,13 @@ bool CX_StringAppend(CX_String inString, CX_String inToAppend) {
 }
 
 /**
- * Split a String into a list of Strings, using a zero terminated string of character to represent the boundary.
+ * Split a String object into a list of String objects, using a zero terminated string of character to represent the
+ * boundary.
  * @param inString The String to split.
  * @param inDelimiter The boundary string, as a zero terminated string of character.
- * @return Upon successful completion the function returns an ArrayString.
+ * @return Upon successful completion the function returns an ArrayString object.
  * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
- * @warning The returned ArrayString has been dynamically allocated.
+ * @warning The returned ArrayString object has been dynamically allocated.
  * Therefore, once you don't need it anymore, you should free it.
  * To do that you must call the function "CX_ArrayStringDispose()".
  */
@@ -192,12 +224,12 @@ CX_ArrayString CX_StringSplitChar(CX_String inString, char* inDelimiter) {
 }
 
 /**
- * Split a String into a list of Strings, using a String to represent the boundary.
+ * Split a String object into a list of Strings, using a String object to represent the boundary.
  * @param inString The String to Split.
- * @param inDelimiter The boundary, as a String.
- * @return Upon successful completion the function returns an ArrayString.
+ * @param inDelimiter The boundary, as a String object.
+ * @return Upon successful completion the function returns an ArrayString object.
  * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
- * @warning The returned ArrayString has been dynamically allocated.
+ * @warning The returned ArrayString object has been dynamically allocated.
  * Therefore, once you don't need it anymore, you should free it.
  * To do that you must call the function "CX_ArrayStringDispose()".
  */
@@ -207,15 +239,15 @@ CX_ArrayString CX_StringSplit(CX_String inString, CX_String inDelimiter) {
 }
 
 /**
- * Split a String into a list of Strings, using a zero terminated string of characters to represent
+ * Split a String object into a list of String objects, using a zero terminated string of characters to represent
  * the "regex boundary".
- * @param inString The String to split.
+ * @param inString The String object to split.
  * @param inRegex The zero terminated string of characters that represents the "regex boundary".
- * @param outStatus The status container.
- * @return Upon successful completion the function returns an ArrayString.
+ * @param outStatus The Status object.
+ * @return Upon successful completion the function returns an ArrayString object.
  * Otherwise, the function returns the value NULL.
- * If an error occurred, then the status container will give you details about the error.
- * @warning The returned ArrayString has been dynamically allocated.
+ * If an error occurred, then the Status object will give you details about the error.
+ * @warning The returned ArrayString object has been dynamically allocated.
  * Therefore, once you don't need it anymore, you should free it.
  * To do that you must call the function "CX_ArrayStringDispose()".
  */
@@ -260,15 +292,16 @@ CX_ArrayString CX_StringSplitRegex(CX_String inString, char* inRegex, CX_Status 
 }
 
 /**
- * Replace a pattern represented by a regex by zero terminated string of characters within a given String.
- * @param inString The String that contains the pattern to replace.
+ * Replace a pattern represented by a regex by zero terminated string of characters within a given String object by a
+ * given zero terminated string of characters.
+ * @param inString The String object that contains the pattern to replace.
  * @param inSearchRegex A zero terminated string of characters that represents the regex.
  * @param inReplacement A zero terminated string of characters that represents the replacement.
- * @param outStatus The status container.
- * @return Upon successful completion the function returns String.
+ * @param outStatus The Status object.
+ * @return Upon successful completion the function returns a newly allocated String object.
  * Otherwise, the function returns the value NULL.
  * If an error occurred, then the status container will give you details about the error.
- * @warning The returned String has been dynamically allocated.
+ * @warning The returned String object has been dynamically allocated.
  * Therefore, once you don't need it anymore, you should free it.
  * To do that you must call the function "CX_StringDispose()".
  */
@@ -288,13 +321,43 @@ CX_String CX_StringReplaceRegexChar(CX_String inString, char* inSearchRegex, cha
     return result;
 }
 
+/**
+ * Replace a pattern represented by a regex by zero terminated string of characters within a given String object by a
+ * given String object.
+ * @param inString The String object that contains the pattern to replace.
+ * @param inSearchRegex A zero terminated string of characters that represents the regex.
+ * @param inReplacement A String object that represents the replacement.
+ * @param outStatus The Status object.
+ * @return Upon successful completion the function returns a newly allocated String object.
+ * Otherwise, the function returns the value NULL.
+ * If an error occurred, then the status container will give you details about the error.
+ * @warning The returned String object has been dynamically allocated.
+ * Therefore, once you don't need it anymore, you should free it.
+ * To do that you must call the function "CX_StringDispose()".
+ */
+
 CX_String CX_StringReplaceRegex(CX_String inString, char* inSearchRegex, CX_String inReplacement, CX_Status outStatus) {
     return CX_StringReplaceRegexChar(inString, inSearchRegex, SL_StringGetString(inReplacement), outStatus);
 }
 
+/**
+ * Free an element of an Array object
+ * @param inElement The element to free.
+ * @note This function is used by the function "CX_StringLinearizeChar()".
+ */
+
 static void _positionDisposer(void *inElement) {
     free(inElement);
 }
+
+/**
+ * Clone an element of an Array object.
+ * @param inElement The element to clone.
+ * @param outStatus The Status object.
+ * @return Upon successful completion, the function returns a newly allocated element.
+ * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
+ * @note This function is used by the function "CX_StringLinearizeChar()".
+ */
 
 static void *_positionCloner(void *inElement, CX_Status outStatus) {
     int *element = (int*)malloc(sizeof(int));
@@ -306,8 +369,18 @@ static void *_positionCloner(void *inElement, CX_Status outStatus) {
     return (void*)element;
 }
 
-CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status outStatus) {
-    CX_StatusReset(outStatus);
+/**
+ * Linearize a zero terminated string of characters and returns a newly allocated String object that represents the
+ * linearized string.
+ * @param inString The zero terminated string of characters to Linearize.
+ * @param outLinearized Pointer to a boolean flag that tells whether the given zero terminated string of characters has
+ * been linearized or not.
+ * @return Upon successful completion the function returns a newly allocated String object.
+ * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
+ */
+
+CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized) {
+    unsigned int MAX_ULONG_SIZE = 128;
     *outLinearized = false;
 
     // Do we need to linearize the string?
@@ -322,7 +395,6 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status 
     if (! *outLinearized) {
         CX_String rString = CX_StringCreate(inString);
         if (NULL == rString) {
-            CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
             return NULL;
         }
         return rString;
@@ -331,14 +403,12 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status 
     // The string needs to be linearized.
     CX_Array array = CX_ArrayCreate(&_positionDisposer, &_positionCloner);
     if (NULL == array) {
-        CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
         return NULL;
     }
 
     char *preResult = (char*)calloc(strlen(inString) + count + 1, sizeof(char));
     if (NULL == preResult) {
         CX_ArrayDispose(array);
-        CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
         return NULL;
     }
 
@@ -364,14 +434,12 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status 
         if (found) {
             unsigned long *position = (unsigned long*)malloc(sizeof(unsigned long));
             if (NULL == position) {
-                CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
                 CX_ArrayDispose(array);
                 free(preResult);
                 return NULL;
             }
             *position = currentPosition;
             if (NULL == CX_ArrayAdd(array, (void *) position)) {
-                CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
                 CX_ArrayDispose(array);
                 free(preResult);
                 return NULL;
@@ -386,7 +454,6 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status 
     // Create the prefix = "s1,s2,s2:"
     char *prefix = (char*)calloc(MAX_ULONG_SIZE * CX_ArrayGetCount(array) + CX_ArrayGetCount(array) + 1, sizeof(char));
     if (NULL == prefix) {
-        CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
         CX_ArrayDispose(array);
         free(preResult);
         return NULL;
@@ -401,7 +468,6 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status 
     // Prepend the prefix to the beginning of the result.
     char *resultText = (char*)calloc(sizeof(char), strlen(prefix) + strlen(preResult) + 1);
     if (NULL == resultText) {
-        CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
         free(preResult);
         free(prefix);
         return NULL;
@@ -412,21 +478,36 @@ CX_String CX_StringLinearizeChar(char *inString, bool *outLinearized, CX_Status 
 
     CX_String resultString = CX_StringCreate(resultText);
     if (NULL == resultString) {
-        CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
         free(resultText);
         return NULL;
     }
     free(resultText);
     return resultString;
-
 }
 
-CX_String CX_StringLinearize(CX_String inString, bool *outLinearized, CX_Status outStatus) {
-    return CX_StringLinearizeChar(SL_StringGetString(inString), outLinearized, outStatus);
+/**
+ * Linearize a String object and returns a newly allocated String object that represents the
+ * linearized string.
+ * @param inString The String object to linearize.
+ * @param outLinearized Pointer to a boolean flag that tells whether the given zero terminated string of characters has
+ * been linearized or not.
+ * @return Upon successful completion the function returns a newly allocated String object.
+ * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
+ */
+
+CX_String CX_StringLinearize(CX_String inString, bool *outLinearized) {
+    return CX_StringLinearizeChar(SL_StringGetString(inString), outLinearized);
 }
 
+/**
+ * Return a zero terminated string of characters defined by a format descriptor and a list of arguments.
+ * @param inFmt The format descriptor.
+ * @param args The list of arguments.
+ * @return Upon successful completion the function returns a newly allocated zero terminated string of characters.
+ * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
+ */
 
-char *_catFmt(char *inFmt, va_list args) {
+char *_getStringFmt(const char *inFmt, va_list args) {
 
     unsigned int buffer_length = 1024;
     char *buff = (char*)malloc(buffer_length * sizeof(char));
@@ -459,10 +540,20 @@ char *_catFmt(char *inFmt, va_list args) {
     return buff;
 }
 
+/**
+ * Append a zero terminated string of characters to a String object. The zero terminated string of characters is defined
+ * by a format descriptor and a list of arguments.
+ * @param inString The String object to which characters will be appended.
+ * @param inFmt The format descriptor.
+ * @param ... The list of arguments.
+ * @return Uon successful completion, the function returns the number of appended characters.
+ * Otherwise, the function returns the value -1 (which means that the process ran out of memory).
+ */
+
 size_t CX_StringAppendFmt(CX_String inString, const char *inFmt, ...) {
     va_list arg_ptr;
     va_start(arg_ptr, inFmt);
-    char *buff = _catFmt(inFmt, arg_ptr);
+    char *buff = _getStringFmt(inFmt, arg_ptr);
     va_end(arg_ptr);
     if (NULL == buff) return -1;
     CX_StringAppendChar(inString, buff);
@@ -471,10 +562,20 @@ size_t CX_StringAppendFmt(CX_String inString, const char *inFmt, ...) {
     return added;
 }
 
+/**
+ * Prepend a zero terminated string of characters to a String object. The zero terminated string of characters
+ * is defined by a format descriptor and a list of arguments.
+ * @param inString The String object to which characters will be prepended.
+ * @param inFmt The format descriptor.
+ * @param ... The list of arguments.
+ * @return Uon successful completion, the function returns the number of prepended characters.
+ * Otherwise, the function returns the value -1 (which means that the process ran out of memory).
+ */
+
 size_t CX_StringPrependFmt(CX_String inString, const char *inFmt, ...) {
     va_list arg_ptr;
     va_start(arg_ptr, inFmt);
-    char *buff = _catFmt(inFmt, arg_ptr);
+    char *buff = _getStringFmt(inFmt, arg_ptr);
     va_end(arg_ptr);
     if (NULL == buff) return -1;
     CX_StringPrependChar(inString, buff);
