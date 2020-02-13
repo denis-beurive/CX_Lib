@@ -75,6 +75,8 @@ add_library(CX_Lib
         src/CX_Array.h
         src/CX_BashColor.c
         src/CX_BashColor.h
+        src/CX_UTest.c
+        src/CX_UTest.h
         )
 set_target_properties(
         CX_Lib

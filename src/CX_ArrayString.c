@@ -21,11 +21,11 @@ static void* _stringCloner(void *inString, CX_Status outStatus) {
 }
 
 /**
- * Create an array of strings.
- * @param inString Optional string. If this value is not NULL, then the array will be initialized with this string
- * as the first element.
- * @return Upon successful completion the function returns a newly allocated array of strings.
- * Otherwise it returns the value NULL (which means that the system could not allocate memory).
+ * Create an ArrayString object.
+ * @param inString Optional string. If this value is not NULL, then the ArrayString object will be initialized with this
+ * zero terminated string of characters as the first element.
+ * @return Upon successful completion the function returns a newly allocated ArrayString object.
+ * Otherwise it returns the value NULL (which means that the process ran out of memory).
  */
 
 CX_ArrayString CX_ArrayStringCreate(CX_String inString) {
@@ -38,35 +38,52 @@ CX_ArrayString CX_ArrayStringCreate(CX_String inString) {
     return array;
 }
 
+/**
+ * Free all resources allocated with a given ArrayString object.
+ * @param inArray The ArrayString object fo free.
+ */
+
 void CX_ArrayStringDispose(CX_ArrayString inArray) {
     CX_ArrayDispose((CX_Array) inArray);
 }
 
+/**
+ * Returns the number of String object within a given ArrayString object.
+ * @param inArray The ArrayString object.
+ * @return The function returns the number of String object within a given ArrayString object.
+ */
+
 unsigned long CX_ArrayStringGetCount(CX_ArrayString inArray) {
     return CX_ArrayGetCount((CX_Array) inArray);
 }
+
+/**
+ * Returns a pointer to the array of Strings within the ArrayString object.
+ * @param inArray The ArrayString object.
+ * @return The function returns a pointer to the array of Strings within the ArrayString object.
+ */
 
 CX_String *CX_ArrayStringGetStrings(CX_ArrayString inArray) {
     return (CX_String*) CX_ArrayGetElements(inArray);
 }
 
 /**
- * Make a copy of a given list of strings.
- * @param inArray The list of strings to copy.
- * @param outStatus The status container.
- * @return Upon successful completion, the function returns a copy of the given list of strings.
- * Otherwise, the function returns the value NULL (which means that the system could not allocate memory).
+ * Make a copy of a given list of ArrayString object.
+ * @param inArray The ArrayString object to copy.
+ * @param outStatus The Status object.
+ * @return Upon successful completion, the function returns a copy of the given ArrayString object.
+ * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
  */
 CX_ArrayString CX_ArrayStringDup(CX_ArrayString inArray, CX_Status outStatus) {
     return (CX_ArrayString) CX_ArrayDup((CX_Array) inArray, outStatus);
 }
 
 /**
- * Add a string at the end of the array.
- * @param inArray The array.
- * @param inString The string to add.
+ * Add a string at the end of a given ArrayString object.
+ * @param inArray The ArrayString object.
+ * @param inString The zero terminated string to add.
  * @return Upon successful completion, the function returns true.
- * Otherwise, the function returns false (which means that the process runs out of memory).
+ * Otherwise, the function returns false (which means that the process ran out of memory).
  */
 bool CX_ArrayStringAddCloneChar(CX_ArrayString inArray, char* inString) {
     CX_String newString = CX_StringCreate(inString);
@@ -86,9 +103,27 @@ bool CX_ArrayStringReplaceAtCloneChar(CX_ArrayString inArray, unsigned int inInd
     return CX_ArrayReplaceAt((CX_Array) inArray, (void *) newString, inIndex, outStatus);
 }
 
+/**
+ * Return the String object at given position within a given ArrayString object.
+ * @param inArray The ArrayString object.
+ * @param inIndex The position within the ArrayString object.
+ * @return Upon successful completion the function returns a pointer to the String object.
+ * Otherwise, the function returns the value NULL. This means that the given index is not valid (greater or equal to the
+ * total number of elements in the ArrayString object).
+ */
+
 CX_String CX_ArrayStringGetStringAt(CX_ArrayString inArray, unsigned long inIndex) {
     return (CX_String) CX_ArrayGetElementAt(inArray, inIndex);
 }
+
+/**
+ * Join the elements of a given ArrayString object into a single String object with fields separated by a given boundary.
+ * @param inArray The ArrayString object.
+ * @param inGlue The boundary used to join the ArrayString object elements.
+ * This argument is a zero terminated string of characters.
+ * @return Upon successful completion the function returns a String object.
+ * Otherwise, it returns the value NULL (which means that the process ran out of memory).
+ */
 
 CX_String CX_ArrayStringJoinChar(CX_ArrayString inArray, char *inGlue) {
     if (0 == CX_ArrayStringGetCount(inArray)) {
@@ -118,6 +153,13 @@ CX_String CX_ArrayStringJoinChar(CX_ArrayString inArray, char *inGlue) {
     }
     return result;
 }
+
+/**
+ *
+ * @param inArray
+ * @param inPrefix
+ * @return
+ */
 
 bool CX_ArrayStringPrependChar(CX_ArrayString inArray, char *inPrefix) {
     CX_Status status = CX_StatusCreate();
