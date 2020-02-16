@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
+#include "../../src/CX_UTest.h"
+//#include "init.h"
 #include "../../src/CX_Array.h"
 
 #define DEBUG 0
@@ -10,7 +11,8 @@
 
 // Define mandatory callbacks.
 int init_suite(void) {
-    SL_testsInit();
+//    SL_testsInit();
+    CX_UTestINIT_ALL("/home/denis/Desktop/CX_Lib", "src/CX_Array.c", "/home/denis/Desktop/CX_Lib/tests/src/report");
     return 0;
 }
 
@@ -49,8 +51,8 @@ void bigBuffer() {
 }
 
 void test_CX_ArrayCreate() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -66,8 +68,8 @@ void test_CX_ArrayCreate() {
 }
 
 void test_CX_ArrayAdd() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -106,9 +108,17 @@ void test_CX_ArrayAdd() {
     muntrace();
 }
 
-void test_CX_ArrayGetElementAt() {
+void test_CX_ArrayAdd_Error() {
+    CX_UTestINIT_TEST;
+    CX_UTestSetTestID(1);
 
-    INIT_TEST;
+}
+
+
+
+void test_CX_ArrayGetElementAt() {
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -134,8 +144,8 @@ void test_CX_ArrayGetElementAt() {
 }
 
 void test_CX_ArrayRemove() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -313,8 +323,8 @@ void test_CX_ArrayRemove() {
 }
 
 void test_CX_ArraySearch() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
     for(int i=0; i<5; i++) {
         bigBuffer();
@@ -359,8 +369,8 @@ void test_CX_ArraySearch() {
 }
 
 void test_CX_ArrayInsertAt() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -432,8 +442,8 @@ void test_CX_ArrayInsertAt() {
 }
 
 void test_CX_ArrayDup() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -471,8 +481,8 @@ void test_CX_ArrayDup() {
 }
 
 void test_CX_ArrayReplaceAt() {
-
-    INIT_TEST;
+    CX_UTestINIT_TEST;
+//    INIT_TEST;
     mtrace();
 
     for(int i=0; i<5; i++) {
@@ -517,6 +527,7 @@ int main (int argc, char *argv[])
         &test_CX_ArrayInsertAt,
         &test_CX_ArrayCreate,
         &test_CX_ArrayAdd,
+        &test_CX_ArrayAdd_Error,
         &test_CX_ArrayGetElementAt,
         &test_CX_ArrayRemove,
         &test_CX_ArraySearch,
@@ -551,6 +562,8 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+//    END_TEST_SUITE;
+
+    CX_UTestEND_TEST_SUITE;
 }
 

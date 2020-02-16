@@ -6,6 +6,7 @@
 #include <errno.h>
 #include <stdio.h>
 #include "CX_Array.h"
+#include "CX_UTest.h"
 
 /**
  * Create a new Array object.
@@ -27,6 +28,7 @@
  * Array object when you need the Array object anymore.
  */
 CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(void*, CX_Status)) {
+
     CX_Array array = (CX_Array)malloc(sizeof(struct CX_ArrayType));
     if (NULL == array) {
         return NULL;
@@ -126,10 +128,11 @@ void *CX_ArrayGetElementAt(CX_Array inArray, unsigned int inIndex) {
  * Otherwise, the function returns the value NULL. This means that the system could not allocate memory.
  */
 void *CX_ArrayAdd(CX_Array inArray, void *inElement) {
+    CX_UTestINIT_FUNCTION_TEST;
     unsigned int currentIndex = inArray->count;
     inArray->count += 1;
     inArray->elements = (void**)realloc(inArray->elements, sizeof(void*) * inArray->count);
-    if (NULL == inArray->elements) {
+    if (NULL == inArray->elements CX_UTestFORCE_TRUE(1)) {
         return NULL;
     }
     *(inArray->elements + currentIndex) = inElement;

@@ -7,7 +7,7 @@ project(SL_Lib
 # ----------------------------------------------------------------------------------------
 
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_VERBOSE_MAKEFILE off)
+set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_LINK_SEARCH_START_STATIC on)
 
 # ----------------------------------------------------------------------------------------
