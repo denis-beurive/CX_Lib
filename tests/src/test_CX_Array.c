@@ -12,7 +12,7 @@
 // Define mandatory callbacks.
 int init_suite(void) {
 //    SL_testsInit();
-    CX_UTestINIT_ALL("/home/denis/Desktop/CX_Lib", "src/CX_Array.c", "/home/denis/Desktop/CX_Lib/tests/src/report");
+    CX_UTEST_INIT_ALL("/home/denis/Desktop/CX_Lib", "src/CX_Array.c", "/home/denis/Desktop/CX_Lib/tests/src/report");
     return 0;
 }
 
@@ -51,7 +51,7 @@ void bigBuffer() {
 }
 
 void test_CX_ArrayCreate() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayCreate");
 //    INIT_TEST;
     mtrace();
 
@@ -68,7 +68,7 @@ void test_CX_ArrayCreate() {
 }
 
 void test_CX_ArrayAdd() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayAdd");
 //    INIT_TEST;
     mtrace();
 
@@ -109,15 +109,15 @@ void test_CX_ArrayAdd() {
 }
 
 void test_CX_ArrayAdd_Error() {
-    CX_UTestINIT_TEST;
-    CX_UTestSetTestID(1);
+    CX_UTEST_INIT_TEST("CX_ArrayAdd");
+    CX_UTEST_SET_CONDITION_ID(1);
 
 }
 
 
 
 void test_CX_ArrayGetElementAt() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayGetElementAt");
 //    INIT_TEST;
     mtrace();
 
@@ -144,7 +144,7 @@ void test_CX_ArrayGetElementAt() {
 }
 
 void test_CX_ArrayRemove() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayRemove");
 //    INIT_TEST;
     mtrace();
 
@@ -323,7 +323,7 @@ void test_CX_ArrayRemove() {
 }
 
 void test_CX_ArraySearch() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArraySearch");
 //    INIT_TEST;
     mtrace();
     for(int i=0; i<5; i++) {
@@ -369,7 +369,7 @@ void test_CX_ArraySearch() {
 }
 
 void test_CX_ArrayInsertAt() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayInsertAt");
 //    INIT_TEST;
     mtrace();
 
@@ -442,7 +442,7 @@ void test_CX_ArrayInsertAt() {
 }
 
 void test_CX_ArrayDup() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayDup");
 //    INIT_TEST;
     mtrace();
 
@@ -481,7 +481,7 @@ void test_CX_ArrayDup() {
 }
 
 void test_CX_ArrayReplaceAt() {
-    CX_UTestINIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayReplaceAt");
 //    INIT_TEST;
     mtrace();
 
@@ -564,6 +564,6 @@ int main (int argc, char *argv[])
     CU_cleanup_registry();
 //    END_TEST_SUITE;
 
-    CX_UTestEND_TEST_SUITE;
+    CX_UTEST_END_TEST_SUITE;
 }
 

@@ -77,7 +77,7 @@ add_library(CX_Lib
         src/CX_BashColor.h
         src/CX_UTest.c
         src/CX_UTest.h
-        )
+        src/CX_Constantes.h)
 set_target_properties(
         CX_Lib
         PROPERTIES
@@ -100,6 +100,7 @@ set_target_properties(
 add_executable(test_CX_Status
         tests/src/test_CX_Status.c)
 add_dependencies(test_CX_Status CX_Lib)
+target_compile_definitions(test_CX_Status PUBLIC CX_UTEST)
 target_link_libraries(test_CX_Status libcunit.a CX_Lib test_init)
 
 #### test_CX_BasicDictionary.c
@@ -107,6 +108,7 @@ target_link_libraries(test_CX_Status libcunit.a CX_Lib test_init)
 add_executable(test_CX_Basic_Dictionary
         tests/src/test_CX_BasicDictionary.c)
 add_dependencies(test_CX_Basic_Dictionary CX_Lib)
+target_compile_definitions(test_CX_Basic_Dictionary PUBLIC CX_UTEST)
 target_link_libraries(test_CX_Basic_Dictionary libcunit.a CX_Lib test_init)
 
 #### test_CX_BasicTemplate.c
@@ -114,6 +116,7 @@ target_link_libraries(test_CX_Basic_Dictionary libcunit.a CX_Lib test_init)
 add_executable(test_CX_Basic_Template
         tests/src/test_CX_Template.c)
 add_dependencies(test_CX_Basic_Template CX_Lib)
+target_compile_definitions(test_CX_Basic_Template PUBLIC CX_UTEST)
 target_link_libraries(test_CX_Basic_Template libcunit.a CX_Lib test_init)
 
 #### test_CX_FileText.c
@@ -121,6 +124,7 @@ target_link_libraries(test_CX_Basic_Template libcunit.a CX_Lib test_init)
 add_executable(test_CX_File_Text
         tests/src/test_CX_FileText.c)
 add_dependencies(test_CX_File_Text CX_Lib)
+target_compile_definitions(test_CX_File_Text PUBLIC CX_UTEST)
 target_link_libraries(test_CX_File_Text libcunit.a CX_Lib test_init)
 
 #### test_CX_StringArray.c
@@ -128,6 +132,7 @@ target_link_libraries(test_CX_File_Text libcunit.a CX_Lib test_init)
 add_executable(test_CX_String_Array
         tests/src/test_CX_ArrayString.c)
 add_dependencies(test_CX_String_Array CX_Lib)
+target_compile_definitions(test_CX_String_Array PUBLIC CX_UTEST)
 target_link_libraries(test_CX_String_Array libcunit.a CX_Lib test_init)
 
 #### test_CX_String.c
@@ -135,6 +140,7 @@ target_link_libraries(test_CX_String_Array libcunit.a CX_Lib test_init)
 add_executable(test_CX_String
         tests/src/test_CX_String.c)
 add_dependencies(test_CX_String CX_Lib)
+target_compile_definitions(test_CX_String PUBLIC CX_UTEST)
 target_link_libraries(test_CX_String libcunit.a CX_Lib test_init)
 
 #### test_CX_Logger.c
@@ -142,6 +148,7 @@ target_link_libraries(test_CX_String libcunit.a CX_Lib test_init)
 add_executable(test_CX_Logger
         tests/src/test_CX_Logger.c)
 add_dependencies(test_CX_Logger CX_Lib)
+target_compile_definitions(test_CX_Logger PUBLIC CX_UTEST)
 target_link_libraries(test_CX_Logger libcunit.a CX_Lib test_init)
 
 #### test_CX_Array.c
@@ -149,6 +156,7 @@ target_link_libraries(test_CX_Logger libcunit.a CX_Lib test_init)
 add_executable(test_CX_Array
         tests/src/test_CX_Array.c)
 add_dependencies(test_CX_Array CX_Lib)
+target_compile_definitions(test_CX_Array PUBLIC CX_UTEST)
 target_link_libraries(test_CX_Array libcunit.a CX_Lib test_init)
 
 # ----------------------------------------------------------------------------------------

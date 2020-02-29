@@ -128,11 +128,10 @@ void *CX_ArrayGetElementAt(CX_Array inArray, unsigned int inIndex) {
  * Otherwise, the function returns the value NULL. This means that the system could not allocate memory.
  */
 void *CX_ArrayAdd(CX_Array inArray, void *inElement) {
-    CX_UTestINIT_FUNCTION_TEST;
     unsigned int currentIndex = inArray->count;
     inArray->count += 1;
     inArray->elements = (void**)realloc(inArray->elements, sizeof(void*) * inArray->count);
-    if (NULL == inArray->elements CX_UTestFORCE_TRUE(1)) {
+    if (NULL == inArray->elements CX_UTEST_FORCE_TRUE(1)) {
         return NULL;
     }
     *(inArray->elements + currentIndex) = inElement;
