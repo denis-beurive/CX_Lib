@@ -1,0 +1,1 @@
+/home/denis/Desktop/CX_Lib/script/../tests/src/report/*

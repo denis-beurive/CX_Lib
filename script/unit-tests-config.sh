@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -z ${__DIR__+x} ]; then
+    echo "Variable __DIR__ is NOT defined!";
+fi
+
 # The path to the directory used to store the reports generated during
 # the executions of the unit tests.
 readonly REPORTS_PATH="${__DIR__}/../tests/src/report"

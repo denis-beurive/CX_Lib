@@ -18,8 +18,8 @@ set(CMAKE_LINK_SEARCH_START_STATIC on)
 set(LOCAL_LIB_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(LOCAL_SRC_DIRECTORY "${CMAKE_BINARY_DIR}/src")
 set(LOCAL_TESTS_BIN_DIRECTORY "${CMAKE_BINARY_DIR}/tests/bin")
-set(LOCAL_TESTS_MCHECK_REPORT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/src/report")
-set(LOCAL_TESTS_DATE_DIRECTORY "${CMAKE_BINARY_DIR}/tests/src/data")
+set(LOCAL_TESTS_MCHECK_REPORT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/report")
+set(LOCAL_TESTS_DATE_DIRECTORY "${CMAKE_BINARY_DIR}/tests/data")
 
 # ----------------------------------------------------------------------------------------
 # Configure paths to header files and libraries.
