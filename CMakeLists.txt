@@ -65,6 +65,8 @@ set(LIB_SRC src/CX_Status.c
         src/CX_BashColor.h
         src/CX_UTest.c
         src/CX_UTest.h
+        src/CX_ObjectManager.c
+        src/CX_ObjectManager.h
         src/CX_Constants.h)
 
 add_library(CX_Lib ${LIB_SRC})
