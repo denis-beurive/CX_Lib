@@ -4,7 +4,7 @@
     
 # Run the unit tests
 
-    cmake . && make clean && make run-test
+    cmake . && make clean && make && make test
 
 Please note that, in order to run the unit tests, you need to install:
 * [CUNIT](http://cunit.sourceforge.net/).
@@ -13,3 +13,5 @@ Please note that, in order to run the unit tests, you need to install:
 Installing `mtrace` on CentOS:
 
     sudo yum install glibc-utils.x86_64
+
+
