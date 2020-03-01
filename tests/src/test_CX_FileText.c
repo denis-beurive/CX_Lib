@@ -5,18 +5,16 @@
 #include "CUnit/Basic.h"
 #include "CX_FileText.h"
 #include "CX_String.h"
-#include "init.h"
 
+#define TESTS_MAX_PATH_LENGTH 2048
 static char local_data_path[TESTS_MAX_PATH_LENGTH];
 
 // Define mandatory callbacks.
 int init_suite(void) {
     CX_UTEST_INIT_ALL("src/CX_FileText.c");
 
-    SL_testsInit();
-    snprintf(local_data_path, TESTS_MAX_PATH_LENGTH, "%s/FileText", data_dir_path);
+    snprintf(local_data_path, TESTS_MAX_PATH_LENGTH, "%s/FileText", getenv("DATA_DIR"));
     local_data_path[TESTS_MAX_PATH_LENGTH - 1] = 0;
-    SL_testsInit();
     return 0;
 }
 
@@ -111,4 +109,3 @@ int main (int argc, char *argv[])
 
     CX_UTEST_END_TEST_SUITE;
 }
-

@@ -3,7 +3,6 @@
 #include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
 #include "CX_Template.h"
 
 // Define mandatory callbacks.
@@ -12,7 +11,6 @@ static CX_BasicDictionary tags;
 
 int init_suite(void) {
     CX_UTEST_INIT_ALL("src/CX_String.c");
-    SL_testsInit();
     tags = CX_BasicDictionaryCreate();
     CX_BasicDictionaryAdd(tags, "A", "vA");
     CX_BasicDictionaryAdd(tags, "B", "vB");

@@ -3,7 +3,6 @@
 #include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-//#include "init.h"
 #include "CX_String.h"
 #include "CX_Status.h"
 #include "CX_ArrayString.h"
