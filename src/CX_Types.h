@@ -214,7 +214,7 @@ typedef struct CX_ObjectManagerType {
     /**
      * @brief The set of objects the manager is responsible for.
      */
-    CX_Object pointer_objects;
+    CX_Object objects;
     /**
      * @brief The number of objects within the set oh objects the manager is responsible for.
      */

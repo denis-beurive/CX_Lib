@@ -51,6 +51,7 @@
  * * CX_OBJECT_MANAGER_ADD(m, o, d)
  * * CX_OBJECT_MANAGER_ADD_RESULT(m, o, d)
  * * CX_OBJECT_MANAGER_ADD_PTR(m, &o, d)
+ * * CX_OBJECT_MANAGER_ADD_PTR_RESULT(m, &o, d)
  */
 
 #include <stdlib.h>
@@ -60,6 +61,22 @@
 
 /**
  * Create an object manager.
+ *
+ * Example:
+ *
+ *    CX_ObjectManager m = CX_ObjectManagerCreate();
+ *    int *v1 = (int*)malloc(sizeof(int));
+ *    CX_OBJECT_MANAGER_ADD(m, v1, free);
+ *
+ *    for (int i=0; i<10; i++) {
+ *         CX_ObjectManager m1 = CX_ObjectManagerCreate();
+ *         int *v1 = (int*)malloc(sizeof(int));
+ *         CX_OBJECT_MANAGER_ADD(m1, v1, free);
+ *         CX_ObjectManagerDispose(m1);
+ *    }
+ *
+ *    CX_ObjectManagerDispose(m);
+ *
  * @return The function returns a new object manager.
  * @warning If you create objects within a loop, then you must use a dedicated manager for all
  * the objects within the loop. You create a manager at the beginning of the loop block.
@@ -68,7 +85,7 @@
 
 CX_ObjectManager CX_ObjectManagerCreate() {
     CX_ObjectManager m = (CX_ObjectManager)malloc(sizeof(struct CX_ObjectManagerType));
-    m->pointer_objects = NULL;
+    m->objects = NULL;
     m->count = 0;
     return m;
 }
@@ -97,7 +114,7 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
     }
 
     for (int i=0; i < inManager->count; i++) {
-        struct CX_ObjectType o = inManager->pointer_objects[i];
+        struct CX_ObjectType o = inManager->objects[i];
         char *type = CX_MemRefPtrPtr == o.ref_type ? "PTR" : "MEM";
         void *ptr = CX_MemRefPtrPtr == o.ref_type ? o.ptr_pointer : o.pointer;
 
@@ -139,8 +156,11 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
                     o.line,
                     o.keep ? "keep" : "dispose");
         }
+        if (NULL != o.file) {
+            free(o.file);
+        }
     }
-    free(inManager->pointer_objects);
+    free(inManager->objects);
     free(inManager);
 
     if (NULL != file) {
@@ -210,12 +230,12 @@ static void __CX_ObjectManagerAddPtr(
                 inKeep ? "keep" : "dispose");
 
         for (int i=0; i < inManager->count; i++) {
-            if (inPointer == inManager->pointer_objects[i].ptr_pointer) {
+            if (inPointer == inManager->objects[i].ptr_pointer) {
                 fprintf(stderr, "%p DUP <PTR> [%s:%d] %s\n",
-                        inManager->pointer_objects[i].ptr_pointer,
-                        inManager->pointer_objects[i].file = NULL != inFile ? inFile : "X",
-                        inManager->pointer_objects[i].line,
-                        inManager->pointer_objects[i].keep ? "keep" : "dispose");
+                        inManager->objects[i].ptr_pointer,
+                        inManager->objects[i].file = NULL != inFile ? inFile : "X",
+                        inManager->objects[i].line,
+                        inManager->objects[i].keep ? "keep" : "dispose");
                 exit(1);
             }
         }
@@ -223,14 +243,14 @@ static void __CX_ObjectManagerAddPtr(
     }
 
     // W: Conversion to ‘long unsigned int’ from ‘int’ may change the sign of the result
-    inManager->pointer_objects = (CX_Object)realloc(inManager->pointer_objects, sizeof(struct CX_ObjectType) * ((unsigned long)inManager->count + 1));
-    inManager->pointer_objects[inManager->count].ref_type = CX_MemRefPtrPtr;
-    inManager->pointer_objects[inManager->count].pointer = NULL;
-    inManager->pointer_objects[inManager->count].ptr_pointer = inPointer;
-    inManager->pointer_objects[inManager->count].disposer = inDisposer;
-    inManager->pointer_objects[inManager->count].keep = inKeep;
-    inManager->pointer_objects[inManager->count].file = NULL != inFile ? strdup(inFile) : NULL;
-    inManager->pointer_objects[inManager->count].line = inLine;
+    inManager->objects = (CX_Object)realloc(inManager->objects, sizeof(struct CX_ObjectType) * ((unsigned long)inManager->count + 1));
+    inManager->objects[inManager->count].ref_type = CX_MemRefPtrPtr;
+    inManager->objects[inManager->count].pointer = NULL;
+    inManager->objects[inManager->count].ptr_pointer = inPointer;
+    inManager->objects[inManager->count].disposer = inDisposer;
+    inManager->objects[inManager->count].keep = inKeep;
+    inManager->objects[inManager->count].file = NULL != inFile ? strdup(inFile) : NULL;
+    inManager->objects[inManager->count].line = inLine;
     inManager->count += 1;
 }
 
@@ -271,12 +291,12 @@ static void __CX_ObjectManagerAdd(
                 inKeep ? "keep" : "dispose");
 
         for (int i=0; i < in_manager->count; i++) {
-            if (inPointer == in_manager->pointer_objects[i].ptr_pointer) {
+            if (inPointer == in_manager->objects[i].ptr_pointer) {
                 fprintf(stderr, "%p DUP <ADD> [%s:%d]%s\n",
-                        in_manager->pointer_objects[i].ptr_pointer,
-                        in_manager->pointer_objects[i].file = NULL != inFile ? inFile : "X",
-                        in_manager->pointer_objects[i].line,
-                        in_manager->pointer_objects[i].keep ? "keep" : "dispose");
+                        in_manager->objects[i].ptr_pointer,
+                        in_manager->objects[i].file = NULL != inFile ? inFile : "X",
+                        in_manager->objects[i].line,
+                        in_manager->objects[i].keep ? "keep" : "dispose");
                 exit(1);
             }
         }
@@ -284,14 +304,14 @@ static void __CX_ObjectManagerAdd(
     }
 
     // W: Conversion to ‘long unsigned int’ from ‘int’ may change the sign of the result
-    in_manager->pointer_objects = (CX_Object)realloc(in_manager->pointer_objects, sizeof(struct CX_ObjectType) * ((unsigned long)in_manager->count + 1));
-    in_manager->pointer_objects[in_manager->count].ref_type = CX_MemRefPtr;
-    in_manager->pointer_objects[in_manager->count].pointer = inPointer;
-    in_manager->pointer_objects[in_manager->count].ptr_pointer = NULL;
-    in_manager->pointer_objects[in_manager->count].disposer = inDisposer;
-    in_manager->pointer_objects[in_manager->count].keep = inKeep;
-    in_manager->pointer_objects[in_manager->count].file = NULL != inFile ? strdup(inFile) : NULL;;
-    in_manager->pointer_objects[in_manager->count].line = inLine;
+    in_manager->objects = (CX_Object)realloc(in_manager->objects, sizeof(struct CX_ObjectType) * ((unsigned long)in_manager->count + 1));
+    in_manager->objects[in_manager->count].ref_type = CX_MemRefPtr;
+    in_manager->objects[in_manager->count].pointer = inPointer;
+    in_manager->objects[in_manager->count].ptr_pointer = NULL;
+    in_manager->objects[in_manager->count].disposer = inDisposer;
+    in_manager->objects[in_manager->count].keep = inKeep;
+    in_manager->objects[in_manager->count].file = NULL != inFile ? strdup(inFile) : NULL;;
+    in_manager->objects[in_manager->count].line = inLine;
     in_manager->count += 1;
 }
 

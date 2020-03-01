@@ -62,7 +62,7 @@ const char *_CX_UTestGetMCheckReportFileAbsolutePath(const char *inFileBasename)
     _CX_UTestSetCurrentFunction(inFunctionToTest); \
     printf("%s", CX_BashColorFB(F_LIGHT_YELLOW, B_DEFAULT)); \
     printf("Exec %s\n", __FUNCTION__); fflush(stdout); \
-    CX_BashColorReset()
+    CX_BashColorReset();
 
 /**
  * @brief End a unit tests suite.

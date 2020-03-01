@@ -1,0 +1,440 @@
+0x561e1b8a28e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x561e1b8a2bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7fffa4117518 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x561e1b8a28e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x561e1b8a2bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7fffa4117518 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x55ed25bd58e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x55ed25bd5bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffd80b2d328 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x55ed25bd58e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x55ed25bd5bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffd80b2d328 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x56075ed78900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x56075ed78be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffed18535c8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x56075ed78900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x56075ed78be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffed18535c8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x55fcc967d8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x55fcc967dbc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffc3996e578 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x55fcc967d8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x55fcc967dbc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffc3996e578 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x55dc207ee8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x55dc207eebc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffc7a8a9138 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x55dc207ee8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x55dc207eebc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffc7a8a9138 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x559e52c068e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x559e52c06bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffc208bbb88 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x559e52c068e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x559e52c06bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffc208bbb88 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x5567229ce8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x5567229cebc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffe2cd08268 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x5567229ce8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x5567229cebc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffe2cd08268 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x562e7663e280 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x562e7663e560 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffd5e7a31a8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x562e7663e280 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x562e7663e560 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffd5e7a31a8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x56517729a280 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x56517729a560 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffdf1dcad88 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x56517729a280 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x56517729a560 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffdf1dcad88 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x560b36d2d900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x560b36d2dbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffc09433088 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x560b36d2d900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x560b36d2dbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffc09433088 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x557ddb8b98e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x557ddb8b9bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffe7c9c6bd8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x557ddb8b98e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x557ddb8b9bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffe7c9c6bd8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x559f5007a900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x559f5007abe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffd27a45638 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x559f5007a900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x559f5007abe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffd27a45638 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x5642b97db280 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x5642b97db560 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffce2830998 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x5642b97db280 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x5642b97db560 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffce2830998 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x56541cbb8280 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] dispose
+0x56541cbb8560 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] keep
+0x7ffc403dab18 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x56541cbb8280 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:25] real (dispose)
+0x56541cbb8560 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:27] pass (keep)
+0x7ffc403dab18 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x56151ccfc900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x56151ccfcbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7fffc96bf428 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x56151ccfc900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x56151ccfcbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7fffc96bf428 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x560c70d2c8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x560c70d2cbc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffcfef8f278 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x560c70d2c8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x560c70d2cbc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffcfef8f278 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55b6fde60900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55b6fde60be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe1dd7c1b8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55b6fde60900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55b6fde60be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffe1dd7c1b8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x560f1f65e900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x560f1f65ebe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7fff5dc4ad68 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x560f1f65e900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x560f1f65ebe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7fff5dc4ad68 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55ef0331d280 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55ef0331d560 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe44d05bb8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55ef0331d280 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55ef0331d560 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffe44d05bb8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x557bb22a2280 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x557bb22a2560 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffccf6600c8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x557bb22a2280 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x557bb22a2560 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffccf6600c8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55d01b392900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55d01b392900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x56488ad43900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x56488ad43be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x56488ad43900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x56488ad43be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x564af1164900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x564af1164be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] dispose
+0x564af1164900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x564af1164be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (dispose)
+0x563abd139900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x563abd139be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x563abd139900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x563abd139be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x5609454b0900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x5609454b0be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x5609454b0900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x5609454b0be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x55e56d8f58e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55e56d8f5bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x55e56d8f58e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55e56d8f5bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x55a47a3e18e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55a47a3e1bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x55a47a3e18e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55a47a3e1bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x565127e0b900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x7ffcdbc424b0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x565127e0b900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x7ffcdbc424b0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x555c64bb3900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x555c64bb3be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffea5579fc8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x555c64bb3900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x555c64bb3be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffea5579fc8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x555db2c53900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x555db2c53be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffd760b3af8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x555db2c53900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x555db2c53be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffd760b3af8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55feb89cb900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55feb89cbbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe5b368608 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55feb89cb900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55feb89cbbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffe5b368608 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55abbce558e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55abbce55bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffc5768f968 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55abbce558e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55abbce55bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffc5768f968 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x563e500078e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x563e50007bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe1dda2da8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x563e500078e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x563e50007bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffe1dda2da8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x5567741d48e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x5567741d4bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe43b97508 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x5567741d48e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x5567741d4bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffe43b97508 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55b11ae2d8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55b11ae2dbc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffed658bf18 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55b11ae2d8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55b11ae2dbc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffed658bf18 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x5581135458e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x558113545bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffc10f42e68 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x5581135458e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x558113545bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffc10f42e68 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x5631101c38e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x5631101c3bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7fff3099c228 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x5631101c38e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x5631101c3bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7fff3099c228 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x5619b818f8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x5619b818fbc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe4cce1728 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x5619b818f8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x5619b818fbc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffe4cce1728 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x5634ec15c8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x5634ec15cbc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7fff0b63e6e8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x5634ec15c8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x5634ec15cbc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7fff0b63e6e8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55a1fcd83900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x55a1fcd83be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe848eb5f0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:32] keep
+0x7ffe848eb5f8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:35] dispose
+0x55a1fcd83900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x55a1fcd83be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffe848eb5f0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:32] real (keep)
+0x7ffe848eb5f8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:35] real (dispose)
+0x556fac74f8e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x556fac74fbc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffd07a42b90 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:32] keep
+0x7ffd07a42b98 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:35] dispose
+0x556fac74f8e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x556fac74fbc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffd07a42b90 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:32] real (keep)
+0x7ffd07a42b98 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:35] real (dispose)
+0x5601c89d78e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] dispose
+0x5601c89d7bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe4340d0f0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:32] keep
+0x7ffe4340d0f8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:35] dispose
+0x5601c89d78e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (dispose)
+0x5601c89d7bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffe4340d0f0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:32] real (keep)
+0x7ffe4340d0f8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:35] real (dispose)
+0x564061fb7900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x564061fb7be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffde72847f0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffde72847f8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x564061fb7900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x564061fb7be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] real (keep)
+0x7ffde72847f0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] real (keep)
+0x7ffde72847f8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x5586dcfdb900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x5586dcfdbbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffecbd59010 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffecbd59018 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x5586dcfdb900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x5586dcfdbbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffecbd59010 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffecbd59018 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x562980d5f900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x562980d5fbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffc0f2271c0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffc0f2271c8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x562980d5f900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x562980d5fbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffc0f2271c0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffc0f2271c8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x557ce8ee5900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x557ce8ee5be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7fffdd023230 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7fffdd023238 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x557ce8ee5900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x557ce8ee5be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7fffdd023230 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7fffdd023238 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x556d22a6d900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x556d22a6dbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffe18fb0a00 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffe18fb0a08 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6df70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x556d22a6df70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x556d22a6d900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x556d22a6dbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffe18fb0a00 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffe18fb0a08 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x555ad56a2900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x555ad56a2be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffc64b48ea0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffc64b48ea8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x555ad56a2f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x555ad56a2900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x555ad56a2be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffc64b48ea0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffc64b48ea8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55f3d43838e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x55f3d4383bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffc819204f0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffc819204f8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d4383f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55f3d4383f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55f3d43838e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x55f3d4383bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffc819204f0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffc819204f8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55ea8bea18e0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x55ea8bea1bc0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffc81e11580 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffc81e11588 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea1f50 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55ea8bea1f50 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55ea8bea18e0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x55ea8bea1bc0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffc81e11580 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffc81e11588 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x55afa170f900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x55afa170fbe0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7fff26e5d180 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7fff26e5d188 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170ff70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x55afa170ff70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x55afa170f900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x55afa170fbe0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7fff26e5d180 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7fff26e5d188 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
+0x557543d18900 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] dispose
+0x557543d18be0 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] keep
+0x7ffd1591a1d0 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] keep
+0x7ffd1591a1d8 ADD <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] dispose
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18f70 ADD <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] dispose
+0x557543d18f70 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:41] real (dispose)
+0x557543d18900 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:26] real (dispose)
+0x557543d18be0 DSP <MEM> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:28] pass (keep)
+0x7ffd1591a1d0 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:30] pass (keep)
+0x7ffd1591a1d8 DSP <PTR> [/home/denis/Desktop/CX_Lib/tests/src/test_CX_ObjectManager.c:33] real (dispose)
