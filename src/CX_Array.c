@@ -124,8 +124,9 @@ void *CX_ArrayGetElementAt(CX_Array inArray, unsigned int inIndex) {
  * Add an element at the end of a given Array object.
  * @param inArray The Array object.
  * @param inElement A pointer to the element to add to the end of the Array object.
- * @return Upon successful completion the function returns a pointer to the element added element.
- * Otherwise, the function returns the value NULL. This means that the system could not allocate memory.
+ * @return Upon successful completion the function returns a pointer to the element added element (that is, it returns
+ * the value of `inElement`). Otherwise, the function returns the value NULL. This means that the system could not
+ * allocate memory.
  */
 void *CX_ArrayAdd(CX_Array inArray, void *inElement) {
     unsigned int currentIndex = inArray->count;

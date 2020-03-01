@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 #include "CX_UTest.h"
-#include "CX_Constantes.h"
+#include "CX_Constants.h"
 
 /**
  *  @brief The maximum number of characters for the buffer used to store the environmental configuration for the
@@ -172,9 +172,9 @@ void _CX_UTestSetConditionID(int inTestId) {
 
 bool _CX_UTestIsCurrentCondition(char *inAbsoluteFilePath, char *inFunctionName, int inTestId) {
 
-//    printf("===> [%s] / [%s]\n", __CX_UTestGetRelativePath(inAbsoluteFilePath), _CURRENT_FILE_TO_TEST_RELATIVE_PATH);
-//    printf("===> [%s] / [%s]\n", inFunctionName, _CURRENT_FUNCTION);
-//    printf("===> [%d] / [%d]\n", _CURRENT_TEST_ID, inTestId);
+    printf("===> [%s] / [%s]\n", __CX_UTestGetRelativePath(inAbsoluteFilePath), _CURRENT_FILE_TO_TEST_RELATIVE_PATH);
+    printf("===> [%s] / [%s]\n", inFunctionName, _CURRENT_FUNCTION);
+    printf("===> [%d] / [%d]\n", _CURRENT_TEST_ID, inTestId);
 
     return (0 == strcmp(__CX_UTestGetRelativePath(inAbsoluteFilePath),_CURRENT_FILE_TO_TEST_RELATIVE_PATH)
         &&

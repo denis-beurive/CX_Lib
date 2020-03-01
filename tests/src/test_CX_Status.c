@@ -3,7 +3,7 @@
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 #include "init.h"
-#include "../../src/CX_Status.h"
+#include "CX_Status.h"
 
 // Define mandatory callbacks.
 int init_suite(void) {

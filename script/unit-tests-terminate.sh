@@ -4,8 +4,10 @@ SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 readonly __DIR__="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-readonly REPORTS_PATH="${__DIR__}/tests/src/report"
-readonly REPORT_PATH="${__DIR__}/memory-leaks.txt"
+. "${__DIR__}/unit-tests-config.sh"
+
+readonly REPORTS_PATH="${__DIR__}/../tests/src/report"
+readonly REPORT_PATH="${__DIR__}/../memory-leaks.txt"
 
 rm -f "${REPORT_PATH}"
 

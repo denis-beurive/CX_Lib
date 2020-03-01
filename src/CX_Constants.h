@@ -1,0 +1,7 @@
+#ifndef SL_LIB_CX_CONSTANTS_H
+#define SL_LIB_CX_CONSTANTS_H
+
+#define CX_PATH_MAX_LENGTH 10240
+
+
+#endif //SL_LIB_CX_CONSTANTS_H

@@ -3,9 +3,9 @@
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 #include "init.h"
-#include "../../src/CX_String.h"
-#include "../../src/CX_Array.h"
-#include "../../src/CX_ArrayString.h"
+#include "CX_String.h"
+#include "CX_Array.h"
+#include "CX_ArrayString.h"
 
 #define DEBUG false
 

@@ -3,7 +3,7 @@
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 #include "init.h"
-#include "../../src/CX_BasicDictionary.h"
+#include "CX_BasicDictionary.h"
 
 CX_BasicDictionaryEntry __SL_BasicDictionarySearch(CX_BasicDictionary inDictionary, char *key);
 

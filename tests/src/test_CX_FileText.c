@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "../../src/CX_FileText.h"
-#include "../../src/CX_String.h"
+#include "CX_FileText.h"
+#include "CX_String.h"
 #include "init.h"
 
 static char local_data_path[SL_TESTS_MAX_PATH_LENGTH];

@@ -3,7 +3,7 @@
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 #include "init.h"
-#include "../../src/CX_Template.h"
+#include "CX_Template.h"
 
 // Define mandatory callbacks.
 
