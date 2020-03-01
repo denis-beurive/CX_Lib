@@ -1,5 +1,6 @@
 #include <mcheck.h>
 #include <stdlib.h>
+#include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 #include "init.h"
@@ -10,6 +11,7 @@
 static CX_BasicDictionary tags;
 
 int init_suite(void) {
+    CX_UTEST_INIT_ALL("src/CX_String.c");
     SL_testsInit();
     tags = CX_BasicDictionaryCreate();
     CX_BasicDictionaryAdd(tags, "A", "vA");
@@ -26,7 +28,7 @@ int clean_suite(void) {
 }
 
 void test_CX_TemplateProcess_ok1() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_TemplateProcess");
     mtrace();
     char *templateSpec = "{A} et {A} {B} and {C} {D} and {E} the end";
     char *expectedResult = "vA et vA vB and vC vD and vE the end";
@@ -38,7 +40,7 @@ void test_CX_TemplateProcess_ok1() {
 }
 
 void test_CX_TemplateProcess_ok2() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_TemplateProcess");
     mtrace();
     char *templateSpec = "{A} et {A}\n{B} and {C}\n{D} and {E}";
     char *expectedResult = "vA et vA\nvB and vC\nvD and vE";
@@ -50,7 +52,7 @@ void test_CX_TemplateProcess_ok2() {
 }
 
 void test_CX_TemplateProcess_ok3() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_TemplateProcess");
     mtrace();
     char *templateSpec = "";
     char *expectedResult = "";
@@ -62,7 +64,7 @@ void test_CX_TemplateProcess_ok3() {
 }
 
 void test_CX_TemplateProcess_ok4() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_TemplateProcess");
     mtrace();
     char *templateSpec = "{A}{B}{C}";
     char *expectedResult = "vAvBvC";
@@ -74,7 +76,7 @@ void test_CX_TemplateProcess_ok4() {
 }
 
 void test_CX_TemplateProcess_ko1() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_TemplateProcess");
     mtrace();
     char *templateSpec = "{AB}";
     CX_Template template = CX_TemplateCreate(templateSpec);
@@ -85,7 +87,7 @@ void test_CX_TemplateProcess_ko1() {
 }
 
 void test_CX_TemplateProcess_ko2() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_TemplateProcess");
     mtrace();
     char *templateSpec = "{A} {AB}";
     CX_Template template = CX_TemplateCreate(templateSpec);
@@ -135,5 +137,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }

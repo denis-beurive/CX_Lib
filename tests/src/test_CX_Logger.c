@@ -1,14 +1,14 @@
 #include <mcheck.h>
 #include <stdlib.h>
+#include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
 #include "CX_Status.h"
 #include "CX_Logger.h"
 
 // Define mandatory callbacks.
 int init_suite(void) {
-    SL_testsInit();
+    CX_UTEST_INIT_ALL("src/CX_Logger.c");
     return 0;
 }
 
@@ -17,7 +17,7 @@ int clean_suite(void) {
 }
 
 void test_CX_LoggerCreate() {
-    putenv(getMallocTraceReportPath((char*)__FUNCTION__));
+    CX_UTEST_INIT_TEST("CX_LoggerCreate");
     mtrace();
     CX_Logger logger = CX_LoggerCreate("/tmp/test.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
@@ -26,8 +26,8 @@ void test_CX_LoggerCreate() {
 }
 
 void test_CX_LoggerLog() {
+    CX_UTEST_INIT_TEST("CX_LoggerLog");
     bool rc;
-    INIT_TEST;
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -63,7 +63,7 @@ void test_CX_LoggerLog() {
 }
 
 void test_CX_LoggerLogFatal() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_LoggerLogFatal");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -79,7 +79,7 @@ void test_CX_LoggerLogFatal() {
 }
 
 void test_CX_LoggerLogError() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_LoggerLogError");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -95,7 +95,7 @@ void test_CX_LoggerLogError() {
 }
 
 void test_CX_LoggerLogWarning() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_LoggerLogWarning");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -111,7 +111,7 @@ void test_CX_LoggerLogWarning() {
 }
 
 void test_CX_LoggerLogInfo() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_LoggerLogInfo");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_PTR_NOT_NULL_FATAL(status);
@@ -127,7 +127,7 @@ void test_CX_LoggerLogInfo() {
 }
 
 void test_CX_LoggerLogDebug() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_LoggerLogDebug");
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -185,5 +185,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }

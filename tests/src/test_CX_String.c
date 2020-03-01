@@ -1,8 +1,9 @@
 #include <mcheck.h>
 #include <stdlib.h>
+#include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
+//#include "init.h"
 #include "CX_String.h"
 #include "CX_Status.h"
 #include "CX_ArrayString.h"
@@ -11,7 +12,7 @@
 
 // Define mandatory callbacks.
 int init_suite(void) {
-    SL_testsInit();
+    CX_UTEST_INIT_ALL("src/CX_String.c");
     return 0;
 }
 
@@ -21,7 +22,7 @@ int clean_suite(void) {
 
 void test_CX_StringCreate() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringCreate");
     mtrace();
 
     CX_String string = CX_StringCreate(NULL);
@@ -47,7 +48,7 @@ void test_CX_StringCreate() {
 
 void test_CX_StringCreateFmt() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringCreateFmt");
     mtrace();
 
     CX_String string = CX_StringCreateFmt("> a = %d", 10);
@@ -61,7 +62,7 @@ void test_CX_StringCreateFmt() {
 
 void test_CX_StringDup() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringDup");
     mtrace();
 
     CX_String string;
@@ -105,7 +106,7 @@ void test_CX_StringDup() {
 
 void test_CX_StringLength() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringLength");
     mtrace();
 
     CX_String string;
@@ -137,7 +138,7 @@ void test_CX_StringLength() {
 
 void test_CX_StringAppend() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringAppend");
     mtrace();
 
     char *strings[] = {
@@ -189,7 +190,7 @@ void test_CX_StringAppend() {
 
 void test_CX_StringAppendChar() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringAppendChar");
     mtrace();
 
     char *strings[] = {
@@ -233,7 +234,7 @@ void test_CX_StringAppendChar() {
 
 void test_CX_StringPrepend() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringPrepend");
     mtrace();
 
     char *strings[] = {
@@ -285,7 +286,7 @@ void test_CX_StringPrepend() {
 
 void test_CX_StringPrependChar() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringPrependChar");
     mtrace();
 
     char *strings[] = {
@@ -329,7 +330,7 @@ void test_CX_StringPrependChar() {
 
 void test_CX_StringSplitChar() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringSplitChar");
     mtrace();
 
     // Test 1
@@ -389,7 +390,7 @@ void test_CX_StringSplitChar() {
 
 void test_CX_StringSplit() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringSplit");
     mtrace();
 
     CX_String delimiter = CX_StringCreate("\r\n");
@@ -448,7 +449,7 @@ void test_CX_StringSplit() {
 
 void test_CX_StringSplitRegex() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringSplitRegex");
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -511,7 +512,7 @@ void test_CX_StringSplitRegex() {
 
 void test_CX_StringReplaceRegexChar() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringReplaceRegexChar");
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -571,7 +572,7 @@ void test_CX_StringReplaceRegexChar() {
 
 void test_CX_StringReplaceRegex() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringReplaceRegex");
     mtrace();
 
     CX_Status status = CX_StatusCreate();
@@ -637,7 +638,7 @@ void test_CX_StringReplaceRegex() {
 }
 void test_CX_StringLinearize() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringLinearize");
     mtrace();
 
     bool linearized;
@@ -687,7 +688,7 @@ void test_CX_StringLinearize() {
 
 void test_CX_StringAppendFmt() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringAppendFmt");
     mtrace();
 
     char *lines[] = {
@@ -750,7 +751,7 @@ void test_CX_StringAppendFmt() {
 
 void test_CX_StringPrependFmt() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringPrependFmt");
     mtrace();
 
     char *lines[] = {
@@ -861,5 +862,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }

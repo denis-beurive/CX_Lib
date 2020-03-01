@@ -204,7 +204,7 @@ const char *_CX_UTestGetMCheckReportFileAbsolutePath(const char *inFileBasename)
  * into the given file.
  */
 
-const char *_CX_UTestGetMCheckConfiguration(const char *inFileBasename) {
+char *_CX_UTestGetMCheckConfiguration(const char *inFileBasename) {
     const char *path = _CX_UTestGetMCheckReportFileAbsolutePath(inFileBasename);
     snprintf(_MCHECK_CONFIGURATION, CX_UTEST_MAX_MCHECK_CONF_SIZE, "MALLOC_TRACE=%s", path);
     return _MCHECK_CONFIGURATION;

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
+#include "CX_UTest.h"
 #include "CX_String.h"
 #include "CX_Array.h"
 #include "CX_ArrayString.h"
@@ -11,7 +11,8 @@
 
 // Define mandatory callbacks.
 int init_suite(void) {
-    SL_testsInit();
+    CX_UTEST_INIT_ALL(
+            "src/CX_ArrayString.c");
     return 0;
 }
 
@@ -20,8 +21,7 @@ int clean_suite(void) {
 }
 
 void test_CX_StringArrayCreate() {
-
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringArrayCreate");
     mtrace();
 
     if (DEBUG) printf("test_CX_StringArrayCreate\n"); fflush(stdout);
@@ -43,8 +43,7 @@ void test_CX_StringArrayCreate() {
 }
 
 void test_CX_ArrayStringGetStrings() {
-
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayStringGetStrings");
     mtrace();
 
     char *input[] = {
@@ -69,8 +68,7 @@ void test_CX_ArrayStringGetStrings() {
 }
 
 void test_CX_StringArrayAdd() {
-
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringArrayAdd");
     mtrace();
 
     CX_String s;
@@ -119,7 +117,7 @@ void test_CX_StringArrayAdd() {
 
 void test_CX_StringArrayDup() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringArrayDup");
     mtrace();
 
     char *input[] = {
@@ -152,7 +150,7 @@ void test_CX_StringArrayDup() {
 
 void test_CX_StringArrayGetAt() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringArrayGetAt");
     mtrace();
 
     char *input[] = {
@@ -174,8 +172,7 @@ void test_CX_StringArrayGetAt() {
 }
 
 void test_CX_StringArrayJoin() {
-
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StringArrayJoin");
     mtrace();
 
     CX_String joined;
@@ -250,7 +247,7 @@ void test_CX_StringArrayJoin() {
 
 void test_CX_ArrayStringPrependChar() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayStringPrependChar");
     mtrace();
 
     char *input0[] = {
@@ -284,7 +281,7 @@ void test_CX_ArrayStringPrependChar() {
 
 void test_CX_ArrayStringAppendChar() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_ArrayStringAppendChar");
     mtrace();
 
     char *input0[] = {
@@ -357,5 +354,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }

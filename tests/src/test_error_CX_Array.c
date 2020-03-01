@@ -1,16 +1,15 @@
-#include <mcheck.h>
 #include <stdlib.h>
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "../../src/CX_UTest.h"
-#include "../../src/CX_Array.h"
+#include "CX_UTest.h"
+#include "CX_Array.h"
 
 // ---------------------------------------------
 // Define mandatory callbacks.
 // ---------------------------------------------
 
 int init_suite(void) {
-    CX_UTEST_INIT_ALL("/home/denis/Desktop/CX_Lib", "src/CX_Array.c", "/home/denis/Desktop/CX_Lib/tests/src/report");
+    CX_UTEST_INIT_ALL("src/CX_Array.c");
     return 0;
 }
 
@@ -21,7 +20,6 @@ int clean_suite(void) {
 // ---------------------------------------------
 // Define utilities used by te library to test.
 // ---------------------------------------------
-
 
 void elementDisposer(void *inElement) {
     free(inElement);
@@ -88,7 +86,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-//    END_TEST_SUITE;
 
     CX_UTEST_END_TEST_SUITE;
 }

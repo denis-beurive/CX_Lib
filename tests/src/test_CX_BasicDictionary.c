@@ -1,15 +1,16 @@
 #include <mcheck.h>
 #include <stdlib.h>
+#include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
+//#include "init.h"
 #include "CX_BasicDictionary.h"
 
 CX_BasicDictionaryEntry __SL_BasicDictionarySearch(CX_BasicDictionary inDictionary, char *key);
 
 // Define mandatory callbacks.
 int init_suite(void) {
-    SL_testsInit();
+    CX_UTEST_INIT_ALL("src/CX_BasicDictionary.c");
     return 0;
 }
 
@@ -19,7 +20,7 @@ int clean_suite(void) {
 
 void test_CX_BasicDictionaryCreate() {
 
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_BasicDictionaryCreate");
     mtrace();
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
     CU_ASSERT_PTR_NULL(dictionary->entries);
@@ -29,7 +30,7 @@ void test_CX_BasicDictionaryCreate() {
 }
 
 void test_CX_BasicDictionaryDispose() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_BasicDictionaryDispose");
     mtrace();
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
     CX_BasicDictionaryDispose(dictionary);
@@ -37,7 +38,7 @@ void test_CX_BasicDictionaryDispose() {
 }
 
 void test_CX_BasicDictionarySearch() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_BasicDictionarySearch");
     mtrace();
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
     CX_BasicDictionaryEntry entry = __SL_BasicDictionarySearch(dictionary, "key");
@@ -47,7 +48,7 @@ void test_CX_BasicDictionarySearch() {
 }
 
 void test_CX_BasicDictionaryAdd() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_BasicDictionaryAdd");
     mtrace();
     bool status;
     CX_BasicDictionary dictionary = CX_BasicDictionaryCreate();
@@ -73,7 +74,7 @@ void test_CX_BasicDictionaryAdd() {
 }
 
 void test_CX_BasicDictionaryExists() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_BasicDictionaryExists");
     mtrace();
     bool status;
     struct CX_BasicDictionaryEntryType entries[] = {
@@ -97,7 +98,7 @@ void test_CX_BasicDictionaryExists() {
 }
 
 void test_CX_BasicDictionaryGet() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_BasicDictionaryGet");
     mtrace();
     bool status;
     char *value;
@@ -162,5 +163,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }

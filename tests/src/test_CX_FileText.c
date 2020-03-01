@@ -1,18 +1,21 @@
 #include <mcheck.h>
 #include <stdlib.h>
+#include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
 #include "CX_FileText.h"
 #include "CX_String.h"
 #include "init.h"
 
-static char local_data_path[SL_TESTS_MAX_PATH_LENGTH];
+static char local_data_path[TESTS_MAX_PATH_LENGTH];
 
 // Define mandatory callbacks.
 int init_suite(void) {
+    CX_UTEST_INIT_ALL("src/CX_FileText.c");
+
     SL_testsInit();
-    snprintf(local_data_path, SL_TESTS_MAX_PATH_LENGTH, "%s/FileText", data_dir_path);
-    local_data_path[SL_TESTS_MAX_PATH_LENGTH-1] = 0;
+    snprintf(local_data_path, TESTS_MAX_PATH_LENGTH, "%s/FileText", data_dir_path);
+    local_data_path[TESTS_MAX_PATH_LENGTH - 1] = 0;
     SL_testsInit();
     return 0;
 }
@@ -22,11 +25,11 @@ int clean_suite(void) {
 }
 
 void test_CX_FileTextSlurp() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_FileTextSlurp");
     mtrace();
-    char dataFile[SL_TESTS_MAX_PATH_LENGTH];
-    snprintf(dataFile, SL_TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp.txt", local_data_path);
-    dataFile[SL_TESTS_MAX_PATH_LENGTH - 1] = 0;
+    char dataFile[TESTS_MAX_PATH_LENGTH];
+    snprintf(dataFile, TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp.txt", local_data_path);
+    dataFile[TESTS_MAX_PATH_LENGTH - 1] = 0;
     CX_Status status = CX_StatusCreate();
     unsigned long length;
     CX_FileText testFile = CX_FileTextCreate(dataFile);
@@ -42,12 +45,12 @@ void test_CX_FileTextSlurp() {
 }
 
 void test_CX_FileTextSlurpAsLines() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_FileTextSlurpAsLines");
     mtrace();
 
-    char dataFile[SL_TESTS_MAX_PATH_LENGTH];
-    snprintf(dataFile, SL_TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp-as-lines.txt", local_data_path);
-    dataFile[SL_TESTS_MAX_PATH_LENGTH - 1] = 0;
+    char dataFile[TESTS_MAX_PATH_LENGTH];
+    snprintf(dataFile, TESTS_MAX_PATH_LENGTH - 1, "%s/test-slurp-as-lines.txt", local_data_path);
+    dataFile[TESTS_MAX_PATH_LENGTH - 1] = 0;
     CX_Status status = CX_StatusCreate();
     unsigned long length;
     CX_FileText testFile = CX_FileTextCreate(dataFile);
@@ -105,6 +108,7 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }
 

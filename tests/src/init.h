@@ -3,14 +3,14 @@
 
 #include <stdlib.h>
 
-#define SL_TESTS_MAX_PATH_LENGTH 1024
+#define TESTS_MAX_PATH_LENGTH 1024
 
 #ifndef SL_TEST_INIT_SRC
 
-    #include "../../src/CX_BashColor.h"
+    #include "CX_BashColor.h"
 
-    extern char data_dir_path[SL_TESTS_MAX_PATH_LENGTH];
-    extern char report_dir_path[SL_TESTS_MAX_PATH_LENGTH];
+    extern char data_dir_path[TESTS_MAX_PATH_LENGTH];
+    extern char report_dir_path[TESTS_MAX_PATH_LENGTH];
     extern int SL_testsInit(void);
     char *getMallocTraceReportPath(char *inFileName);
     #define INIT_TEST putenv(getMallocTraceReportPath((char*)__FUNCTION__)); \

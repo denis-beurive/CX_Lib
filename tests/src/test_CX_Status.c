@@ -1,13 +1,13 @@
 #include <mcheck.h>
 #include <stdlib.h>
+#include "CX_UTest.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "init.h"
 #include "CX_Status.h"
 
 // Define mandatory callbacks.
 int init_suite(void) {
-    SL_testsInit();
+    CX_UTEST_INIT_ALL("src/CX_Status.c");
     return 0;
 }
 
@@ -16,7 +16,7 @@ int clean_suite(void) {
 }
 
 void test_CX_StatusCreate() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusCreate");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_TRUE(status->status);
@@ -28,7 +28,7 @@ void test_CX_StatusCreate() {
 }
 
 void test_CX_StatusDispose() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusDispose");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CX_StatusDispose(status);
@@ -36,7 +36,7 @@ void test_CX_StatusDispose() {
 }
 
 void test_CX_StatusSetMessageSize() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusSetMessageSize");
     mtrace();
     const int new_size = 2048;
     CX_Status status = CX_StatusCreate();
@@ -50,7 +50,7 @@ void test_CX_StatusSetMessageSize() {
 }
 
 void test_CX_StatusSetError() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusSetError");
     mtrace();
     const int error_code = 10;
     CX_Status status = CX_StatusCreate();
@@ -63,7 +63,7 @@ void test_CX_StatusSetError() {
 }
 
 void test_CX_StatusReset() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusReset");
     mtrace();
     const int error_code = 10;
     CX_Status status = CX_StatusCreate();
@@ -77,7 +77,7 @@ void test_CX_StatusReset() {
 }
 
 void test_CX_StatusIsSuccess() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusIsSuccess");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CU_ASSERT_TRUE(CX_StatusIsSuccess(status));
@@ -88,7 +88,7 @@ void test_CX_StatusIsSuccess() {
 }
 
 void test_CX_StatusIsFailure() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusIsFailure");
     mtrace();
     CX_Status status = CX_StatusCreate();
     CX_StatusSetError(status, 10, "Error is %d", 10);
@@ -100,7 +100,7 @@ void test_CX_StatusIsFailure() {
 }
 
 void test_CX_StatusMessage() {
-    INIT_TEST;
+    CX_UTEST_INIT_TEST("CX_StatusMessage");
     mtrace();
     const int error_code = 10;
     CX_Status status = CX_StatusCreate();
@@ -152,5 +152,6 @@ int main (int argc, char *argv[])
 
     //Cleaning the Registry
     CU_cleanup_registry();
-    END_TEST_SUITE;
+
+    CX_UTEST_END_TEST_SUITE;
 }

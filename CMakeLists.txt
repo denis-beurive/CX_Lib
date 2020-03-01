@@ -18,6 +18,7 @@ set(CMAKE_LINK_SEARCH_START_STATIC on)
 set(LOCAL_LIB_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(LOCAL_SRC_DIRECTORY "${CMAKE_BINARY_DIR}/src")
 set(LOCAL_TESTS_BIN_DIRECTORY "${CMAKE_BINARY_DIR}/tests/bin")
+set(LOCAL_TESTS_MCHECK_REPORT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/src/report")
 
 # ----------------------------------------------------------------------------------------
 # Configure paths to header files and libraries.
@@ -192,7 +193,7 @@ target_link_libraries(test_CX_Logger libcunit.a CX_Lib test_init)
 #          setting.
 # ----------------------------------------------------------------------------------------
 
-set_target_properties(
+set(TEST_EXE
         test_CX_Status
         test_CX_Basic_Dictionary
         test_CX_Basic_Template
@@ -201,7 +202,10 @@ set_target_properties(
         test_CX_String
         test_CX_Logger
         test_CX_Array
-        test_error_CX_Array
+        test_error_CX_Array)
+
+set_target_properties(
+        ${TEST_EXE}
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${LOCAL_TESTS_BIN_DIRECTORY}
         EXCLUDE_FROM_ALL off
@@ -219,3 +223,7 @@ add_test(test_CX_Array ${LOCAL_TESTS_BIN_DIRECTORY}/test_CX_Array)
 add_test(test_error_CX_Array ${LOCAL_TESTS_BIN_DIRECTORY}/test_error_CX_Array)
 add_test(test_terminate script/unit-tests-terminate.sh)
 
+set_tests_properties(
+        ${TEST_EXE}
+        PROPERTIES
+        ENVIRONMENT "PROJECT_ROOT=${CMAKE_BINARY_DIR};MCHECK_REPORT=${LOCAL_TESTS_MCHECK_REPORT_DIRECTORY}")
