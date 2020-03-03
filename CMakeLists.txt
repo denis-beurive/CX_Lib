@@ -140,7 +140,7 @@ add_executable(test_CX_Logger
 add_dependencies(test_CX_Logger CX_Lib)
 target_link_libraries(test_CX_Logger libcunit.a CX_Lib)
 
-#### test_CX_ObjectManager.c
+#### test_CX_ObjectManagerOk.c
 
 add_executable(test_CX_ObjectManager
         tests/src/test_CX_ObjectManager.c)

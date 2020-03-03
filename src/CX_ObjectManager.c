@@ -115,19 +115,19 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
 
     for (int i=0; i < inManager->count; i++) {
         struct CX_ObjectType o = inManager->objects[i];
-        char *type = CX_MemRefPtrPtr == o.ref_type ? "PTR" : "MEM";
+        char *type = CX_MemRefPtrPtr == o.ref_type ? "P" : "M";
         void *ptr = CX_MemRefPtrPtr == o.ref_type ? o.ptr_pointer : o.pointer;
 
         // If we should destroy all objects, or if the object must be destroyed anyway, then destroy it.
         if (inAll || (! o.keep)) {
 
-            if (NULL != file) {
-                fprintf(dbg, "%p DSP <%s> [%s:%d] real (%s)\n",
+            if (NULL != dbg) {
+                fprintf(dbg, "-%p %s %s [%s:%d]\n",
                         ptr,
                         type,
-                        NULL != o.file ? o.file : "X",
-                        o.line,
-                        o.keep ? "keep" : "dispose");
+                        o.keep ? "k" : "d",
+                        o.file,
+                        o.line);
             }
 
             if (CX_MemRefPtrPtr == o.ref_type) {
@@ -148,13 +148,13 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
             continue;
         }
         // For debug only.
-        if (NULL != file) {
-            fprintf(dbg, "%p DSP <%s> [%s:%d] pass (%s)\n",
+        if (NULL != dbg) {
+            fprintf(dbg, "-%p %s %s [%s:%d]\n",
                     ptr,
                     type,
-                    NULL != o.file ? o.file : "X",
-                    o.line,
-                    o.keep ? "keep" : "dispose");
+                    o.keep ? "k" : "d",
+                    o.file,
+                    o.line);
         }
         if (NULL != o.file) {
             free(o.file);
@@ -163,7 +163,7 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
     free(inManager->objects);
     free(inManager);
 
-    if (NULL != file) {
+    if (NULL != dbg) {
         fclose(dbg);
     }
 }
@@ -219,27 +219,32 @@ static void __CX_ObjectManagerAddPtr(
         char *inFile,
         int inLine) {
 
-
+    FILE *dbg = NULL;
     char *file = getenv("CX_OBJECT_MANAGER_ADD_DEBUG");
     if (NULL != file) {
-        FILE *dbg = fopen(file, "a");
-        fprintf(dbg, "%p ADD <PTR> [%s:%d] %s\n",
-                inPointer,
-                NULL != inFile ? inFile : "X",
-                inLine,
-                inKeep ? "keep" : "dispose");
+        dbg = fopen(file, "a");
+    }
 
-        for (int i=0; i < inManager->count; i++) {
-            if (inPointer == inManager->objects[i].ptr_pointer) {
-                fprintf(stderr, "%p DUP <PTR> [%s:%d] %s\n",
+    if (NULL != dbg) {
+        for (int i = 0; i < inManager->count; i++) {
+            if (inPointer == inManager->objects[i].ptr_pointer && NULL != inPointer) {
+                fprintf(dbg, "#%p P %s [%s:%d]\n",
                         inManager->objects[i].ptr_pointer,
-                        inManager->objects[i].file = NULL != inFile ? inFile : "X",
-                        inManager->objects[i].line,
-                        inManager->objects[i].keep ? "keep" : "dispose");
-                exit(1);
+                        inManager->objects[i].keep ? "k" : "d",
+                        inManager->objects[i].file,
+                        inManager->objects[i].line);
+                fclose(dbg);
+                return;
             }
         }
-        fclose(dbg);
+    }
+
+    if (NULL != dbg) {
+        fprintf(dbg, "+%p P %s [%s:%d]\n",
+                inPointer,
+                inKeep ? "k" : "d",
+                inFile,
+                inLine);
     }
 
     // W: Conversion to ‘long unsigned int’ from ‘int’ may change the sign of the result
@@ -252,6 +257,10 @@ static void __CX_ObjectManagerAddPtr(
     inManager->objects[inManager->count].file = NULL != inFile ? strdup(inFile) : NULL;
     inManager->objects[inManager->count].line = inLine;
     inManager->count += 1;
+
+    if (NULL != dbg) {
+        fclose(dbg);
+    }
 }
 
 /**
@@ -281,26 +290,33 @@ static void __CX_ObjectManagerAdd(
         char *inFile,
         int inLine) {
 
+    FILE *dbg = NULL;
     char *file = getenv("CX_OBJECT_MANAGER_ADD_DEBUG");
     if (NULL != file) {
-        FILE *dbg = fopen(file, "a");
-        fprintf(dbg, "%p ADD <MEM> [%s:%d] %s\n",
-                inPointer,
-                NULL != inFile ? inFile : "X",
-                inLine,
-                inKeep ? "keep" : "dispose");
+        dbg = fopen(file, "a");
+    }
 
+    if (NULL != dbg) {
         for (int i=0; i < in_manager->count; i++) {
-            if (inPointer == in_manager->objects[i].ptr_pointer) {
-                fprintf(stderr, "%p DUP <ADD> [%s:%d]%s\n",
-                        in_manager->objects[i].ptr_pointer,
-                        in_manager->objects[i].file = NULL != inFile ? inFile : "X",
-                        in_manager->objects[i].line,
-                        in_manager->objects[i].keep ? "keep" : "dispose");
+            if (inPointer == in_manager->objects[i].pointer && NULL != inPointer) {
+                fprintf(dbg, "#%p M %s [%s:%d]\n",
+                        in_manager->objects[i].pointer,
+                        in_manager->objects[i].keep ? "k" : "d",
+                        in_manager->objects[i].file,
+                        in_manager->objects[i].line);
+                fprintf(stderr, "FATAL ERROR: you've already set the object <%p> under the manager responsibility! You should *NEVER* do that. Please look at the file \"%s\".", inPointer, file);
+                fclose(dbg);
                 exit(1);
             }
         }
-        fclose(dbg);
+    }
+
+    if (NULL != dbg) {
+        fprintf(dbg, "+%p M %s [%s:%d]\n",
+                inPointer,
+                inKeep ? "k" : "d",
+                inFile,
+                inLine);
     }
 
     // W: Conversion to ‘long unsigned int’ from ‘int’ may change the sign of the result
@@ -313,6 +329,10 @@ static void __CX_ObjectManagerAdd(
     in_manager->objects[in_manager->count].file = NULL != inFile ? strdup(inFile) : NULL;;
     in_manager->objects[in_manager->count].line = inLine;
     in_manager->count += 1;
+
+    if (NULL != dbg) {
+        fclose(dbg);
+    }
 }
 
 /**

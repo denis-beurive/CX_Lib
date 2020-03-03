@@ -16,9 +16,10 @@ int clean_suite(void) {
     return 0;
 }
 
-void test_CX_ObjectManager() {
+void test_CX_ObjectManagerOk() {
 
-    CX_UTEST_INIT_TEST("CX_ObjectManager");
+    CX_UTEST_INIT_TEST("test_CX_ObjectManagerOk");
+    putenv("CX_OBJECT_MANAGER_ADD_DEBUG=mem-ok.txt");
     mtrace();
 
     CX_ObjectManager m = CX_ObjectManagerCreate();
@@ -51,7 +52,44 @@ void test_CX_ObjectManager() {
     muntrace();
 }
 
+void test_CX_ObjectManagerKo() {
 
+    CX_UTEST_INIT_TEST("test_CX_ObjectManagerKo");
+    putenv("CX_OBJECT_MANAGER_ADD_DEBUG=mem-ko.txt");
+    mtrace();
+
+    CX_ObjectManager m = CX_ObjectManagerCreate();
+    int *v1 = (int*)malloc(sizeof(int));
+    CX_OBJECT_MANAGER_ADD(m, v1, free);
+    int *v2 = (int*)malloc(sizeof(int));
+    CX_OBJECT_MANAGER_ADD_RESULT(m, v2, free);
+    int *v3 = (int*)malloc(sizeof(int));
+    CX_OBJECT_MANAGER_ADD_PTR_RESULT(m, &v3, free);
+
+    int *v4 = NULL;
+    CX_OBJECT_MANAGER_ADD(m, v4, free);
+
+    char *buffer = NULL;
+    CX_OBJECT_MANAGER_ADD_PTR(m, &buffer, free);
+    for (int i=1; i<10; i++) {
+        buffer = (char*)realloc(buffer, sizeof(char)*i);
+    }
+
+    for (int i=0; i<10; i++) {
+        CX_ObjectManager m1 = CX_ObjectManagerCreate();
+        int *v1 = (int*)malloc(sizeof(int));
+        CX_OBJECT_MANAGER_ADD(m1, v1, free);
+        CX_ObjectManagerDispose(m1);
+    }
+
+    CX_ObjectManagerDispose(m);
+    CU_ASSERT_PTR_NOT_NULL_FATAL(v2);
+    CU_ASSERT_PTR_NOT_NULL_FATAL(v3);
+    free(v2);
+    free(v3);
+
+    muntrace();
+}
 
 
 int main (int argc, char *argv[])
@@ -59,7 +97,8 @@ int main (int argc, char *argv[])
     printf("\n=== %s ===\n", argv[0]);
 
     void (*functions[])(void) = {
-            &test_CX_ObjectManager
+            &test_CX_ObjectManagerOk,
+            &test_CX_ObjectManagerKo
     };
 
     CU_pSuite pSuite1 = NULL;
