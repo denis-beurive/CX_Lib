@@ -86,7 +86,7 @@ while (<STDIN>) {
 
         if (($type eq 'P') && ($action eq 'k')) {
             # Add the address of a point as a result.
-            push(@errors, "${file}:${line}: you already declare the object under the responsibility of the manager (${pointer}/${type}/${action})!");
+            push(@errors, "${file}:${line}: you've already declared the object under the responsibility of the manager (${pointer}/${type}/${action})!");
         }
         next;
     }
@@ -102,7 +102,7 @@ while (<STDIN>) {
             next;
         }
         if (($type eq 'M')) {
-            push(@warnings, "${file}:${line}: you declare pointer which value is NULL under the manager responsibility (action=${action}). This is weird. You should look at it!");
+            push(@warnings, "${file}:${line}: you declare a pointer which value is NULL under the manager responsibility (action=${action}). This is weird. You should look at it!");
             next;
         }
 
@@ -184,18 +184,20 @@ if (scalar(@warnings) > 0) {
         $count += 1;
         print("[$count] ${rec}\n");
     }
+    print("\n");
 }
 
 $count = 0;
 if (scalar(@errors) > 0) {
     printf("Errors:\n");
-    foreach my $rec (@warnings) {
+    foreach my $rec (@errors) {
         $count += 1;
         print("[$count] ${rec}\n");
     }
+    print("\n");
 }
 
-if (0 == scalar(@nils) && scalar(@warnings) && scalar(@errors) && !$mem_leak_detected) {
+if (0 == scalar(@nils) && 0 == scalar(@warnings) && 0 == scalar(@errors) && !$mem_leak_detected) {
     print("TOTAL SUCCESS\n");
     exit 0;
 }
@@ -205,5 +207,5 @@ if (!scalar(@errors) && !$mem_leak_detected) {
     exit 0;
 }
 
-print("\nPotential memory leak detected!\n");
+print("Potential memory leak detected!\n");
 exit 1;

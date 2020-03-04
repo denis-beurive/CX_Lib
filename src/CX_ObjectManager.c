@@ -231,8 +231,8 @@ static void __CX_ObjectManagerAddPtr(
                 fprintf(dbg, "#%p P %s [%s:%d]\n",
                         inManager->objects[i].ptr_pointer,
                         inManager->objects[i].keep ? "k" : "d",
-                        inManager->objects[i].file,
-                        inManager->objects[i].line);
+                        inFile,
+                        inLine);
                 fclose(dbg);
                 return;
             }

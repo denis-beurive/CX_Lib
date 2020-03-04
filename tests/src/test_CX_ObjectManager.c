@@ -16,6 +16,21 @@ int clean_suite(void) {
     return 0;
 }
 
+static void process(char **buffer) {
+    CX_ObjectManager m = CX_ObjectManagerCreate();
+    CX_OBJECT_MANAGER_ADD_PTR_RESULT(m, buffer, free);
+    int length = 10;
+    *buffer = NULL;
+    for (int i=1; i<10; i++) {
+        CX_ObjectManager m1 = CX_ObjectManagerCreate();
+        int *n = (int*)malloc(sizeof(int));
+        CX_OBJECT_MANAGER_ADD(m1, n, free);
+        *buffer = (char*)realloc(*buffer,sizeof(char)*i*length);
+        CX_ObjectManagerDispose(m1);
+    }
+    CX_ObjectManagerDispose(m);
+}
+
 void test_CX_ObjectManagerOk() {
 
     CX_UTEST_INIT_TEST("test_CX_ObjectManagerOk");
@@ -43,11 +58,15 @@ void test_CX_ObjectManagerOk() {
         CX_ObjectManagerDispose(m1);
     }
 
+    char *storage;
+    process(&storage);
+
     CX_ObjectManagerDispose(m);
     CU_ASSERT_PTR_NOT_NULL_FATAL(v2);
     CU_ASSERT_PTR_NOT_NULL_FATAL(v3);
     free(v2);
     free(v3);
+    free(storage);
 
     muntrace();
 }
@@ -64,6 +83,7 @@ void test_CX_ObjectManagerKo() {
     int *v2 = (int*)malloc(sizeof(int));
     CX_OBJECT_MANAGER_ADD_RESULT(m, v2, free);
     int *v3 = (int*)malloc(sizeof(int));
+    CX_OBJECT_MANAGER_ADD_PTR_RESULT(m, &v3, free);
     CX_OBJECT_MANAGER_ADD_PTR_RESULT(m, &v3, free);
 
     int *v4 = NULL;
