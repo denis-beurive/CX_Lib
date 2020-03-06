@@ -113,7 +113,7 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
         dbg = fopen(file, "a");
     }
 
-    for (int i=0; i < inManager->count; i++) {
+    for (int i=inManager->count-1; i>=0; i--) {
         struct CX_ObjectType o = inManager->objects[i];
         char *type = CX_MemRefPtrPtr == o.ref_type ? "P" : "M";
         void *ptr = CX_MemRefPtrPtr == o.ref_type ? o.ptr_pointer : o.pointer;
@@ -141,10 +141,7 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
                     o.pointer = NULL;
                 }
             }
-
-            if (NULL != o.file) {
-                free(o.file);
-            }
+            free(o.file);
             continue;
         }
         // For debug only.
@@ -156,9 +153,7 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
                     o.file,
                     o.line);
         }
-        if (NULL != o.file) {
-            free(o.file);
-        }
+        free(o.file);
     }
     free(inManager->objects);
     free(inManager);
@@ -254,7 +249,7 @@ static void __CX_ObjectManagerAddPtr(
     inManager->objects[inManager->count].ptr_pointer = inPointer;
     inManager->objects[inManager->count].disposer = inDisposer;
     inManager->objects[inManager->count].keep = inKeep;
-    inManager->objects[inManager->count].file = NULL != inFile ? strdup(inFile) : NULL;
+    inManager->objects[inManager->count].file = inFile;
     inManager->objects[inManager->count].line = inLine;
     inManager->count += 1;
 
@@ -326,7 +321,7 @@ static void __CX_ObjectManagerAdd(
     in_manager->objects[in_manager->count].ptr_pointer = NULL;
     in_manager->objects[in_manager->count].disposer = inDisposer;
     in_manager->objects[in_manager->count].keep = inKeep;
-    in_manager->objects[in_manager->count].file = NULL != inFile ? strdup(inFile) : NULL;;
+    in_manager->objects[in_manager->count].file = inFile;
     in_manager->objects[in_manager->count].line = inLine;
     in_manager->count += 1;
 
