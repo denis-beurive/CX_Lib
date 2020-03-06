@@ -7,6 +7,7 @@
 CX_ObjectManager CX_ObjectManagerCreate();
 void CX_ObjectManagerDisposeOnError(CX_ObjectManager inManager);
 void CX_ObjectManagerDispose(CX_ObjectManager inManager);
+void CX_ObjectManagerDisposeAllOnSuccess(CX_ObjectManager inManager);
 void CX_ObjectManagerAddPtr(
         CX_ObjectManager inManager,
         void **inPointer,

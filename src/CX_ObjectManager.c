@@ -7,27 +7,31 @@
  * under its responsibility. It is used to avoid memory leaks during the executions of functions.
  *
  * There are two ways to place an object under a manager responsibility:
- * - if the object is just a temporary asset, then you tell the manager that it must be destroyed no matter the
+ * * if the object is just a temporary asset, then you tell the manager that it must be destroyed no matter the
  *   circumstances: whether the function ends successfully or not.
  *   In this case, you call the macro "`CX_OBJECT_MANAGER_ADD()`" or "`CX_OBJECT_MANAGER_ADD_PTR()`".
- * - if the object should be returned by the function upon successful completion, then, of course, the object
+ * * if the object should be returned by the function upon successful completion, then, of course, the object
  *   must not be destroyed if the function ends successfully. However, if an error occurred during the execution
  *   of the function, the result can't be returned, and the object that represents it must be destroyed.
  *   In this case, you call the macro "`CX_OBJECT_MANAGER_ADD_RESULT()`".
  *
  * There are two ways to identify an object.
- * - you can identify the object by using the address to the pointer that refers to the object.
+ * * you can identify the object by using the address to the pointer that refers to the object.
  *   If you use the function `realloc()`, then you must use this technique. Otherwise, you should use the other
  *   technique, described below. In this case, you use the macro "`CX_OBJECT_MANAGER_ADD_PTR()`".
- * - you can identify the object by using the address returned by the function that allocated the object (and that
+ * * you can identify the object by using the address returned by the function that allocated the object (and that
  *   points to the memory location that holds the object). in this case, you use the macro
  *   "`CX_OBJECT_MANAGER_ADD()`" or "`CX_OBJECT_MANAGER_ADD_RESULT()`".
  *
- * There are two ways to destroy an object manager:
- * - the manager may be destroyed in the context of a successfully executed function. In this case, if a result
+ * There are three ways to destroy an object manager:
+ * * the manager may be destroyed in the context of a successfully executed function. In this case, if a result
  *   object has been places under the manager responsibility, it must not be destroyed.
  *   In this case, you call the function "`CX_ObjectManagerDispose()`".
- * - the manage may be destroyed in the context of an unrecoverable error. In this case, all objects must be destroyed.
+ * * the manager may be destroyed in the context of a successfully executed function. However, in this particular
+ *   use case, all allocated objects must ne destroyed, even if these elements have been declared as results of the
+ *   function.
+ *   In this case, you call the function "`CX_ObjectManagerDisposeAllOnSuccess`".
+ * * the manage may be destroyed in the context of an unrecoverable error. In this case, all objects must be destroyed.
  *   In this case, you call the function "`CX_ObjectManagerDisposeOnError()`".
  *
  * A typical use of "`CX_OBJECT_MANAGER_ADD()`" or "`CX_OBJECT_MANAGER_ADD_RESULT()`" is:
@@ -165,7 +169,8 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
 }
 
 /**
- * Destroy a given object manager and all the objects it is responsible for.
+ * Destroy a given object manager and all the objects it is responsible for, in the context of an unsuccessful
+ * function completion.
  * @param inManager The manager to destroy.
  */
 
@@ -185,6 +190,16 @@ void CX_ObjectManagerDisposeOnError(CX_ObjectManager inManager) {
 
 void CX_ObjectManagerDispose(CX_ObjectManager inManager) {
     __CX_ObjectManagerDispose(inManager, false);
+}
+
+/**
+ * Destroy a given object manager and all the objects it is responsible for, in the context of a successful
+ * function completion.
+ * @param inManager The manager to destroy.
+ */
+
+void CX_ObjectManagerDisposeAllOnSuccess(CX_ObjectManager inManager) {
+    __CX_ObjectManagerDispose(inManager, true);
 }
 
 /**

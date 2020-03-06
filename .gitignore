@@ -7,3 +7,5 @@ Makefile
 *.cbp
 CTestTestfile.cmake
 Testing
+mem-ko.txt
+mem-ok.txt

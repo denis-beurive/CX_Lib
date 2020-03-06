@@ -1,5 +1,7 @@
 /**
- * This file contains the implement of an execution status holder.
+ * @file
+ *
+ * @biref This file contains the implement of the Status object.
  *
  * You often need to retrieve status information from the execution
  * of a function. A simple return value may not be sufficient. For

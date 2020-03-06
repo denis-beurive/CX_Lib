@@ -1,5 +1,7 @@
 /**
- * @file This file implements the Array API.
+ * @file
+ *
+ * @brief This file implements the Array object: a dynamic array.
  */
 
 #include <stdlib.h>
@@ -7,6 +9,7 @@
 #include <stdio.h>
 #include "CX_Array.h"
 #include "CX_UTest.h"
+#include "CX_ObjectManager.h"
 
 /**
  * Create a new Array object.
@@ -28,7 +31,6 @@
  * Array object when you need the Array object anymore.
  */
 CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(void*, CX_Status)) {
-
     CX_Array array = (CX_Array)malloc(sizeof(struct CX_ArrayType));
     if (NULL == array) {
         return NULL;
@@ -84,23 +86,34 @@ void **CX_ArrayGetElements(CX_Array inArray) {
  */
 CX_Array CX_ArrayDup(CX_Array inArray, CX_Status outStatus) {
     CX_StatusReset(outStatus);
-    CX_Array clone = CX_ArrayCreate(inArray->elementDisposer, inArray->elementCloner);
+    CX_ObjectManager m = CX_ObjectManagerCreate();
+
+    CX_Array clone = CX_ArrayCreate(inArray->elementDisposer, inArray->elementCloner); // To free
     if (NULL == clone) {
+        CX_ObjectManagerDisposeOnError(m);
         CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
         return NULL;
     }
+    CX_OBJECT_MANAGER_ADD_RESULT(m, clone, CX_ArrayDispose);
+
     for (int i=0; i < CX_ArrayGetCount(inArray); i++) {
         void *element = CX_ArrayGetElementAt(inArray, i);
+        // clonedElement must not be disposed!
         void *clonedElement = inArray->elementCloner(element, outStatus);
         if (NULL == clonedElement) {
             // The status is set.
+            CX_ObjectManagerDisposeOnError(m);
             return NULL;
         }
+
         if (NULL == CX_ArrayAdd(clone, clonedElement)) {
+            // The status is set.
+            CX_ObjectManagerDisposeOnError(m);
             CX_StatusSetError(outStatus, errno, "Cannot allocate memory!");
             return NULL;
         }
     }
+    CX_ObjectManagerDispose(m);
     return clone;
 }
 
@@ -124,6 +137,7 @@ void *CX_ArrayGetElementAt(CX_Array inArray, unsigned int inIndex) {
  * Add an element at the end of a given Array object.
  * @param inArray The Array object.
  * @param inElement A pointer to the element to add to the end of the Array object.
+ * Please note that the added element is not cloned!
  * @return Upon successful completion the function returns a pointer to the element added element (that is, it returns
  * the value of `inElement`). Otherwise, the function returns the value NULL. This means that the system could not
  * allocate memory.
@@ -200,7 +214,7 @@ void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, CX_Sta
  * If the element must be kept, then the function must return the value true.
  * Otherwise, it returns the value false.
  * @param outStatus The Status object.
- * @return If elements are found, then the function returns a dynamic array the contains the elements.
+ * @return If elements are found, then the function returns a dynamic array that contains the elements.
  * Otherwise, the function returns the value NULL.
  * @warning The value NULL may be returned if the system ran out of memory. Thus, you should always examine the Status
  * object outStatus.
@@ -208,23 +222,32 @@ void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, CX_Sta
  */
 CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outStatus) {
     CX_StatusReset(outStatus);
+    CX_ObjectManager m = CX_ObjectManagerCreate();
     CX_Array found = CX_ArrayCreate(NULL, inArray->elementCloner);
+    if (NULL == found) {
+        CX_ObjectManagerDisposeOnError(m);
+        CX_StatusSetError(outStatus, 0, "Cannot allocate memory!");
+        return NULL;
+    }
+    CX_OBJECT_MANAGER_ADD_RESULT(m, found, CX_ArrayDispose);
 
     bool foundElement = false;
     for (unsigned int i=0; i<inArray->count; i++) {
         if (inKeep(inArray->elements[i])) {
             foundElement = true;
             if (NULL == CX_ArrayAdd(found, inArray->elements[i])) {
+                CX_ObjectManagerDisposeOnError(m);
                 CX_StatusSetError(outStatus, 0, "Cannot allocate memory!");
                 return NULL;
             }
         }
     }
     if (! foundElement) {
-        CX_ArrayDispose(found);
+        CX_ObjectManagerDisposeAllOnSuccess(m);
         return NULL;
     }
 
+    CX_ObjectManagerDispose(m);
     return found;
 }
 
@@ -232,6 +255,7 @@ CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outSta
  * Insert an element at a given position within a given Array object.
  * @param inArray The Array object.
  * @param inElement A pointer to the element to insert.
+ * Please note tat the inserted element is not cloned.
  * @param inIndex The position within the Array object.
  * @param outStatus The Status object.
  * @return Upon successful completion the function returns a pointer to the inserted element.
@@ -241,6 +265,7 @@ CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outSta
  */
 void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, CX_Status outStatus) {
     CX_StatusReset(outStatus);
+
     if (inIndex >= inArray->count) {
         CX_StatusSetError(outStatus, 0, "Invalid index %u. The array only contains %u elements!", inIndex,
                           inArray->count);
@@ -258,6 +283,7 @@ void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, 
         inArray->elements[i] = inArray->elements[i-1];
     }
     inArray->elements[inIndex] = inElement;
+
     return inElement;
 }
 
@@ -265,10 +291,12 @@ void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, 
  * Replace an element by another one in a given Array object, at a given position.
  * @param inArray The Array object.
  * @param inElement The replacement element.
+ * Please note tat the element that is replaced is not cloned.
  * @param inIndex The position, within the Array object, of the element to replace.
  * @param outStatus The Status object.
  * @return Upon successful completion, the function returns the value true.
- * Otherwise, the function returns the value false. In this case, you should examine the Status object.
+ * Otherwise, the function returns the value false. In this case, you should examine the Status object:
+ * A failure can be the result of an invalid index or an insufficient memory.
  */
 
 bool CX_ArrayReplaceAt(CX_Array inArray, void *inElement, unsigned int inIndex, CX_Status outStatus) {

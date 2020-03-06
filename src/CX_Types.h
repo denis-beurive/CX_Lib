@@ -1,3 +1,9 @@
+/**
+ * @file
+ *
+ * @brief This file defines all types used within the CX_Lib library.
+ */
+
 #ifndef CX_LIB_CX_TYPES_H
 #define CX_LIB_CX_TYPES_H
 

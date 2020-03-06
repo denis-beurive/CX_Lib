@@ -1,5 +1,7 @@
 /**
- * This file contains the implementation of a very basic template processor.
+ * @file
+ *
+ * @brief This file contains the implementation of a very basic template processor.
  *
  * The template processor accepts 2 inputs:
  * - a zero terminated string of characters tat represents the template.

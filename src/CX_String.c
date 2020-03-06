@@ -1,5 +1,7 @@
 /**
- * @file This file implement the String API.
+ * @file
+ *
+ * @brief This file implement the String API.
  */
 
 #include <stdio.h>
