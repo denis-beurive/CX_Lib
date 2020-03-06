@@ -120,7 +120,6 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
 
         // If we should destroy all objects, or if the object must be destroyed anyway, then destroy it.
         if (inAll || (! o.keep)) {
-
             if (NULL != dbg) {
                 fprintf(dbg, "-%p %s %s [%s:%d]\n",
                         ptr,
@@ -141,9 +140,11 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
                     o.pointer = NULL;
                 }
             }
+
             free(o.file);
             continue;
         }
+
         // For debug only.
         if (NULL != dbg) {
             fprintf(dbg, "-%p %s %s [%s:%d]\n",
@@ -249,7 +250,7 @@ static void __CX_ObjectManagerAddPtr(
     inManager->objects[inManager->count].ptr_pointer = inPointer;
     inManager->objects[inManager->count].disposer = inDisposer;
     inManager->objects[inManager->count].keep = inKeep;
-    inManager->objects[inManager->count].file = inFile;
+    inManager->objects[inManager->count].file = strdup(inFile);
     inManager->objects[inManager->count].line = inLine;
     inManager->count += 1;
 
@@ -321,7 +322,7 @@ static void __CX_ObjectManagerAdd(
     in_manager->objects[in_manager->count].ptr_pointer = NULL;
     in_manager->objects[in_manager->count].disposer = inDisposer;
     in_manager->objects[in_manager->count].keep = inKeep;
-    in_manager->objects[in_manager->count].file = inFile;
+    in_manager->objects[in_manager->count].file = strdup(inFile);
     in_manager->objects[in_manager->count].line = inLine;
     in_manager->count += 1;
 
@@ -420,4 +421,3 @@ void CX_ObjectManagerAddResult(
         int inLine) {
     __CX_ObjectManagerAdd(inManager, inPointer, inDisposer, true, inFile, inLine);
 }
-
