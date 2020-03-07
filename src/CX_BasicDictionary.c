@@ -1,17 +1,20 @@
 /**
- * This file implements a very basic dictionary (a collection of key-value
+ * @file
+ *
+ * @brief This file implements a very basic dictionary (a collection of key-value
  * pairs).
  *
  * Very important note:
  *
- * (1) The implement is trivial! This implementation is **NOT** intended to be used
+ * The implement is trivial! This implementation is **NOT** intended to be used
  * with a large amount of key-value pairs! If you need to manipulate large amount of
- * data, then grad a specialised library (SQLite, BerkeleyDB...).
+ * data, then grab a specialised library (SQLite, BerkeleyDB...).
  */
 
 #include <stdlib.h>
 #include <string.h>
 #include "CX_BasicDictionary.h"
+#include "CX_ObjectManager.h"
 
 CX_BasicDictionaryEntry __SL_BasicDictionarySearch(CX_BasicDictionary inDictionary, char *key);
 CX_BasicDictionaryEntry __SL_BasicDictionaryEntryCreate();
@@ -67,7 +70,9 @@ bool CX_BasicDictionaryExists(CX_BasicDictionary dictionary, char *key) {
  * Add, or update, a given key-value pair within a basic dictionary.
  * @param dictionary The dictionary.
  * @param key The key.
+ * Please note that we add a clone of the key.
  * @param value The value.
+ * Please note that we add a clone of the value.
  * @return Upon successful completion, the function returns the value true.
  * Otherwise, it return the value false (this means that the function could
  * not allocate memory).
@@ -86,28 +91,35 @@ bool CX_BasicDictionaryAdd(CX_BasicDictionary dictionary, char *key, char *value
     }
 
     // The key was not already present within the dictionary.
-    dictionary->length += 1;
+    CX_ObjectManager m = CX_ObjectManagerCreate();
 
     dictionary->entries = (CX_BasicDictionaryEntry*)realloc(dictionary->entries,
-            dictionary->length * sizeof(CX_BasicDictionaryEntry*));
+                                                            (dictionary->length + 1) * sizeof(CX_BasicDictionaryEntry*));
     if (NULL == dictionary->entries) {
+        CX_ObjectManagerDisposeOnError(m);
         return false;
     }
     CX_BasicDictionaryEntry newEntry = __SL_BasicDictionaryEntryCreate();
     if (NULL == newEntry) {
+        CX_ObjectManagerDisposeOnError(m);
+        return false;
+    }
+    CX_OBJECT_MANAGER_ADD_RESULT(m, newEntry, __SL_BasicDictionaryEntryDispose);
+
+    newEntry->key = strdup(key); // Free with the disposing of the entry
+    if (NULL == newEntry->key) {
+        CX_ObjectManagerDisposeOnError(m);
         return false;
     }
 
-    newEntry->key = strdup(key);
-    if (NULL == newEntry->key) {
-        return false;
-    }
-    newEntry->value = strdup(value);
+    newEntry->value = strdup(value); // Free with the disposing of the entry
     if (NULL == newEntry->value) {
         return false;
     }
 
-    dictionary->entries[dictionary->length - 1] = newEntry;
+    dictionary->entries[dictionary->length] = newEntry;
+    dictionary->length += 1;
+    CX_ObjectManagerDispose(m);
     return true;
 }
 

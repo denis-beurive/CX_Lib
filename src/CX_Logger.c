@@ -1,3 +1,9 @@
+/**
+ * @file
+ *
+ * @brief The file implement the Logger object.
+ */
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -6,20 +12,21 @@
 #include "CX_Logger.h"
 #include "CX_String.h"
 #include "CX_ArrayString.h"
+#include "CX_ObjectManager.h"
 
 /*! \brief Maximum number of characters for a date.
  */
 
 #define MAX_TIME_SIZE 512
 
-
-
 /**
  * Return the current timestamp.
  * @return The current timestamp.
  * @warning The returned pointer points to a statically allocated static memory location.
  * Do not try to free it!
+ * @note It seems that the function `strftime()` creates a memory leak.
  */
+
 static char* timestamp()
 {
     static char  strTimestamp[MAX_TIME_SIZE];
@@ -32,9 +39,10 @@ static char* timestamp()
  * Return a string of characters that represents the name of a given LOG level ID.
  * @param inLogId The LOG level ID.
  * @return The function returns string of characters that represents the name of a given LOG level ID.
- * @warning The returned pointer points to a statically allocated static memory location.
+ * @warning The returned pointer points to a **statically allocated** memory location.
  * Do not try to free it!
  */
+
 static char* levelName(enum CX_LoggerLevel inLogId) {
     static char fatal[] = "FAT";
     static char error[] = "ERR";
@@ -60,22 +68,41 @@ static char* levelName(enum CX_LoggerLevel inLogId) {
 }
 
 CX_Logger CX_LoggerCreate(char *inPath, char *inSession) {
+    CX_ObjectManager m = CX_ObjectManagerCreate();
+
     CX_Logger logger = (CX_Logger)malloc(sizeof(struct CX_LoggerType));
-    logger->path = strdup(inPath);
+    CX_OBJECT_MANAGER_ADD_RESULT(m, logger, CX_LoggerDispose);
+    if (NULL == logger) {
+        CX_ObjectManagerDisposeOnError(m);
+        return NULL;
+    }
+
+    logger->path = strdup(inPath); // Free with the Logger object.
     if (NULL == logger->path) {
+        CX_ObjectManagerDisposeOnError(m);
         return NULL;
     }
-    logger->session = strdup(inSession);
+
+    logger->session = strdup(inSession); // Free with the Logger object.
     if (NULL == logger->session) {
+        CX_ObjectManagerDisposeOnError(m);
         return NULL;
     }
+
+    CX_ObjectManagerDispose(m);
     return logger;
 }
 
 void CX_LoggerDispose(CX_Logger inLogger) {
-    free(inLogger->session);
-    free(inLogger->path);
-    free(inLogger);
+    if (NULL != inLogger->session) {
+        free(inLogger->session);
+    }
+    if (NULL != inLogger->path) {
+        free(inLogger->path);
+    }
+    if (NULL != inLogger) {
+        free(inLogger);
+    }
 }
 
 bool CX_LoggerLog(CX_Logger inLogger, enum CX_LoggerLevel inLevel, char *inMessage, CX_Status outStatus) {
