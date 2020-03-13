@@ -10,7 +10,7 @@ void CX_LoggerDispose(CX_Logger inLogger);
 bool CX_LoggerLog(CX_Logger inLogger, enum CX_LoggerLevel inLevel, char *inMessage, CX_Status outStatus);
 bool CX_LoggerLogFatal(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
 bool CX_LoggerLogError(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
-bool CX_LoggerLogWaring(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
+bool CX_LoggerLogWarning(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
 bool CX_LoggerLogInfo(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
 bool CX_LoggerLogDebug(CX_Logger inLogger, char *inMessage, CX_Status outStatus);
 

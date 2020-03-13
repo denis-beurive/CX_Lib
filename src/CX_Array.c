@@ -12,7 +12,7 @@
 #include "CX_ObjectManager.h"
 
 /**
- * Create a new Array object.
+ * @brief Create a new Array object.
  * @param elementDisposer Pointer to a function used to free an element of the Array object.
  * The signature of this function is:  void elementDisposer (void *element)
  *    Where:
@@ -27,8 +27,8 @@
  *    Upon successful completion the function must return a pointer to the cloned element.
  *    Otherwise, the function must return the value NULL.
  * @return The function returns a new dynamic array.
- * @warning You must call the function CX_ArrayDispose() in order to free all resources allocated for the new dynamic
- * Array object when you need the Array object anymore.
+ * @warning Please keep in minf that the returned Array object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayDispose()`.
  */
 CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(void*, CX_Status)) {
     CX_Array array = (CX_Array)malloc(sizeof(struct CX_ArrayType));
@@ -43,7 +43,7 @@ CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(voi
 }
 
 /**
- * Free all resources allocated for a given Array object.
+ * @brief Free all resources allocated for a given Array object.
  * @param inArray The Array object to free.
  */
 void CX_ArrayDispose(CX_Array inArray) {
@@ -59,7 +59,7 @@ void CX_ArrayDispose(CX_Array inArray) {
 }
 
 /**
- * Return the number of elements in the Array object.
+ * @brief Return the number of elements in the Array object.
  * @param inArray The Array object we want to get the number of elements from.
  * @return The function returns the number of elements in the given Array object.
  */
@@ -68,7 +68,7 @@ unsigned int CX_ArrayGetCount(CX_Array inArray) {
 }
 
 /**
- * Returns an array that contains the elements of a given Array object.
+ * @brief Returns an array that contains the elements of a given Array object.
  * @param inArray the Array object.
  * @return The function returns a pointer to an array that contains the elements of a given Array object.
  */
@@ -78,11 +78,13 @@ void **CX_ArrayGetElements(CX_Array inArray) {
 }
 
 /**
- * Clone a given Array object.
+ * @brief Clone a given Array object.
  * @param inArray The Array object to clone.
  * @param outStatus The Status object.
  * @return Upon successful completion the function returns a clone of the given Array object.
  * Otherwise the function returns the value NULL (which means that the process runs out of memory).
+ * @warning Please keep in minf that the returned Array object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayDispose()`.
  */
 CX_Array CX_ArrayDup(CX_Array inArray, CX_Status outStatus) {
     CX_StatusReset(outStatus);
@@ -118,7 +120,7 @@ CX_Array CX_ArrayDup(CX_Array inArray, CX_Status outStatus) {
 }
 
 /**
- * Returns the element positioned at a given position within a given Array object.
+ * @brief Returns the element positioned at a given position within a given Array object.
  * @param inArray The Array object.
  * @param inIndex The position within the Array object.
  * @return Upon successful completion the function returns a pointer to the element.
@@ -134,7 +136,7 @@ void *CX_ArrayGetElementAt(CX_Array inArray, unsigned int inIndex) {
 }
 
 /**
- * Add an element at the end of a given Array object.
+ * @brief Add an element at the end of a given Array object.
  * @param inArray The Array object.
  * @param inElement A pointer to the element to add to the end of the Array object.
  * Please note that the added element is not cloned!
@@ -154,7 +156,7 @@ void *CX_ArrayAdd(CX_Array inArray, void *inElement) {
 }
 
 /**
- * Remove an element located to a given position within a given Array object.
+ * @brief Remove an element located to a given position within a given Array object.
  * @param inArray The Array object.
  * @param inIndex The position where the element will be inserted.
  * @param inFree This flag tells the function whether the removed element should be freed or not.
@@ -206,11 +208,11 @@ void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, CX_Sta
 }
 
 /**
- * Search for elements within a given Array object.
+ * @brief Search for elements within a given Array object.
  * @param inArray The Array object.
  * @param inKeep A pointer to a function used to decide whether an element should be kept or not.
- * The signature of this function is: bool elementCompare (void *element)
- * - element: this parameter will be assigned a pointer to an element of the array.
+ * The signature of this function is: `bool elementCompare (void *element)`.
+ * `element`: this parameter will be assigned a pointer to an element of the array.
  * If the element must be kept, then the function must return the value true.
  * Otherwise, it returns the value false.
  * @param outStatus The Status object.
@@ -218,7 +220,8 @@ void *CX_ArrayRemove(CX_Array inArray, unsigned int inIndex, bool inFree, CX_Sta
  * Otherwise, the function returns the value NULL.
  * @warning The value NULL may be returned if the system ran out of memory. Thus, you should always examine the Status
  * object outStatus.
- * @warning Please remember to free the resources allocated for the returned dynamic Array object.
+ * @warning Please keep in minf that the returned Array object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayDispose()`.
  */
 CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outStatus) {
     CX_StatusReset(outStatus);
@@ -252,7 +255,7 @@ CX_Array CX_ArraySearch(CX_Array inArray, bool(*inKeep)(void*), CX_Status outSta
 }
 
 /**
- * Insert an element at a given position within a given Array object.
+ * @brief Insert an element at a given position within a given Array object.
  * @param inArray The Array object.
  * @param inElement A pointer to the element to insert.
  * Please note tat the inserted element is not cloned.
@@ -288,7 +291,7 @@ void *CX_ArrayInsertAt(CX_Array inArray, void *inElement, unsigned int inIndex, 
 }
 
 /**
- * Replace an element by another one in a given Array object, at a given position.
+ * @brief Replace an element by another one in a given Array object, at a given position.
  * @param inArray The Array object.
  * @param inElement The replacement element.
  * Please note tat the element that is replaced is not cloned.

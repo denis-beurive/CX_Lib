@@ -10,7 +10,7 @@
 #include "CX_ArrayString.h"
 
 /**
- * Dispose an element of an ArrayString object (that is, a String object).
+ * @brief Dispose an element of an ArrayString object (that is, a String object).
  * @param inString The String object to dispose.
  */
 
@@ -19,7 +19,7 @@ static void _stringDisposer(void *inString) {
 }
 
 /**
- * Clone an element of an ArrayString object (that is, a String object).
+ * @brief Clone an element of an ArrayString object (that is, a String object).
  * @param inString The String object to clone.
  * @param outStatus The status of the operation.
  * @return Upon successful completion the function returns a pointer to a new String object.
@@ -38,11 +38,13 @@ static void* _stringCloner(void *inString, CX_Status outStatus) {
 }
 
 /**
- * Create an ArrayString object.
+ * @brief Create an ArrayString object.
  * @param inString Optional string. If this value is not NULL, then the ArrayString object will be initialized with this
  * zero terminated string of characters as the first element.
  * @return Upon successful completion the function returns a newly allocated ArrayString object.
  * Otherwise it returns the value NULL (which means that the process ran out of memory).
+ * @warning Please keep in mind that the returned object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayStringDispose()`.
  */
 
 CX_ArrayString CX_ArrayStringCreate(CX_String inString) {
@@ -56,7 +58,7 @@ CX_ArrayString CX_ArrayStringCreate(CX_String inString) {
 }
 
 /**
- * Free all resources allocated with a given ArrayString object.
+ * @brief Free all resources allocated with a given ArrayString object.
  * @param inArray The ArrayString object fo free.
  */
 
@@ -65,7 +67,7 @@ void CX_ArrayStringDispose(CX_ArrayString inArray) {
 }
 
 /**
- * Returns the number of String object within a given ArrayString object.
+ * @brief Returns the number of String object within a given ArrayString object.
  * @param inArray The ArrayString object.
  * @return The function returns the number of String object within a given ArrayString object.
  */
@@ -75,9 +77,11 @@ unsigned long CX_ArrayStringGetCount(CX_ArrayString inArray) {
 }
 
 /**
- * Returns a pointer to the array of Strings within the ArrayString object.
+ * @brief Returns a pointer to the array of Strings within the ArrayString object.
  * @param inArray The ArrayString object.
  * @return The function returns a pointer to the array of Strings within the ArrayString object.
+ * @warning Please keep in mind that the returned object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayStringDispose()`.
  */
 
 CX_String *CX_ArrayStringGetStrings(CX_ArrayString inArray) {
@@ -85,18 +89,21 @@ CX_String *CX_ArrayStringGetStrings(CX_ArrayString inArray) {
 }
 
 /**
- * Make a copy of a given list of ArrayString object.
+ * @brief Make a copy of a given list of ArrayString object.
  * @param inArray The ArrayString object to copy.
  * @param outStatus The Status object.
  * @return Upon successful completion, the function returns a copy of the given ArrayString object.
  * Otherwise, the function returns the value NULL (which means that the process ran out of memory).
+ * @warning Please keep in mind that the returned object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayStringDispose()`.
  */
 CX_ArrayString CX_ArrayStringDup(CX_ArrayString inArray, CX_Status outStatus) {
     return (CX_ArrayString) CX_ArrayDup((CX_Array) inArray, outStatus);
 }
 
 /**
- * Add a string at the end of a given ArrayString object.
+ * @brief Add a string at the end of a given ArrayString object.
+ *
  * The added string is built with a clone of the given zero terminated string of characters `inString`.
  * @param inArray The ArrayString object.
  * @param inString The zero terminated string to add.
@@ -112,7 +119,8 @@ bool CX_ArrayStringAddCloneChar(CX_ArrayString inArray, char* inString) {
 }
 
 /**
- * Replace an element of a given ArrayString object, by a given string.
+ * @brief Replace an element of a given ArrayString object, by a given string.
+ *
  * The replacement string is built with a clone of the given zero terminated string of characters `inString`.
  * @param inArray The ArrayString object.
  * @param inIndex The index to which the replacement must take place.
@@ -140,12 +148,14 @@ bool CX_ArrayStringReplaceAtCloneChar(
 }
 
 /**
- * Return the String object at given position within a given ArrayString object.
+ * @brief Return the String object at given position within a given ArrayString object.
  * @param inArray The ArrayString object.
  * @param inIndex The position within the ArrayString object.
  * @return Upon successful completion the function returns a pointer to the String object.
  * Otherwise, the function returns the value NULL. This means that the given index is not valid (greater or equal to the
  * total number of elements in the ArrayString object).
+ * @warning Please keep in mind that the returned object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayStringDispose()`.
  */
 
 CX_String CX_ArrayStringGetStringAt(CX_ArrayString inArray, unsigned long inIndex) {
@@ -153,12 +163,14 @@ CX_String CX_ArrayStringGetStringAt(CX_ArrayString inArray, unsigned long inInde
 }
 
 /**
- * Join the elements of a given ArrayString object into a single String object with fields separated by a given boundary.
+ * @brief Join the elements of a given ArrayString object into a single String object with fields separated by a given boundary.
  * @param inArray The ArrayString object.
  * @param inGlue The boundary used to join the ArrayString object elements.
  * This argument is a zero terminated string of characters.
  * @return Upon successful completion the function returns a String object.
  * Otherwise, it returns the value NULL (which means that the process ran out of memory).
+ * @warning Please keep in mind that the returned object has been **dynamically allocated**.
+ * You should free it with the function `CX_ArrayStringDispose()`.
  */
 
 CX_String CX_ArrayStringJoinChar(CX_ArrayString inArray, char *inGlue) {
@@ -191,7 +203,7 @@ CX_String CX_ArrayStringJoinChar(CX_ArrayString inArray, char *inGlue) {
 }
 
 /**
- * Prepend all elements of a given ArrayString with a given string of characters.
+ * @brief Prepend all elements of a given ArrayString with a given string of characters.
  * @param inArray ArrayString which elements must be prepended.
  * @param inPrefix The zero terminated string od characters to prepend.
  * @return Upon successful completion the function returns the value true.
@@ -211,7 +223,7 @@ bool CX_ArrayStringPrependChar(CX_ArrayString inArray, char *inPrefix) {
 }
 
 /**
- * Append a given string of characters to the end of all elements of a given ArrayString.
+ * @brief Append a given string of characters to the end of all elements of a given ArrayString.
  * @param inArray ArrayString which elements must be appended.
  * @param inPrefix The zero terminated string od characters to append.
  * @return Upon successful completion the function returns the value true.
@@ -229,4 +241,3 @@ bool CX_ArrayStringAppendChar(CX_ArrayString inArray, char *inPrefix) {
     CX_StatusDispose(status);
     return true;
 }
-

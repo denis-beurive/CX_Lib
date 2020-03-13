@@ -14,7 +14,7 @@
 #include "CX_ObjectManager.h"
 
 /**
- * Create a FileText object.
+ * @brief Create a FileText object.
  * @param inPath Path to the file.
  * @return Upon successful completion, the function returns a new FileText object.
  * Otherwise, it returns the value NULL.
@@ -40,7 +40,7 @@ CX_FileText CX_FileTextCreate(char *inPath) {
 }
 
 /**
- * Dispose a FileText object.
+ * @brief Dispose a FileText object.
  * @param inFileText The FileText object to dispose.
  */
 
@@ -54,7 +54,7 @@ void CX_FileTextDispose(CX_FileText inFileText) {
 }
 
 /**
- * Load the content of the file associated with a given FileText object.
+ * @brief Load the content of the file associated with a given FileText object.
  * @param inFileText The FileText object.
  * @param outFileLength Pointer to a long integer that will be used to store the number of read bytes
  * (that is, the length of the file).
@@ -69,6 +69,7 @@ void CX_FileTextDispose(CX_FileText inFileText) {
  * pointer points to a buffer that has been dynamically allocated (using `malloc()`). Thus,
  * you should free the allocated memory (using `free()`)!
  */
+
 char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, CX_Status outStatus) {
     FILE *fileHd;
     char *content;
@@ -138,7 +139,8 @@ char *CX_FileTextSlurp(CX_FileText inFileText, unsigned long *outFileLength, CX_
 }
 
 /**
- * Load the content of the file associated with a given FileText object.
+ * @brief Load the content of the file associated with a given FileText object.
+ *
  * Return the content as an ArrayString object: each element of the array is a string that represents a line of text.
  * The end of line sequence is defined by the regular expression "\r?\n".
  * @param inFileText The FileText object.

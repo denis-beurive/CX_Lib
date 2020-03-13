@@ -33,11 +33,12 @@
 #include "CX_Template.h"
 
 /**
- * Create a template.
+ * @brief Create a template.
  * @param inTemplateSpecification Zero terminated that represents the template specification.
  * @return The function returns the new template.
  * @warning Make sure to provide a zero terminated string of characters for the template specification.
  */
+
 CX_Template CX_TemplateCreate(char *inTemplateSpecification) {
     CX_Template template;
     template = (CX_Template)malloc(sizeof(struct CX_TemplateType));
@@ -49,24 +50,28 @@ CX_Template CX_TemplateCreate(char *inTemplateSpecification) {
 }
 
 /**
- * Destroy a template.
+ * @brief Destroy a template.
  * @param inTemplate The template to destroy.
  * @warning Don't forget to destroy a template once you don't need it anymore.
  * Memory has been allocated for the template. This memory needs to be freed.
  */
+
 void CX_TemplateDispose(CX_Template inTemplate) {
     if (NULL != inTemplate->_result) {
         free(inTemplate->_result);
     }
-    free(inTemplate);
+    if (NULL != inTemplate) {
+        free(inTemplate);
+    }
 }
 
 /**
- * Reset a template
+ * @brief Reset a template
  * @param inTemplate The template to reset.
  * @warning This function is intended to be used if you need to reuse the template
  * processor. It resets all internal states and frees all memory that needs to be freed.
  */
+
 void CX_TemplateReset(CX_Template inTemplate) {
     if (NULL != inTemplate->_result) {
         free(inTemplate->_result);
@@ -74,20 +79,21 @@ void CX_TemplateReset(CX_Template inTemplate) {
 }
 
 /**
- * Process a given template, given a list of tag-value pairs.
+ * @brief Process a given template, given a list of tag-value pairs.
  * @param inTemplate The template to process.
  * @param inDictionary The list of tag-value pairs.
  * @return Upon successful completion, the function returns a zero terminated string
  * that represents the processed template. Otherwise, the function returns the value NULL.
  * @warning All the tags used within the template specification must be defined within the
  * given list of tag-value pairs.
- * @warning The returned string of characters has been dynamically allocated! You may free it
- * yourself by calling free(). However, you should use one of these function to free it:
- * - CX_TemplateDispose(): this function frees the entire template processor. It is intended to be
+ * @warning The returned string of characters has been **dynamically allocated**. You may free it
+ * yourself by calling `free()`. However, you should use one of these function to free it:
+ * * `CX_TemplateDispose()`: this function frees the entire template processor. It is intended to be
  *   used once you don't need it anymore.
- * - CX_TemplateReset(): the function only frees the result of a previous execution. It is intended to be
+ * * `CX_TemplateReset()`: the function only frees the result of a previous execution. It is intended to be
  *   used if you need to reuse the template processor.
  */
+
 char *CX_TemplateProcess(CX_Template inTemplate, CX_BasicDictionary inDictionary) {
     CX_TemplateReset(inTemplate);
     regex_t re;

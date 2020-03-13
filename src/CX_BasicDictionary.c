@@ -21,12 +21,13 @@ CX_BasicDictionaryEntry __SL_BasicDictionaryEntryCreate();
 void __SL_BasicDictionaryEntryDispose(CX_BasicDictionaryEntry inEntry);
 
 /**
- * Create a basic dictionary.
+ * @brief Create a basic dictionary.
  * @return Upon successful completion, the function returns a newly allocated basic dictionary.
  * Otherwise, the function returns the value NULL, which means that the system could not allocate memory.
  * @warning The returned basic dictionary has been allocated using malloc().
  * You should call CX_BasicDictionaryDispose() when you are done with the basic dictionary.
  */
+
 CX_BasicDictionary CX_BasicDictionaryCreate() {
     CX_BasicDictionary dictionary = (CX_BasicDictionary)malloc(sizeof(struct CX_BasicDictionaryType));
     if (NULL == dictionary) {
@@ -38,11 +39,12 @@ CX_BasicDictionary CX_BasicDictionaryCreate() {
 }
 
 /**
- * Destroy a basic dictionary.
+ * @brief Destroy a basic dictionary.
  * @param inDictionary The basic dictionary to destroy.
  * @warning A basic dictionary has been allocated using malloc().
  * You should call CX_BasicDictionaryDispose() when you are done with a basic dictionary.
  */
+
 void CX_BasicDictionaryDispose(CX_BasicDictionary inDictionary) {
     for (int i=0; i<inDictionary->length; i++) {
         __SL_BasicDictionaryEntryDispose(inDictionary->entries[i]);
@@ -52,12 +54,13 @@ void CX_BasicDictionaryDispose(CX_BasicDictionary inDictionary) {
 }
 
 /**
- * Test whether a basic dictionary contains a given key or not.
+ * @brief Test whether a basic dictionary contains a given key or not.
  * @param dictionary The dictionary.
  * @param key The key.
  * @return If the basic dictionary contains the given key, then the function returns the value true.
  * Otherwise, it returns the value false.
  */
+
 bool CX_BasicDictionaryExists(CX_BasicDictionary dictionary, char *key) {
     CX_BasicDictionaryEntry entry = __SL_BasicDictionarySearch(dictionary, key);
     if (NULL != entry) {
@@ -67,7 +70,7 @@ bool CX_BasicDictionaryExists(CX_BasicDictionary dictionary, char *key) {
 }
 
 /**
- * Add, or update, a given key-value pair within a basic dictionary.
+ * @brief Add, or update, a given key-value pair within a basic dictionary.
  * @param dictionary The dictionary.
  * @param key The key.
  * Please note that we add a clone of the key.
@@ -77,6 +80,7 @@ bool CX_BasicDictionaryExists(CX_BasicDictionary dictionary, char *key) {
  * Otherwise, it return the value false (this means that the function could
  * not allocate memory).
  */
+
 bool CX_BasicDictionaryAdd(CX_BasicDictionary dictionary, char *key, char *value) {
     CX_BasicDictionaryEntry entry = __SL_BasicDictionarySearch(dictionary, key);
     if (NULL != entry) {
@@ -124,7 +128,7 @@ bool CX_BasicDictionaryAdd(CX_BasicDictionary dictionary, char *key, char *value
 }
 
 /**
- * Given a key, returns the corresponding value within a basic dictionary.
+ * @brief Given a key, returns the corresponding value within a basic dictionary.
  * @param dictionary The dictionary.
  * @param key The key.
  * @return If the key was found, then the function returns the corresponding value.
@@ -144,13 +148,14 @@ char *CX_BasicDictionaryGetValue(CX_BasicDictionary dictionary, char *key) {
 // -------------------------------------------------------------------------
 
 /**
- * Search for a given key within a supplied dictionary.
+ * @brief Search for a given key within a supplied dictionary.
  * @param inDictionary The dictionary.
  * @param key The key.
  * @return If the key was found, then the function returns a pointer to the dictionary
  * entry that holds the key-pair value. Otherwise, the function returns the value NULL.
  * @note This is a private function.
  */
+
 CX_BasicDictionaryEntry __SL_BasicDictionarySearch(CX_BasicDictionary inDictionary, char *key) {
     for (int i=0; i < inDictionary->length; i++) {
         if (0 == strcmp(inDictionary->entries[i]->key, key)) {
@@ -161,11 +166,12 @@ CX_BasicDictionaryEntry __SL_BasicDictionarySearch(CX_BasicDictionary inDictiona
 }
 
 /**
- * Create a basic dictionary entry.
+ * @brief Create a basic dictionary entry.
  * @return Upon successful completion, the function returns a newly allocated basic dictionary entry.
  * Otherwise, the function returns the value NULL, which means that the system could not allocate memory.
  * @note This is a private function.
  */
+
 CX_BasicDictionaryEntry __SL_BasicDictionaryEntryCreate() {
     CX_BasicDictionaryEntry entry = (CX_BasicDictionaryEntry)malloc(sizeof(CX_BasicDictionaryEntry));
     if (NULL == entry) {
@@ -176,7 +182,7 @@ CX_BasicDictionaryEntry __SL_BasicDictionaryEntryCreate() {
 }
 
 /**
- * Destroy a basic dictionary entry.
+ * @brief Destroy a basic dictionary entry.
  * @param inEntry the basic dictionary entry to destroy.
  */
 void __SL_BasicDictionaryEntryDispose(CX_BasicDictionaryEntry inEntry) {

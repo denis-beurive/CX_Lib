@@ -102,7 +102,7 @@ void test_CX_LoggerLogWarning() {
     CX_Logger logger = CX_LoggerCreate("/tmp/test-log-warning.log", "123");
     CU_ASSERT_PTR_NOT_NULL_FATAL(logger);
 
-    bool rc = CX_LoggerLogWaring(logger, "This is a warning message.", status);
+    bool rc = CX_LoggerLogWarning(logger, "This is a warning message.", status);
     CU_ASSERT_TRUE(rc);
 
     CX_StatusDispose(status);

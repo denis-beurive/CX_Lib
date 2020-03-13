@@ -64,7 +64,7 @@
 #include "CX_ObjectManager.h"
 
 /**
- * Create an object manager.
+ * @brief Create an object manager.
  *
  * Example:
  *
@@ -95,7 +95,8 @@ CX_ObjectManager CX_ObjectManagerCreate() {
 }
 
 /**
- * Destroy a given object manager.
+ * @brief Destroy a given object manager.
+ *
  * Depending on the context, the manager may destroy all the objects it is responsible for, or it may destroy only the
  * ones that should be destroyed (this behavior depends on the value of the parameter "in_all").
  * @param inManager The manager to destroy.
@@ -169,7 +170,7 @@ static void __CX_ObjectManagerDispose(CX_ObjectManager inManager, bool inAll) {
 }
 
 /**
- * Destroy a given object manager and all the objects it is responsible for, in the context of an unsuccessful
+ * @brief Destroy a given object manager and all the objects it is responsible for, in the context of an unsuccessful
  * function completion.
  * @param inManager The manager to destroy.
  */
@@ -179,7 +180,8 @@ void CX_ObjectManagerDisposeOnError(CX_ObjectManager inManager) {
 }
 
 /**
- * Destroy a given object manager under successful completion.
+ * @brief Destroy a given object manager under successful completion.
+ *
  * All the objects that have been configured for destruction will be destroyed too.
  * @param inManager The manager to destroy.
  * @note Please note that an object should be destroyed under successful completion or not or not depends on the way it
@@ -193,7 +195,7 @@ void CX_ObjectManagerDispose(CX_ObjectManager inManager) {
 }
 
 /**
- * Destroy a given object manager and all the objects it is responsible for, in the context of a successful
+ * @brief Destroy a given object manager and all the objects it is responsible for, in the context of a successful
  * function completion.
  * @param inManager The manager to destroy.
  */
@@ -203,7 +205,8 @@ void CX_ObjectManagerDisposeAllOnSuccess(CX_ObjectManager inManager) {
 }
 
 /**
- * Place an object under the responsibility of a given object manager.
+ * @brief Place an object under the responsibility of a given object manager.
+ *
  * The object is identified by the address of the pointer that refers to it.
  * The manager becomes responsible for the **possible** object destruction (read further).
  * @param inManager The manager.
@@ -275,7 +278,8 @@ static void __CX_ObjectManagerAddPtr(
 }
 
 /**
- * Place an object under the responsibility of a given object manager.
+ * @brief Place an object under the responsibility of a given object manager.
+ *
  * The object is identified by the address of the memory location that hold it.
  * The manager becomes responsible for the **possible** object destruction (read further).
  * @param in_manager The manager.
@@ -347,7 +351,8 @@ static void __CX_ObjectManagerAdd(
 }
 
 /**
- * Place an object under the responsibility of a given object manager.
+ * @brief Place an object under the responsibility of a given object manager.
+ *
  * The object is identified by the address of the pointer that refers to it.
  * The object will **always** be destroyed when the manager is destroyed.
  * @param inManager The object manager.
@@ -369,10 +374,11 @@ void CX_ObjectManagerAddPtr(
 }
 
 /**
- * Place an object under the responsibility of a given object manager.
+ * @brief Place an object under the responsibility of a given object manager.
+ *
  * The object is identified by the address of the pointer that refers to it.
- * - The object will not be destroyed when the manager is destroyed under successful completion.
- * - The object will be destroyed when the manager is destroyed under unsuccessful completion.
+ * * The object will not be destroyed when the manager is destroyed under successful completion.
+ * * The object will be destroyed when the manager is destroyed under unsuccessful completion.
  * @param inManager The object manager.
  * @param inPointer The address of the pointer that holds the object address.
  * @param inDisposer The function used to destroy the object.
@@ -395,7 +401,8 @@ void CX_ObjectManagerAddPtrResult(
 }
 
 /**
- * Place an object under the responsibility of a given object manager.
+ * @brief Place an object under the responsibility of a given object manager.
+ *
  * The object is identified by the address to the memory location that holds it.
  * The object will **always** be destroyed when the manager is destroyed.
  * @param inManager The object manager.
@@ -416,10 +423,11 @@ void CX_ObjectManagerAdd(
 }
 
 /**
- * Place an object under the responsibility of a given object manager.
+ * @brief Place an object under the responsibility of a given object manager.
+ *
  * The object is identified by the address of the memory location that holds it.
- * - The object will not be destroyed when the manager is destroyed under successful completion.
- * - The object will be destroyed when the manager is destroyed under unsuccessful completion.
+ * * The object will not be destroyed when the manager is destroyed under successful completion.
+ * * The object will be destroyed when the manager is destroyed under unsuccessful completion.
  * @param inManager The object manager.
  * @param inPointer The address of the memory location that holds the object.
  * @param inDisposer The function used to destroy the object.

@@ -1,3 +1,9 @@
+/**
+ * @file
+ *
+ * @brief Header file for "CX_UTest.c".
+ */
+
 #ifndef SL_LIB_CX_UTEST_H
 #define SL_LIB_CX_UTEST_H
 

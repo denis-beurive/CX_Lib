@@ -1,5 +1,15 @@
+/**
+ * @file
+ *
+ * @brief Header for "CX_BashColor.c".
+ */
+
 #ifndef CX_LIB_CX_BASHCOLOR_H
 #define CX_LIB_CX_BASHCOLOR_H
+
+/**
+ * @brief Codes for the foreground colors.
+ */
 
 enum CX_BashColorForegroundColor{
     F_DEFAULT = 39,
@@ -21,6 +31,10 @@ enum CX_BashColorForegroundColor{
     F_WHITE = 97
 };
 
+/**
+ * @brief Codes for the background colors.
+ */
+
 enum CX_BashColorBackgroundColor{
     B_DEFAULT = 49,
     B_BLACK = 40,
@@ -41,6 +55,10 @@ enum CX_BashColorBackgroundColor{
     B_WHITE = 107
 };
 
+/**
+ * @bried Code that resets the color settings.
+ */
+
 #define CX_BASH_COLOR_RESET "\033[0m"
 
 void CX_BashColorReset();
@@ -56,7 +74,5 @@ void CX_BashColorPrintf(
         char *after,
         const char *inFmt,
         ...);
-
-void CX_BashColorReset();
 
 #endif //CX_LIB_CX_BASHCOLOR_H
