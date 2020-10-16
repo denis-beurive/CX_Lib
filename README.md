@@ -7,7 +7,9 @@
     cmake . && make clean && make && make test
 
 Please note that, in order to run the unit tests, you need to install:
-* [CUNIT](http://cunit.sourceforge.net/).
+* [CUNIT](http://cunit.sourceforge.net/). You may need to install the package `libtool`.
+  Create the `configure` script by executing `./bootstrap`. Then run `./configure && make`.
+  And, finally, `sudo make install`.
 * [mtrace](https://en.wikipedia.org/wiki/Mtrace).
 
 # Annex
