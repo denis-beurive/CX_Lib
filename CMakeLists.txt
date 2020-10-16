@@ -67,6 +67,8 @@ set(LIB_SRC src/CX_Status.c
         src/CX_UTest.h
         src/CX_ObjectManager.c
         src/CX_ObjectManager.h
+        src/CX_DoubleLinkedList.c
+        src/CX_DoubleLinkedList.h
         src/CX_Constants.h)
 
 add_library(CX_Lib ${LIB_SRC})
@@ -147,6 +149,13 @@ add_executable(test_CX_ObjectManager
 add_dependencies(test_CX_ObjectManager CX_Lib)
 target_link_libraries(test_CX_ObjectManager libcunit.a CX_Lib)
 
+#### test_CX_DoubleLinkedList.c
+
+add_executable(test_CX_DoubleLinkedList
+        tests/src/test_CX_DoubleLinkedList.c)
+add_dependencies(test_CX_DoubleLinkedList CX_Lib)
+target_link_libraries(test_CX_DoubleLinkedList libcunit.a CX_Lib)
+
 # ----------------------------------------------------------------------------------------
 # Set properties for all executable test targets.
 #
@@ -164,6 +173,7 @@ set(TEST_EXE
         test_CX_Logger
         test_CX_Array
         test_CX_ObjectManager
+        test_CX_DoubleLinkedList
         test_error_CX_Array)
 
 set_target_properties(
@@ -182,6 +192,7 @@ add_test(test_CX_String ${LOCAL_TESTS_BIN_DIRECTORY}/test_CX_String)
 add_test(test_CX_Logger ${LOCAL_TESTS_BIN_DIRECTORY}/test_CX_Logger)
 add_test(test_CX_Array ${LOCAL_TESTS_BIN_DIRECTORY}/test_CX_Array)
 add_test(test_CX_ObjectManager ${LOCAL_TESTS_BIN_DIRECTORY}/test_CX_ObjectManager)
+add_test(test_CX_DoubleLinkedList ${LOCAL_TESTS_BIN_DIRECTORY}/test_CX_DoubleLinkedList)
 add_test(test_error_CX_Array ${LOCAL_TESTS_BIN_DIRECTORY}/test_error_CX_Array)
 add_test(test_terminate script/unit-tests-terminate.sh)
 

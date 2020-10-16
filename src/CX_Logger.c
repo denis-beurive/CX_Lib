@@ -107,6 +107,8 @@ CX_Logger CX_LoggerCreate(char *inPath, char *inSession) {
  */
 
 void CX_LoggerDispose(CX_Logger inLogger) {
+    if (NULL == inLogger) return;
+
     if (NULL != inLogger->session) {
         free(inLogger->session);
     }

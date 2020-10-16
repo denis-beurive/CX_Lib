@@ -63,6 +63,7 @@ CX_ArrayString CX_ArrayStringCreate(CX_String inString) {
  */
 
 void CX_ArrayStringDispose(CX_ArrayString inArray) {
+    if (NULL == inArray) return;
     CX_ArrayDispose((CX_Array) inArray);
 }
 

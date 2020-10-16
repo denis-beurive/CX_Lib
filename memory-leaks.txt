@@ -1,0 +1,2 @@
+/home/user/Projects/C/CX_Lib/script/../tests/report/test_CX_FileTextSlurp
+/home/user/Projects/C/CX_Lib/script/../tests/report/test_CX_FileTextSlurpAsLines

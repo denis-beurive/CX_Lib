@@ -47,6 +47,7 @@ CX_Array CX_ArrayCreate(void(*elementDisposer)(void*), void*(*elementCloner)(voi
  * @param inArray The Array object to free.
  */
 void CX_ArrayDispose(CX_Array inArray) {
+    if (NULL == inArray) return;
     for (unsigned int i=0; i<inArray->count; i++) {
         if (NULL != inArray->elementDisposer) {
             inArray->elementDisposer(inArray->elements[i]);

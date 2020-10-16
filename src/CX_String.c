@@ -81,7 +81,8 @@ CX_String CX_StringCreateFmt(const char *inFmt, ...) {
  * @param inString The String object to free.
  */
 
-CX_String CX_StringDispose(CX_String inString) {
+void CX_StringDispose(CX_String inString) {
+    if (NULL == inString) return;
     if (NULL != SL_StringGetString(inString)) {
         free(SL_StringGetString(inString));
     }

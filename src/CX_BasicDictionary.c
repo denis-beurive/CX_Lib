@@ -46,6 +46,7 @@ CX_BasicDictionary CX_BasicDictionaryCreate() {
  */
 
 void CX_BasicDictionaryDispose(CX_BasicDictionary inDictionary) {
+    if (NULL == inDictionary) return;
     for (int i=0; i<inDictionary->length; i++) {
         __SL_BasicDictionaryEntryDispose(inDictionary->entries[i]);
     }

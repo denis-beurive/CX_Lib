@@ -1,7 +1,7 @@
 /**
  * @file
  *
- * @brief This file implements the Unit-test framwork.
+ * @brief This file implements the Unit-test framework.
  */
 
 #include <stdlib.h>

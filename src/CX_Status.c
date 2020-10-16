@@ -71,6 +71,7 @@ bool CX_StatusSetMessageSize(CX_Status inStatus, long inSize) {
  */
 
 void CX_StatusDispose(CX_Status inStatus) {
+    if (NULL == inStatus) return;
     free(inStatus->message);
     free(inStatus);
 }

@@ -57,6 +57,7 @@ CX_Template CX_TemplateCreate(char *inTemplateSpecification) {
  */
 
 void CX_TemplateDispose(CX_Template inTemplate) {
+    if (NULL == inTemplate) return;
     if (NULL != inTemplate->_result) {
         free(inTemplate->_result);
     }

@@ -45,6 +45,7 @@ CX_FileText CX_FileTextCreate(char *inPath) {
  */
 
 void CX_FileTextDispose(CX_FileText inFileText) {
+    if (NULL != inFileText) return;
     if (NULL != inFileText->path) {
         free(inFileText->path);
     }

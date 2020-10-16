@@ -227,5 +227,54 @@ typedef struct CX_ObjectManagerType {
     int count;
 } *CX_ObjectManager;
 
+/**
+ * @brief This structure represents an element in a double linked list.
+ */
+
+typedef struct CX_DoubleLinkedListElementType {
+    /**
+     * @brief The content of the element.
+     */
+    void *content;
+    /**
+     * @brief Pointer to the previous element of the list.
+     * Please note that, for the first element of the list, the value of this field is NULL.
+     */
+    struct CX_DoubleLinkedListElementType *previous;
+    /**
+     * @brief Pointer to the next element of the list.
+     * Please note that, for the last element of the list, the value of this field is NULL.
+     */
+    struct CX_DoubleLinkedListElementType *next;
+    /**
+     * @brief The function to use in order to free the memory allocated for the element element.
+     * The signature of the function must be `void elementDisposer(void*)`.
+     * Please note that the value of this field may be NULL. In this case, no action is performed
+     * on the elements when the linked list is destroyed.
+     */
+    void(*elementDisposer)(void*);
+} *CX_DoubleLinkedListElement;
+
+/**
+ * This structre represents a double linked list.
+ */
+
+typedef struct CX_DoubleLinkedListType {
+    /**
+     * @brief The total number of elements in the list.
+     */
+    int length;
+    /**
+     * @brief The pointer to the first element of the list.
+     * Please note that if the list is empty, then the value of the field is set to NULL.
+     */
+    CX_DoubleLinkedListElement beginning;
+    /**
+     * @brief The pointer to the last element of the list.
+     * Please note that if the list is empty, then the value of the field is set to NULL.
+     */
+    CX_DoubleLinkedListElement end;
+} *CX_DoubleLinkedList;
+
 
 #endif //CX_LIB_CX_TYPES_H

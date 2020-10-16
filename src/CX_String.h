@@ -11,7 +11,7 @@
 
 CX_String CX_StringCreate(char *inString);
 CX_String CX_StringCreateFmt(const char *inFmt, ...);
-CX_String CX_StringDispose(CX_String inString);
+void CX_StringDispose(CX_String inString);
 CX_String CX_StringDup(CX_String inString);
 size_t CX_StringLength(CX_String inString);
 bool CX_StringAppend(CX_String inString, CX_String inToAppend);

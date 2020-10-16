@@ -191,6 +191,7 @@ void CX_ObjectManagerDisposeOnError(CX_ObjectManager inManager) {
  */
 
 void CX_ObjectManagerDispose(CX_ObjectManager inManager) {
+    if (NULL == inManager) return;
     __CX_ObjectManagerDispose(inManager, false);
 }
 
